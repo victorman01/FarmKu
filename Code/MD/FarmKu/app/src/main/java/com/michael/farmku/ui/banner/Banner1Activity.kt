@@ -3,7 +3,16 @@ package com.michael.farmku.ui.banner
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.michael.farmku.R
 import com.michael.farmku.databinding.ActivityBanner1Binding
+import com.michael.farmku.ui.home.HomeActivity
 import com.michael.farmku.ui.login.LoginActivity
 import com.michael.farmku.ui.splashScreen.MainActivity
 
@@ -28,4 +37,6 @@ class Banner1Activity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+
 }
