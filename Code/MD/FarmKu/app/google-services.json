@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1001242986305",
+    "project_id": "farmku-7808c",
+    "storage_bucket": "farmku-7808c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001242986305:android:266fefe2f89a6b038203c0",
+        "android_client_info": {
+          "package_name": "com.michael.farmku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1001242986305-ejc3h0425ubgdrmh67dat0uv4gkvll8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS4P0c_1WT0bppFU7ea6lV_s8kC40TIl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001242986305-ejc3h0425ubgdrmh67dat0uv4gkvll8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
