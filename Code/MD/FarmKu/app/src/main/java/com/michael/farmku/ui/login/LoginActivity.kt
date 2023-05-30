@@ -2,11 +2,8 @@ package com.michael.farmku.ui.login
 
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 import android.app.Activity
 import android.content.Intent
-=======
->>>>>>> parent of 3ac9490 (Login, Forgot Password)
 =======
 >>>>>>> parent of 3ac9490 (Login, Forgot Password)
 =======
@@ -28,12 +25,9 @@ import com.michael.farmku.R
 import com.michael.farmku.databinding.ActivityLoginBinding
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 import com.michael.farmku.ui.home.HomeActivity
 import com.michael.farmku.ui.forgotPassword.ForgotPasswordActivity
 import com.michael.farmku.ui.register.RegisterActivity
-=======
->>>>>>> parent of 3ac9490 (Login, Forgot Password)
 =======
 >>>>>>> parent of 3ac9490 (Login, Forgot Password)
 =======
@@ -52,7 +46,6 @@ class LoginActivity : AppCompatActivity() {
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -128,8 +121,6 @@ class LoginActivity : AppCompatActivity() {
     }
     companion object {
         private const val TAG = "LoginActivity"
-=======
->>>>>>> parent of 3ac9490 (Login, Forgot Password)
 =======
 >>>>>>> parent of 3ac9490 (Login, Forgot Password)
 =======

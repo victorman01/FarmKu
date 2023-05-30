@@ -16,7 +16,6 @@
         <activity
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
             android:name=".ui.home.HomeActivity"
             android:exported="false" />
         <activity
@@ -26,11 +25,6 @@
 >>>>>>> parent of 3ac9490 (Login, Forgot Password)
             android:exported="false" />
         <activity
-=======
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
->>>>>>> parent of 3ac9490 (Login, Forgot Password)
 =======
             android:name=".RegisterActivity"
             android:exported="false" />
