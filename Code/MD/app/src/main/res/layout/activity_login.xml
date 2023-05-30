@@ -10,76 +10,64 @@
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="60dp"
         android:contentDescription="@string/logo_farmku"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_square" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <com.farmkuindonesia.farmku.component.CustomViewEmailEditText
+        android:id="@+id/emailEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/oval_background"
+        android:elevation="15dp"
         android:hint="@string/email"
-        app:boxBackgroundColor="#FFFFFF"
-        app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/gray"
-        app:boxStrokeWidth="2dp"
-        app:endIconMode="none"
-        app:errorEnabled="true"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView">
+        app:layout_constraintTop_toBottomOf="@id/imageView" />
 
-        <com.farmkuindonesia.farmku.component.CustomViewEmailEditText
-            android:id="@+id/emailEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/oval_button_background"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/txtLupaSandi"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="32dp"
-        android:hint="@string/kata_sandi"
-        app:boxBackgroundColor="#FFFFFF"
-        app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/gray"
-        app:boxStrokeWidth="2dp"
-        app:endIconMode="password_toggle"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:text="@string/lupa_kata_sandi"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
 
-        <com.farmkuindonesia.farmku.component.CustomViewPasswordEditText
-            android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/oval_button_background"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+    <com.farmkuindonesia.farmku.component.CustomViewPasswordEditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/oval_background"
+        android:drawableEnd="@drawable/outline_visibility_off_24"
+        android:elevation="15dp"
+        android:hint="@string/kata_sandi"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailEditText" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -90,69 +78,38 @@
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/light_green"
         android:text="@string/masuk"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:cornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLupaSandi" />
 
-    <TextView
-        android:id="@+id/txtLupaSandi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="@string/lupa_kata_sandi"
-        android:textColor="@color/blue"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout" />
-
-    <View
-        android:id="@+id/divider1"
-        android:layout_width="130dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="40dp"
-        android:background="@android:color/black"
-        app:layout_constraintEnd_toStartOf="@+id/divider2"
-        app:layout_constraintHorizontal_bias="0.77"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
-
     <View
         android:id="@+id/divider2"
         android:layout_width="130dp"
         android:layout_height="1dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="56dp"
         android:background="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.213"
-        app:layout_constraintStart_toEndOf="@+id/divider1"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="31dp"
-        android:text="@string/atau"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <LinearLayout
         android:id="@+id/btnSignInGoogle"
         android:layout_width="302dp"
         android:layout_height="45dp"
-        android:background="@drawable/oval_button_background"
+        android:background="@drawable/oval_background"
         android:elevation="8dp"
         android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider2"
-        app:layout_constraintVertical_bias="0.301">
+        app:layout_constraintVertical_bias="0.327">
 
         <ImageView
             android:layout_width="34dp"
@@ -178,10 +135,11 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignInGoogle">
+        app:layout_constraintTop_toBottomOf="@+id/btnSignInGoogle"
+        tools:layout_editor_absoluteX="6dp">
 
         <TextView
             android:id="@+id/textView5"
@@ -201,13 +159,36 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/atau"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="130dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="56dp"
+        android:background="@android:color/black"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.704"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="143dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="146dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="40dp"
         android:alpha="0.4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:srcCompat="@drawable/logo_long" />
