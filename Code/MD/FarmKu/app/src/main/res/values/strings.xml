@@ -2,6 +2,7 @@
     <string name="app_name">FarmKu</string>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="kata_sandi_anda">Kata Sandi Anda</string>
     <string name="kata_sandi">Kata Sandi</string>
     <string name="masuk">Masuk</string>
@@ -14,6 +15,8 @@
     <string name="logo_farmku">Logo FarmKu</string>
     <string name="kirim">Kirim</string>
     <string name="forgot_subtitle">Jangan khawatir! Isikan e-mail anda dan kami akan mengirimkan link reset kata sandi anda.</string>
+=======
+>>>>>>> parent of 3ac9490 (Login, Forgot Password)
 =======
 >>>>>>> parent of 3ac9490 (Login, Forgot Password)
 =======

@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         app:srcCompat="@drawable/logo_square" />
 
     <EditText
@@ -83,6 +84,9 @@
 =======
         app:srcCompat="@drawable/logo" />
 >>>>>>> parent of 3ac9490 (Login, Forgot Password)
+=======
+        app:srcCompat="@drawable/logo" />
+>>>>>>> parent of 3ac9490 (Login, Forgot Password)
 
     <TextView
         android:id="@+id/textView"
@@ -98,6 +102,7 @@
         android:id="@+id/editTextTextPersonName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         android:layout_marginStart="36dp"
@@ -174,6 +179,14 @@
         android:hint="Email Anda"
         android:inputType="textPersonName"
 >>>>>>> parent of 3ac9490 (Login, Forgot Password)
+=======
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="Email Anda"
+        android:inputType="textPersonName"
+>>>>>>> parent of 3ac9490 (Login, Forgot Password)
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -232,6 +245,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 3ac9490 (Login, Forgot Password)
+=======
 >>>>>>> parent of 3ac9490 (Login, Forgot Password)
 =======
 >>>>>>> parent of 3ac9490 (Login, Forgot Password)
