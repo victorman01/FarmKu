@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FarmKu</string>
+    <string name="kata_sandi_anda">Kata Sandi Anda</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="masuk">Masuk</string>
+    <string name="email_anda">Email anda</string>
+    <string name="email">Email</string>
+    <string name="lupa_kata_sandi">Lupa Kata Sandi?</string>
+    <string name="atau">Atau</string>
+    <string name="belum_memiliki_akun">Belum memiliki akun?</string>
+    <string name="daftar_sekarang">Daftar Sekarang</string>
+    <string name="logo_farmku">Logo FarmKu</string>
+    <string name="kirim">Kirim</string>
+    <string name="forgot_subtitle">Jangan khawatir! Isikan e-mail anda dan kami akan mengirimkan link reset kata sandi anda.</string>
+    <string name="next_text">Next</string>
+    <string name="skip_text">Skip</string>
+    <string name="masuk_dengan_google">Masuk dengan Google</string>
+    <string name="email_address_hint">Email Address</string>
+    <string name="error_password_text">Password must be at least 8 characters</string>
+</resources>
