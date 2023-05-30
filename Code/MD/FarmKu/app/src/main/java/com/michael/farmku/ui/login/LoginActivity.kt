@@ -57,10 +57,6 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
-
-        binding.btnSignInGoogle.setOnClickListener{
-            signIn()
-        }
     }
 
     private fun signIn() {
@@ -105,6 +101,14 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        updateUI(currentUser)
+    }
+
     companion object {
         private const val TAG = "LoginActivity"
     }
