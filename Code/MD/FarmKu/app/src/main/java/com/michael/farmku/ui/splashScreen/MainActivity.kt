@@ -49,6 +49,13 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }, 2000L)
         }
+        else{
+            Handler(Looper.getMainLooper()).postDelayed({
+                val intent = Intent(this, Banner1Activity::class.java)
+                startActivity(intent)
+                finish()
+            }, 2000L)
+        }
     }
 
     override fun onStart() {

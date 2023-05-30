@@ -28,13 +28,13 @@ class Banner1Activity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.btnNextBanner1.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+
         }
 
         binding.btnSkipBanner1.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
