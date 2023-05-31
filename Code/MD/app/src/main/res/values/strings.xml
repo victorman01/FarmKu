@@ -17,4 +17,6 @@
     <string name="masuk_dengan_google">Masuk dengan Google</string>
     <string name="email_address_hint">Email Address</string>
     <string name="error_password_text">Password must be at least 8 characters</string>
+    <string name="buat_akun_baru_text">Buat akun baru</string>
+    <string name="appbar_register">AppBar Register</string>
 </resources>
