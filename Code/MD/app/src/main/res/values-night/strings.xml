@@ -5,7 +5,7 @@
     <string name="kata_sandi">Kata Sandi</string>
     <string name="masuk">Masuk</string>
     <string name="email_anda">Email anda</string>
-    <string name="email">Email</string>
+    <string name="email">E-mail</string>
     <string name="lupa_kata_sandi">Lupa Kata Sandi?</string>
     <string name="atau">Atau</string>
     <string name="belum_memiliki_akun">Belum memiliki akun?</string>
@@ -18,4 +18,6 @@
     <string name="masuk_dengan_google">Masuk dengan Google</string>
     <string name="email_address_hint">Email Address</string>
     <string name="error_password_text">Password must be at least 8 characters</string>
+    <string name="buat_akun_baru_text">Buat akun baru</string>
+    <string name="appbar_register">AppBar Register</string>
 </resources>

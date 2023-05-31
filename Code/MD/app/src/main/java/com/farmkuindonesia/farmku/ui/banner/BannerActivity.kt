@@ -1,18 +1,29 @@
 package com.farmkuindonesia.farmku.ui.banner
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityBannerBinding
+import com.farmkuindonesia.farmku.ui.login.LoginActivity
 
 class BannerActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityBannerBinding
+    private var _binding: ActivityBannerBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBannerBinding.inflate(layoutInflater)
+        _binding = ActivityBannerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        binding.btnNextBanner.setOnClickListener{
+
+        }
+
+        binding.btnSkipBanner.setOnClickListener{
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

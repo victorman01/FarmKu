@@ -22,29 +22,32 @@
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/oval_background"
         android:elevation="15dp"
-        android:hint="@string/email"
+        android:hint="@string/email_anda"
         android:inputType="textEmailAddress"
         android:maxLines="1"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/txtLupaSandi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:text="@string/lupa_kata_sandi"
         android:textColor="@color/blue"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />
@@ -53,26 +56,28 @@
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/oval_background"
         android:drawableEnd="@drawable/outline_visibility_off_24"
         android:elevation="15dp"
-        android:hint="@string/kata_sandi"
+        android:hint="@string/kata_sandi_anda"
         android:inputType="textPassword"
         android:maxLines="1"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="113dp"
-        android:layout_height="43dp"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
@@ -87,11 +92,22 @@
         app:layout_constraintTop_toBottomOf="@+id/txtLupaSandi" />
 
     <View
+        android:id="@+id/divider1"
+        android:layout_width="130dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.704"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+    <View
         android:id="@+id/divider2"
         android:layout_width="130dp"
         android:layout_height="1dp"
-        android:layout_marginTop="56dp"
-        android:background="@android:color/black"
+        android:layout_marginTop="40dp"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.213"
         app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -101,15 +117,14 @@
         android:id="@+id/btnSignInGoogle"
         android:layout_width="302dp"
         android:layout_height="45dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/oval_background"
         android:elevation="8dp"
         android:gravity="center_vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
-        app:layout_constraintVertical_bias="0.327">
+        app:layout_constraintTop_toBottomOf="@+id/divider2">
 
         <ImageView
             android:layout_width="34dp"
@@ -125,8 +140,8 @@
             android:layout_gravity="center"
             android:text="@string/masuk_dengan_google"
             android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -135,7 +150,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/btnSignInGoogle"
@@ -163,21 +178,10 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="30dp"
         android:text="@string/atau"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
-
-    <View
-        android:id="@+id/divider1"
-        android:layout_width="130dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="56dp"
-        android:background="@android:color/black"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
-        app:layout_constraintHorizontal_bias="0.704"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
@@ -185,12 +189,34 @@
         android:id="@+id/imageView2"
         android:layout_width="146dp"
         android:layout_height="37dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="8dp"
         android:alpha="0.4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:srcCompat="@drawable/logo_long" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/email"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/kata_sandi"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

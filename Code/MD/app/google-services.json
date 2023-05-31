@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "255546153708",
+    "project_id": "farmku-8e213",
+    "storage_bucket": "farmku-8e213.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255546153708:android:b5d96ec7ccb7037eae63c9",
+        "android_client_info": {
+          "package_name": "com.farmkuindonesia.farmku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255546153708-gjn34v41tugupi25914aphs287gmu2mt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.farmkuindonesia.farmku",
+            "certificate_hash": "83d4ec6ddec1e80d6bb273a3c632ceb7a98fedff"
+          }
+        },
+        {
+          "client_id": "255546153708-d1huj01bnj0p94t2i5ijti5s3oglruet.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYwu5GDyJGHI9GP0xtRywQd6M8wM7BBLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255546153708-d1huj01bnj0p94t2i5ijti5s3oglruet.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

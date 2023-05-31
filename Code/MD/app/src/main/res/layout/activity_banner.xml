@@ -7,7 +7,7 @@
     tools:context=".ui.banner.BannerActivity">
 
     <Button
-        android:id="@+id/btn_next_banner1"
+        android:id="@+id/btn_next_banner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btn_skip_banner1"
+        android:id="@+id/btn_skip_banner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
