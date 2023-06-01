@@ -13,5 +13,9 @@ class RegisterActivity : AppCompatActivity() {
         _binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+        binding.btnLoginRegister.setOnClickListener{
+            finish()
+        }
     }
 }

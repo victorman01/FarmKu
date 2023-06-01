@@ -20,4 +20,9 @@
     <string name="error_password_text">Password must be at least 8 characters</string>
     <string name="buat_akun_baru_text">Buat akun baru</string>
     <string name="appbar_register">AppBar Register</string>
+    <string name="sudah_memiliki_akun">Sudah Memiliki Akun?</string>
+    <string name="login_sekarang">Login Sekarang</string>
+    <string name="nomor_telepon_anda">Nomor Telepon Anda</string>
+    <string name="nomor_telepon">Nomor Telepon</string>
+    <string name="daftarkan_nomor_telepon_anda">Daftarkan Nomor Telepon Anda</string>
 </resources>

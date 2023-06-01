@@ -42,11 +42,11 @@ class LoginActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
-        binding.btnLogin.setOnClickListener{
+        binding.btnLoginLogin.setOnClickListener{
 
         }
 
-        binding.txtDaftar.setOnClickListener{
+        binding.btnRegisterLogin.setOnClickListener{
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
