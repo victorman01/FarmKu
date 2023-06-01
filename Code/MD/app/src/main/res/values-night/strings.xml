@@ -20,4 +20,5 @@
     <string name="error_password_text">Password must be at least 8 characters</string>
     <string name="buat_akun_baru_text">Buat akun baru</string>
     <string name="appbar_register">AppBar Register</string>
+    <string name="default_web_client_id">defaultwebclientid</string>
 </resources>

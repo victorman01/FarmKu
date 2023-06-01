@@ -22,15 +22,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
-    private var _binding: ActivityLoginBinding? = null
-    private val binding get() = _binding!!
-
+    private lateinit var binding: ActivityLoginBinding
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 
@@ -39,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
+
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         // Initialize Firebase Auth
         auth = Firebase.auth
@@ -58,14 +57,15 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnSignInGoogle.setOnClickListener{
-            signIn()
+            signInUsingGoogleEmail()
         }
     }
 
-    private fun signIn() {
+    private fun signInUsingGoogleEmail() {
         val signInIntent = googleSignInClient.signInIntent
         resultLauncher.launch(signInIntent)
     }
+
     private var resultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
