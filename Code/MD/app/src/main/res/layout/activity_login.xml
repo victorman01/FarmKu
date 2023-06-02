@@ -48,7 +48,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/lupa_kata_sandi"
         android:textColor="@color/blue"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText" />

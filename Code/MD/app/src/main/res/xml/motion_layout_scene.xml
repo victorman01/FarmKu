@@ -55,11 +55,13 @@
             android:id="@id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="336dp"
+            android:layout_marginTop="310dp"
             motion:layout_constraintTop_toBottomOf="@id/textView3"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintHorizontal_bias="0.497" />
+            motion:layout_constraintHorizontal_bias="0.497"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0" />
     </ConstraintSet>
 
     <Transition
