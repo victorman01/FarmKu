@@ -6,12 +6,11 @@ import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityForgotPasswordBinding
 
 class ForgotPasswordActivity : AppCompatActivity() {
-    private var _binding: ActivityForgotPasswordBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityForgotPasswordBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
+        binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 

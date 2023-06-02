@@ -5,12 +5,11 @@ import android.os.Bundle
 import com.farmkuindonesia.farmku.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
-    private var _binding: ActivityRegisterBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityRegisterBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 

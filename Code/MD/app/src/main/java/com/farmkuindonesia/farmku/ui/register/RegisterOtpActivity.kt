@@ -5,12 +5,11 @@ import android.os.Bundle
 import com.farmkuindonesia.farmku.databinding.ActivityRegisterOtpBinding
 
 class RegisterOtpActivity : AppCompatActivity() {
-    private var _binding: ActivityRegisterOtpBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityRegisterOtpBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityRegisterOtpBinding.inflate(layoutInflater)
+        binding = ActivityRegisterOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
     }

@@ -6,12 +6,11 @@ import com.farmkuindonesia.farmku.databinding.ActivityRegisterFillDataBinding
 import com.farmkuindonesia.farmku.databinding.ActivityRegisterOtpBinding
 
 class RegisterFillDataActivity : AppCompatActivity() {
-    private var _binding: ActivityRegisterFillDataBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityRegisterFillDataBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityRegisterFillDataBinding.inflate(layoutInflater)
+        binding = ActivityRegisterFillDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
     }

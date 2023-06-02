@@ -1,13 +1,15 @@
 package com.farmkuindonesia.farmku.component
 
 import android.content.Context
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.AttributeSet
+import android.view.MotionEvent
 import com.farmkuindonesia.farmku.R
 import com.google.android.material.textfield.TextInputEditText
+import androidx.appcompat.content.res.AppCompatResources
 
 class CustomViewPasswordEditText : TextInputEditText {
+
+    private var isPasswordVisible = false
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
@@ -17,34 +19,57 @@ class CustomViewPasswordEditText : TextInputEditText {
         defStyleAttr
     )
 
-    private var isEmail = false
-    private var isPassword = false
-
-    private fun checkEmailValidity(email: String) {
-        isEmail = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-        if (email.isNotEmpty() && !isEmail) {
-            error = "Invalid email format"
-        }
-    }
-
-    private fun checkPasswordLength(password: String) {
-        isPassword = password.length >= 8
-        if (password.isNotEmpty() && !isPassword) {
-            error = context.getString(R.string.error_password_text)
-        }
-    }
-
     init {
-        addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-            override fun afterTextChanged(s: Editable?) {
-                val text = s.toString()
-                when {
-                    inputType == 33 -> checkEmailValidity(text)
-                    inputType == 129 -> checkPasswordLength(text)
+        setupPasswordVisibilityToggle()
+        showPassword(false)
+    }
+
+    private fun setupPasswordVisibilityToggle() {
+
+        setCompoundDrawablesRelativeWithIntrinsicBounds(
+            null,
+            null,
+            AppCompatResources.getDrawable(context, R.drawable.outline_visibility_off_24),
+            null
+        )
+
+        setOnTouchListener { view, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                val drawableEnd = compoundDrawablesRelative[2]
+                if (drawableEnd != null && event.rawX >= right - drawableEnd.bounds.width()) {
+                    isPasswordVisible = !isPasswordVisible
+                    showPassword(isPasswordVisible)
+                    view.performClick()
+                    return@setOnTouchListener true
                 }
             }
-        })
+            return@setOnTouchListener false
+        }
+    }
+
+    private fun showPassword(show: Boolean) {
+        inputType = if (show) {
+            setCompoundDrawablesRelativeWithIntrinsicBounds(
+                null,
+                null,
+                AppCompatResources.getDrawable(context, R.drawable.outline_visibility_24),
+                null
+            )
+            android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        } else {
+            setCompoundDrawablesRelativeWithIntrinsicBounds(
+                null,
+                null,
+                AppCompatResources.getDrawable(context, R.drawable.outline_visibility_off_24),
+                null
+            )
+            android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+        hint = if (show) {
+            context.getString(R.string.showPassword)
+        } else {
+            context.getString(R.string.kata_sandi_anda)
+        }
+        setSelection(text?.length ?: 0)
     }
 }

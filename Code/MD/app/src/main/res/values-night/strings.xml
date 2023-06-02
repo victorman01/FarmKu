@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FarmKu</string>
-    <string name="kata_sandi_anda">Kata Sandi Anda</string>
+    <string name="kata_sandi_anda">********</string>
     <string name="kata_sandi">Kata Sandi</string>
     <string name="masuk">Masuk</string>
-    <string name="email_anda">Email anda</string>
-    <string name="email">E-mail</string>
+    <string name="email_atau_nomor_telepon_anda">E-mail / Nomor Telepon Anda</string>
+    <string name="email_atau_nomor_telepon">E-mail / Nomor Telepon</string>
+    <string name="email_anda">Email Anda</string>
+    <string name="email">Email</string>
     <string name="lupa_kata_sandi">Lupa Kata Sandi?</string>
     <string name="atau">Atau</string>
     <string name="belum_memiliki_akun">Belum memiliki akun?</string>
@@ -20,5 +22,16 @@
     <string name="error_password_text">Password must be at least 8 characters</string>
     <string name="buat_akun_baru_text">Buat akun baru</string>
     <string name="appbar_register">AppBar Register</string>
-    <string name="default_web_client_id">defaultwebclientid</string>
+    <string name="sudah_memiliki_akun">Sudah Memiliki Akun?</string>
+    <string name="login_sekarang">Login Sekarang</string>
+    <string name="nomor_telepon_anda">Nomor Telepon Anda</string>
+    <string name="nomor_telepon">Nomor Telepon</string>
+    <string name="daftarkan_nomor_telepon_anda">Daftarkan Nomor Telepon Anda</string>
+    <string name="nama_lengkap_anda">Nama Lengkap Anda</string>
+    <string name="alamat_anda">Alamat Anda</string>
+    <string name="alamat">Alamat</string>
+    <string name="ulangi_kata_sandi">Ulangi Kata Sandi</string>
+    <string name="ulangi_kata_sandi_anda">Ulangi Kata Sandi Anda</string>
+    <string name="dengan_ini_saya_menyetujui_syarat_dan_ketentuan_yang_berlaku">Dengan ini saya menyetujui syarat dan ketentuan yang berlaku.</string>
+    <string name="showPassword">Kata Sandi Anda</string>
 </resources>

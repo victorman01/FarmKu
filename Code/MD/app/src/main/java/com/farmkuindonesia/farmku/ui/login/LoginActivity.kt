@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.txtLupaSandi.setOnClickListener{
+        binding.txtForgetPassword.setOnClickListener{
             val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }

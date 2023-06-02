@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FarmKu</string>
-    <string name="kata_sandi_anda">Kata Sandi Anda</string>
+    <string name="kata_sandi_anda">********</string>
     <string name="kata_sandi">Kata Sandi</string>
     <string name="masuk">Masuk</string>
-    <string name="email_anda">E-mail Anda</string>
-    <string name="email">E-mail</string>
+    <string name="email_atau_nomor_telepon_anda">E-mail / Nomor Telepon Anda</string>
+    <string name="email_atau_nomor_telepon">E-mail / Nomor Telepon</string>
+    <string name="email_anda">Email Anda</string>
+    <string name="email">Email</string>
     <string name="lupa_kata_sandi">Lupa Kata Sandi?</string>
     <string name="atau">Atau</string>
     <string name="belum_memiliki_akun">Belum memiliki akun?</string>
@@ -31,4 +33,5 @@
     <string name="ulangi_kata_sandi">Ulangi Kata Sandi</string>
     <string name="ulangi_kata_sandi_anda">Ulangi Kata Sandi Anda</string>
     <string name="dengan_ini_saya_menyetujui_syarat_dan_ketentuan_yang_berlaku">Dengan ini saya menyetujui syarat dan ketentuan yang berlaku.</string>
+    <string name="showPassword">Kata Sandi Anda</string>
 </resources>
