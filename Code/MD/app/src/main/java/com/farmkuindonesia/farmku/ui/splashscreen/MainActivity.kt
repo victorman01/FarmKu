@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import androidx.constraintlayout.motion.widget.MotionLayout
 import com.farmkuindonesia.farmku.databinding.ActivityMainBinding
 import com.farmkuindonesia.farmku.ui.banner.BannerActivity
 import com.farmkuindonesia.farmku.ui.home.HomeActivity
@@ -13,10 +14,12 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mainViewModel: MainViewModel
     private lateinit var auth: FirebaseAuth
+    private lateinit var motionLayout: MotionLayout
+    private var currentUser: FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,29 +27,44 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
         auth = Firebase.auth
+
+        motionLayout = binding.motionLayout
+
+        motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
+            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {}
+
+            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}
+
+            override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {}
+
+            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {}
+        })
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            motionLayout.transitionToEnd()
+        }, 500L)
     }
 
-    //should be in viewmodel
     private fun updateUI(currentUser: FirebaseUser?) {
-        if (currentUser != null){
+        if (currentUser != null) {
             Handler(Looper.getMainLooper()).postDelayed({
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
                 finish()
-            }, 2000L)
-        }
-        else{
+            }, 4000L)
+        } else {
             Handler(Looper.getMainLooper()).postDelayed({
                 val intent = Intent(this, BannerActivity::class.java)
                 startActivity(intent)
                 finish()
-            }, 2000L)
+            }, 4000L)
         }
     }
 
     override fun onStart() {
         super.onStart()
-        val currentUser = auth.currentUser
+        currentUser = auth.currentUser
         updateUI(currentUser)
     }
 }
+

@@ -1,0 +1,116 @@
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@id/logo_splashScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="212dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="0.498" />
+
+        <Constraint
+            android:id="@id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            motion:layout_constraintTop_toBottomOf="@id/logo_splashScreen"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent" />
+
+        <Constraint
+            android:id="@id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="360dp"
+            motion:layout_constraintTop_toBottomOf="@id/textView3"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="0.497" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/logo_splashScreen"
+            android:layout_width="155dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="176dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent" />
+
+        <Constraint
+            android:id="@id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/logo_splashScreen" />
+
+        <Constraint
+            android:id="@id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="336dp"
+            motion:layout_constraintTop_toBottomOf="@id/textView3"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintHorizontal_bias="0.497" />
+    </ConstraintSet>
+
+    <Transition
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/end"
+        motion:duration="2000">
+        <KeyFrameSet>
+            <KeyAttribute
+                motion:framePosition="0"
+                motion:motionTarget="@id/textView3">
+                <CustomAttribute
+                    motion:attributeName="alpha"
+                    motion:customFloatValue="0" />
+                <CustomAttribute
+                    motion:attributeName="scaleX"
+                    motion:customFloatValue="0.8" />
+                <CustomAttribute
+                    motion:attributeName="scaleY"
+                    motion:customFloatValue="0.8" />
+            </KeyAttribute>
+
+            <KeyAttribute
+                motion:framePosition="100"
+                motion:motionTarget="@id/textView3">
+                <CustomAttribute
+                    motion:attributeName="alpha"
+                    motion:customFloatValue="1" />
+                <CustomAttribute
+                    motion:attributeName="scaleX"
+                    motion:customFloatValue="1" />
+                <CustomAttribute
+                    motion:attributeName="scaleY"
+                    motion:customFloatValue="1" />
+            </KeyAttribute>
+
+            <KeyAttribute
+                motion:framePosition="0"
+                motion:motionTarget="@id/textView8">
+                <CustomAttribute
+                    motion:attributeName="alpha"
+                    motion:customFloatValue="0" />
+            </KeyAttribute>
+
+            <KeyAttribute
+                motion:framePosition="100"
+                motion:motionTarget="@id/textView8">
+                <CustomAttribute
+                    motion:attributeName="alpha"
+                    motion:customFloatValue="1" />
+            </KeyAttribute>
+        </KeyFrameSet>
+    </Transition>
+
+</MotionScene>
