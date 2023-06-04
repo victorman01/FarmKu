@@ -1,5 +1,6 @@
 package com.farmkuindonesia.farmku.ui.otp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -9,6 +10,8 @@ import android.widget.EditText
 import androidx.appcompat.content.res.AppCompatResources
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityOtpactivityBinding
+import com.farmkuindonesia.farmku.ui.forgotpassword.ResetPasswordActivity
+import com.farmkuindonesia.farmku.ui.register.RegisterFillDataActivity
 
 class OTPActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOtpactivityBinding
@@ -38,6 +41,16 @@ class OTPActivity : AppCompatActivity() {
             editTextOtp4.apply {
                 jumpToNextEditText(previousEditText = binding.editTextOtp3)
                 inputType = InputType.TYPE_CLASS_NUMBER
+            }
+
+            btnLanjut.setOnClickListener{
+                if(fromWhere == "ForgotPasswordActivity"){
+                    val intent = Intent(this@OTPActivity,ResetPasswordActivity::class.java)
+                    startActivity(intent)
+                }else{
+                    val intent = Intent(this@OTPActivity,RegisterFillDataActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
 

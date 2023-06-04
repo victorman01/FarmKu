@@ -14,7 +14,8 @@
     <string name="daftar_sekarang">Daftar Sekarang</string>
     <string name="logo_farmku">Logo FarmKu</string>
     <string name="kirim">Kirim</string>
-    <string name="forgot_subtitle">Jangan khawatir! Isikan e-mail anda dan kami akan mengirimkan link reset kata sandi anda.</string>
+    <string name="forgot_subtitle_email">Jangan khawatir! Isikan e-mail anda dan kami akan mengirimkan OTP pada e-mail anda.</string>
+    <string name="forgot_subtitle_hp">Jangan khawatir! Isikan Nomor HP anda dan kami akan mengirimkan OTP pada Nomor HP anda.</string>
     <string name="next_text">Next</string>
     <string name="skip_text">Skip</string>
     <string name="masuk_dengan_google">Masuk dengan Google</string>
@@ -35,15 +36,18 @@
     <string name="dengan_ini_saya_menyetujui_syarat_dan_ketentuan_yang_berlaku">Dengan ini saya menyetujui syarat dan ketentuan yang berlaku.</string>
     <string name="showPassword">Kata Sandi Anda</string>
     <string name="bridge_the_gap_with_plants_text">Bridge the Gap with Plants</string>
-    <string name="masukan_otp_text">Masukkan kode OTP yang telah dikirimkan melalui SMS pada nomor anda.</string>
+    <string name="masukan_otp_num_text">Masukkan kode OTP yang telah dikirimkan melalui SMS pada nomor anda.</string>
+    <string name="masukan_otp_email_text">Masukkan kode OTP yang telah dikirimkan melalui e-mail pada e-mail anda.</string>
     <string name="masukkan_kode_otp_text">Masukkan Kode OTP</string>
     <string name="hint_text_otp">0</string>
     <string name="lanjut_text">Lanjut</string>
     <string name="resend_otp_text">Resend OTP</string>
     <string name="kirim_ulang_text">Kirim ulang kode OTP dalam 1:59</string>
     <string name="kirim_ulang">Kirim Ulang</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nomor_hp_text">Nomor HP</string>
     <string name="email_text">Email</string>
+    <string name="ganti_kata_sandi_anda_text">Ganti kata sandi anda</string>
+    <string name="buatlah_kata_sandi_anda_yang_mudah_diingat_tapi_tidak_mudah_ditebak_text">Buatlah kata sandi anda yang mudah diingat tapi tidak mudah ditebak.</string>
+    <string name="ubah_text">Ubah</string>
 </resources>

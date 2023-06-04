@@ -1,5 +1,6 @@
 package com.farmkuindonesia.farmku.ui.splashscreen
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,14 +8,15 @@ import android.os.Handler
 import android.os.Looper
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.farmkuindonesia.farmku.databinding.ActivitySplashScreenBinding
-import com.farmkuindonesia.farmku.ui.banner.BannerActivity
 import com.farmkuindonesia.farmku.ui.main.MainActivity
+import com.farmkuindonesia.farmku.ui.onboarding.OnBoardingActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashScreenBinding
     private lateinit var auth: FirebaseAuth
@@ -54,7 +56,7 @@ class SplashScreenActivity : AppCompatActivity() {
             }, 4000L)
         } else {
             Handler(Looper.getMainLooper()).postDelayed({
-                val intent = Intent(this, BannerActivity::class.java)
+                val intent = Intent(this, OnBoardingActivity::class.java)
                 startActivity(intent)
                 finish()
             }, 4000L)
