@@ -16,8 +16,8 @@
     <string name="kirim">Kirim</string>
     <string name="forgot_subtitle_email">Jangan khawatir! Isikan e-mail anda dan kami akan mengirimkan OTP pada e-mail anda.</string>
     <string name="forgot_subtitle_hp">Jangan khawatir! Isikan Nomor HP anda dan kami akan mengirimkan OTP pada Nomor HP anda.</string>
-    <string name="next_text">Next</string>
-    <string name="skip_text">Skip</string>
+    <string name="selanjut_text">Selanjutnya</string>
+    <string name="lewati_text">Lewati</string>
     <string name="masuk_dengan_google">Masuk dengan Google</string>
     <string name="email_address_hint">Email Address</string>
     <string name="error_password_text">Password must be at least 8 characters</string>
@@ -56,4 +56,5 @@
     <string name="onboarding2_subtitle">mitra terpercaya dalam mengoptimalkan kesuburan tanah dan melawan penyakit tanaman. Mulailah mengungkap potensi lahanmu hari ini</string>
     <string name="onboarding3_title">Farmku</string>
     <string name="onboarding3_subtitle"> Menyambut era baru pengetahuan bagi para petani di Indonesia. Tingkatkan hasil panenmu dan lindungi tanamanmu dengan solusi analisis tanah dan deteksi penyakit tanaman terdepan. Rasakan kekuatan pertanian presisi.</string>
+    <string name="memulai_aplikasi_text">Memulai Aplikasi</string>
 </resources>

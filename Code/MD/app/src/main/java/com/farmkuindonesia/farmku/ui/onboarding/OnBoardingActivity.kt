@@ -2,8 +2,10 @@ package com.farmkuindonesia.farmku.ui.onboarding
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityOnBoardingBinding
 import com.farmkuindonesia.farmku.ui.login.LoginActivity
 
@@ -25,7 +27,11 @@ class OnBoardingActivity : AppCompatActivity() {
         binding.btnNextBoarding.setOnClickListener {
             if (viewPager.currentItem < adapter.itemCount - 1) {
                 viewPager.currentItem = viewPager.currentItem + 1
-            } else {
+                if(viewPager.currentItem == adapter.itemCount - 1){
+                    binding.btnNextBoarding.text = getString(R.string.memulai_aplikasi_text)
+                    binding.btnSkipBoarding.visibility = View.GONE
+                }
+            } else{
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
