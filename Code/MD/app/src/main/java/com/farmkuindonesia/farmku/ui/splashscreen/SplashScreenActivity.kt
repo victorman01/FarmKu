@@ -6,24 +6,24 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.constraintlayout.motion.widget.MotionLayout
-import com.farmkuindonesia.farmku.databinding.ActivityMainBinding
+import com.farmkuindonesia.farmku.databinding.ActivitySplashScreenBinding
 import com.farmkuindonesia.farmku.ui.banner.BannerActivity
-import com.farmkuindonesia.farmku.ui.home.HomeActivity
+import com.farmkuindonesia.farmku.ui.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class SplashScreenActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySplashScreenBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var motionLayout: MotionLayout
     private var currentUser: FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
         auth = Firebase.auth
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null) {
             Handler(Looper.getMainLooper()).postDelayed({
-                val intent = Intent(this, HomeActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }, 4000L)

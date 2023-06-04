@@ -20,7 +20,7 @@
     <string name="masuk_dengan_google">Masuk dengan Google</string>
     <string name="email_address_hint">Email Address</string>
     <string name="error_password_text">Password must be at least 8 characters</string>
-    <string name="buat_akun_baru_text">Buat akun baru</string>
+    <string name="buat_akun_baru_text">Buat Akun Baru</string>
     <string name="appbar_register">AppBar Register</string>
     <string name="sudah_memiliki_akun">Sudah Memiliki Akun?</string>
     <string name="login_sekarang">Login Sekarang</string>
@@ -35,4 +35,11 @@
     <string name="dengan_ini_saya_menyetujui_syarat_dan_ketentuan_yang_berlaku">Dengan ini saya menyetujui syarat dan ketentuan yang berlaku.</string>
     <string name="showPassword">Kata Sandi Anda</string>
     <string name="bridge_the_gap_with_plants_text">Bridge the Gap with Plants</string>
+    <string name="masukan_otp_text">Masukkan kode OTP yang telah dikirimkan melalui SMS pada nomor anda.</string>
+    <string name="masukkan_kode_otp_text">Masukkan Kode OTP</string>
+    <string name="hint_text_otp">0</string>
+    <string name="lanjut_text">Lanjut</string>
+    <string name="resend_otp_text">Resend OTP</string>
+    <string name="kirim_ulang_text">Kirim ulang kode OTP dalam 1:59</string>
+    <string name="kirim_ulang">Kirim Ulang</string>
 </resources>

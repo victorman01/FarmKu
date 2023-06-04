@@ -1,16 +1,15 @@
 package com.farmkuindonesia.farmku.ui
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.farmkuindonesia.farmku.ui.splashscreen.MainViewModel
+import com.farmkuindonesia.farmku.ui.splashscreen.SplashScreenViewModel
 
 class ViewModelFactory() : ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
-            modelClass.isAssignableFrom(MainViewModel::class.java) -> {
-                MainViewModel() as T
+            modelClass.isAssignableFrom(SplashScreenViewModel::class.java) -> {
+                SplashScreenViewModel() as T
             }
 
 //            modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {

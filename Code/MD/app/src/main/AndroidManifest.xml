@@ -19,7 +19,7 @@
             android:name=".ui.register.RegisterOtpActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.register.RegisterActivity"
@@ -34,7 +34,7 @@
             android:name=".ui.banner.BannerActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.splashscreen.MainActivity"
+            android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

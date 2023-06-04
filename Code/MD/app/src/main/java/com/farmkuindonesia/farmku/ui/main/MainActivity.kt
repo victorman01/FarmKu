@@ -1,22 +1,21 @@
-package com.farmkuindonesia.farmku.ui.home
+package com.farmkuindonesia.farmku.ui.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.farmkuindonesia.farmku.R
-import com.farmkuindonesia.farmku.databinding.ActivityHomeBinding
+import com.farmkuindonesia.farmku.databinding.ActivityMainBinding
 import com.farmkuindonesia.farmku.ui.banner.BannerActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class HomeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
+class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 

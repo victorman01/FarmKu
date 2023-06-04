@@ -58,19 +58,23 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
+        android:layout_marginEnd="32dp"
         android:gravity="center"
         android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15">
 
         <EditText
             android:id="@+id/editTextOtp1"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="1"
             android:layout_marginEnd="4dp"
+            android:layout_weight="1"
             android:background="@drawable/edittext_bg"
             android:gravity="center"
             android:hint="@string/hint_text_otp"
@@ -84,8 +88,8 @@
             android:id="@+id/editTextOtp2"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="1"
             android:layout_marginEnd="4dp"
+            android:layout_weight="1"
             android:background="@drawable/edittext_bg"
             android:gravity="center"
             android:hint="@string/hint_text_otp"
@@ -99,8 +103,8 @@
             android:id="@+id/editTextOtp3"
             android:layout_width="0dp"
             android:layout_height="64dp"
-            android:layout_weight="1"
             android:layout_marginEnd="4dp"
+            android:layout_weight="1"
             android:background="@drawable/edittext_bg"
             android:gravity="center"
             android:hint="@string/hint_text_otp"
@@ -130,18 +134,15 @@
         android:id="@+id/btnLanjut"
         android:layout_width="116dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:backgroundTint="@color/light_green"
         android:text="@string/lanjut_text"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.942"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.308" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"

@@ -9,7 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityLoginBinding
 import com.farmkuindonesia.farmku.ui.forgotpassword.ForgotPasswordActivity
-import com.farmkuindonesia.farmku.ui.home.HomeActivity
+import com.farmkuindonesia.farmku.ui.main.MainActivity
 import com.farmkuindonesia.farmku.ui.register.RegisterActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -100,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null){
-            startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
             finish()
         }
     }
