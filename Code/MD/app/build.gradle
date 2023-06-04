@@ -15,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField("String", "URL_API", '"https://a383-125-166-175-7.ngrok-free.app"')
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

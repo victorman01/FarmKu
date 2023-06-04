@@ -6,7 +6,7 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import com.google.android.material.textfield.TextInputEditText
 
-class CustomViewEmailEditText : TextInputEditText {
+class CustomViewEmailNumEditText : TextInputEditText {
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
@@ -24,14 +24,20 @@ class CustomViewEmailEditText : TextInputEditText {
             override fun afterTextChanged(s: Editable?) {
                 val text = s.toString()
 
-                error = if (android.util.Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
-                    if (text.isNotEmpty()) {
+                if (android.util.Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
+                    error = if (text.isNotEmpty()) {
                         null
                     } else {
                         "Email is required"
                     }
+                } else if (text.matches(Regex("^[+]?[0-9]{10,}$"))) {
+                    error = if (text.isNotEmpty()) {
+                        null
+                    } else {
+                        "Phone number is required"
+                    }
                 } else {
-                    if (text.isNotEmpty()) {
+                    error = if (text.isNotEmpty()) {
                         "Invalid input"
                     } else {
                         null
@@ -40,4 +46,5 @@ class CustomViewEmailEditText : TextInputEditText {
             }
         })
     }
+
 }

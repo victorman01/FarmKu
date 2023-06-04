@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".ui.register.RegisterOtpActivity">
+    tools:context=".ui.otp.OTPActivity">
 
     <ImageButton
         android:id="@+id/btnBackOTP"
@@ -43,13 +43,13 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/textViewSubtitleOTP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/masukan_otp_text"
+        android:text="@string/masukan_otp_num_text"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +67,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15">
+        app:layout_constraintTop_toBottomOf="@+id/textViewSubtitleOTP">
 
         <EditText
             android:id="@+id/editTextOtp1"

@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_square" />
 
-    <com.farmkuindonesia.farmku.component.CustomViewEmailEditText
+    <com.farmkuindonesia.farmku.component.CustomViewEmailNumEditText
         android:id="@+id/emailEditText"
         android:layout_width="0dp"
         android:layout_height="48dp"

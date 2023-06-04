@@ -42,4 +42,8 @@
     <string name="resend_otp_text">Resend OTP</string>
     <string name="kirim_ulang_text">Kirim ulang kode OTP dalam 1:59</string>
     <string name="kirim_ulang">Kirim Ulang</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nomor_hp_text">Nomor HP</string>
+    <string name="email_text">Email</string>
 </resources>

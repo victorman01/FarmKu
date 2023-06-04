@@ -1,6 +1,6 @@
 package com.farmkuindonesia.farmku.database.config
 
-import androidx.viewbinding.BuildConfig
+import com.farmkuindonesia.farmku.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,7 +18,7 @@ object ApiConfig {
             .addInterceptor(loggingInterceptor)
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://a383-125-166-175-7.ngrok-free.app/")
+            .baseUrl(BuildConfig.URL_API)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
