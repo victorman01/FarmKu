@@ -1,16 +1,19 @@
 package com.farmkuindonesia.farmku.database
 
+import android.os.Build
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.auth0.android.jwt.JWT
 import com.farmkuindonesia.farmku.database.config.ApiService
 import com.farmkuindonesia.farmku.database.model.Address
 import com.farmkuindonesia.farmku.database.model.User
 import com.farmkuindonesia.farmku.database.responses.SignInResponse
+import com.farmkuindonesia.farmku.database.responses.SignUpResponse
 import com.farmkuindonesia.farmku.utils.event.Event
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class Repository constructor(private val apiService: ApiService, private val pref: Preferences) {
     private val _messages = MutableLiveData<Event<String>>()
@@ -22,6 +25,8 @@ class Repository constructor(private val apiService: ApiService, private val pre
     private val _userLogin = MutableLiveData<User>()
     val userLogin: LiveData<User> = _userLogin
 
+
+    //Login
     fun signIn(email: String, password: String): LiveData<SignInResponse> {
         _isLoading.value = true
         val signInResponse = MutableLiveData<SignInResponse>()
@@ -35,26 +40,28 @@ class Repository constructor(private val apiService: ApiService, private val pre
                     signInResponse.value = response.body()
 
                     if (signInResponse.value?.token != null) {
-                        val jwt = decodeJWT(signInResponse.value?.token.toString())
+                        val decodedJwt = decodeJWT(signInResponse.value?.token.toString())
+                        val userData = JSONObject(decodedJwt).getString("user")
+                        val userAddress = JSONObject(userData).getString("address")
                         val user = User(
-                            jwt.getClaim("user.id").asString(),
-                            jwt.getClaim("user.name").asString(),
-                            jwt.getClaim("user.email").asString(),
-                            jwt.getClaim("user.phone_number").asString(),
+                            JSONObject(userData).getString("id"),
+                            JSONObject(userData).getString("name"),
+                            JSONObject(userData).getString("email"),
+                            JSONObject(userData).getString("phone_number"),
                             Address(
-                                jwt.getClaim("user.address.id").asString(),
-                                jwt.getClaim("user.address.province").asString(),
-                                jwt.getClaim("user.address.district").asString(),
-                                jwt.getClaim("user.address.regency").asString(),
-                                jwt.getClaim("user.address.village").asString()
+                                JSONObject(userAddress).getString("id"),
+                                JSONObject(userAddress).getString("province"),
+                                JSONObject(userAddress).getString("district"),
+                                JSONObject(userAddress).getString("regency"),
+                                JSONObject(userAddress).getString("village")
                             ),
-                            jwt.getClaim("user.role").asString(),
-                            jwt.getClaim("user.created_at").asString(),
-                            jwt.getClaim("user.updated_at").asString()
+                            JSONObject(userData).getString("role"),
+                            JSONObject(userData).getString("created_at"),
+                            JSONObject(userData).getString("updated_at")
                         )
                         _userLogin.value = user
                         _messages.value = Event("Login Success, Hello ${user.name}")
-                } else {
+                    } else {
                         _messages.value = Event("Token is missing")
                     }
                 } else {
@@ -70,11 +77,50 @@ class Repository constructor(private val apiService: ApiService, private val pre
         return signInResponse
     }
 
-    private fun decodeJWT(jwtToken: String): JWT {
-        return JWT(jwtToken)
+    private fun decodeJWT(jwt: String): String {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return "Requires SDK 26"
+        val parts = jwt.split(".")
+        return try {
+            val charset = charset("UTF-8")
+            val payload = String(Base64.getUrlDecoder().decode(parts[1].toByteArray(charset)), charset)
+            payload
+        } catch (e: Exception) {
+            "Error parsing JWT: $e"
+        }
     }
 
     fun setUser(user: User?) = pref.setLogin(user)
+
+
+
+    // Register
+    fun signUp(name: String, email: String, address: String, phone: String, password: String): LiveData<SignUpResponse>{
+//        _isLoading.value = true
+        val signUpResponse = MutableLiveData<SignUpResponse>()
+        val client = apiService.signUp(name, email, password, phone, address)
+        client.enqueue(object : Callback<SignUpResponse> {
+            override fun onResponse(
+                call: Call<SignUpResponse>, response: Response<SignUpResponse>
+            ) {
+//                _isLoading.value = false
+                if (response.isSuccessful) {
+                    signUpResponse.value = response.body()
+
+                    if (signUpResponse.value?.id == null) {
+                        _messages.value = Event(signUpResponse.value?.message.toString())
+                    }
+                } else {
+                    _messages.value = Event("Register Failed. Message: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
+                _messages.value = Event("$TAG, ${t.message.toString()}")
+                _isLoading.value = false
+            }
+        })
+        return signUpResponse
+    }
 
     companion object {
         private const val TAG = "Repository"

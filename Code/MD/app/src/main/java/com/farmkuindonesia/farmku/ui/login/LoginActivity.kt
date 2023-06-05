@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }else{
-                Toast.makeText(this@LoginActivity,"INVALID INPUT", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity,getString(R.string.mohon_isi_seluruh_data), Toast.LENGTH_SHORT).show()
             }
         }
 

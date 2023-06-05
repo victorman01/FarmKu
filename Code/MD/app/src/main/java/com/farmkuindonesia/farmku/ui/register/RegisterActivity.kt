@@ -22,9 +22,15 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.btnRegisterRegister.setOnClickListener {
+            val phoneNumber = binding.txtNumberRegister.text
             val intent = Intent(this@RegisterActivity, OTPActivity::class.java)
             intent.putExtra(OTPActivity.FROMWHERE , "RegisterActivity")
+            intent.putExtra(PHONENUMBERREGISTER, phoneNumber)
             startActivity(intent)
         }
+    }
+
+    companion object{
+        const val PHONENUMBERREGISTER = "PHONENUMBERREGISTER"
     }
 }

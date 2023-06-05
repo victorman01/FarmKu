@@ -11,6 +11,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityOtpactivityBinding
 import com.farmkuindonesia.farmku.ui.forgotpassword.ResetPasswordActivity
+import com.farmkuindonesia.farmku.ui.register.RegisterActivity
 import com.farmkuindonesia.farmku.ui.register.RegisterFillDataActivity
 
 class OTPActivity : AppCompatActivity() {
@@ -51,7 +52,9 @@ class OTPActivity : AppCompatActivity() {
                     val intent = Intent(this@OTPActivity,ResetPasswordActivity::class.java)
                     startActivity(intent)
                 }else{
+                    val phoneNumber = intent.getStringExtra(RegisterActivity.PHONENUMBERREGISTER)
                     val intent = Intent(this@OTPActivity,RegisterFillDataActivity::class.java)
+                    intent.putExtra("Data",phoneNumber)
                     startActivity(intent)
                 }
             }

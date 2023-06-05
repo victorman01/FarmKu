@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.farmkuindonesia.farmku.database.Repository
 import com.farmkuindonesia.farmku.ui.login.LoginViewModel
+import com.farmkuindonesia.farmku.ui.register.RegisterViewModel
 import com.farmkuindonesia.farmku.utils.injection.Injection
 
 class ViewModelFactory(private val rep: Repository) : ViewModelProvider.NewInstanceFactory() {
@@ -13,6 +14,9 @@ class ViewModelFactory(private val rep: Repository) : ViewModelProvider.NewInsta
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(rep) as T
+            }
+            modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
+                RegisterViewModel(rep) as T
             }
 //
 //            modelClass.isAssignableFrom(ListStoryViewModel::class.java) -> {
