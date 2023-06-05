@@ -102,8 +102,8 @@ class OnBoardingActivity : AppCompatActivity() {
 
         for (i in dot.indices) {
             dot[i] = TextView(this)
-            dot[i]?.text = "•"
-            dot[i]?.textSize = 35f
+            dot[i]?.text = "-"
+            dot[i]?.textSize = 50f
             dot[i]?.setTextColor(grayColor)
 
             dotsLayout.addView(dot[i])

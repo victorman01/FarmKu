@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
     id 'com.google.gms.google-services'
 }
 
@@ -16,6 +17,7 @@ android {
         versionName "1.0"
 
         buildConfigField("String", "URL_API", '"https://a383-125-166-175-7.ngrok-free.app"')
+        buildConfigField("String", "API_KEY", '"zuOoKBIoHzAEpQuH0uN3waw6yRXdpKTJl7Z24mqybtfUEyhw6O5ns5F7fS47ttQgHsSzrjkcrQxEopelU5UmuEH61wZvzllvBHUZpC7YHlq5v6z7BajG3kB47Qj5CHKu8xu6MH7uWMYR7D3zYNSJVDG4pdwN7OruVAAbNbU7Q4aT9KK3qLYAX7e8LtqIjXRj1lLLDqIfmhOQUGcwEQLb87hYXKKfqIYsGblnqQk2ISIcerTQYtjesbL7R9mnrSrF"')
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -51,7 +53,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    //Glide for image link
     implementation 'com.github.bumptech.glide:glide:4.15.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.0'
 
@@ -60,4 +61,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6"
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    implementation 'com.auth0.android:jwtdecode:2.0.2'
 }

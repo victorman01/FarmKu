@@ -76,9 +76,8 @@ class OTPActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Check if the length of the text is equal to 1
                 if (s?.length == 1 && nextEditText != null) {
-                    nextEditText.requestFocus() // Set focus to the next EditText
+                    nextEditText.requestFocus()
                 }
             }
 
@@ -93,9 +92,8 @@ class OTPActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Check if the length of the text is 0 and there's a previous EditText
                 if (s?.length == 0 && previousEditText != null) {
-                    previousEditText.requestFocus() // Set focus to the previous EditText
+                    previousEditText.requestFocus()
                 }
             }
 
