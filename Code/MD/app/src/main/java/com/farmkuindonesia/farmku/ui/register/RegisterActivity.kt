@@ -25,7 +25,6 @@ class RegisterActivity : AppCompatActivity() {
             val intent = Intent(this@RegisterActivity, OTPActivity::class.java)
             intent.putExtra(OTPActivity.FROMWHERE , "RegisterActivity")
             startActivity(intent)
-            finish()
         }
     }
 }

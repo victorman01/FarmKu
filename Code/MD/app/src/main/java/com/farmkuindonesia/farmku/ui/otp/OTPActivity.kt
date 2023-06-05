@@ -42,6 +42,9 @@ class OTPActivity : AppCompatActivity() {
                 jumpToNextEditText(previousEditText = binding.editTextOtp3)
                 inputType = InputType.TYPE_CLASS_NUMBER
             }
+            btnBackOTP.setOnClickListener{
+                finish()
+            }
 
             btnLanjut.setOnClickListener{
                 if(fromWhere == "ForgotPasswordActivity"){

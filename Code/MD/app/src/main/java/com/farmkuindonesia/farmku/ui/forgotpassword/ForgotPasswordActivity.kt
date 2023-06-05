@@ -50,7 +50,6 @@ class ForgotPasswordActivity : AppCompatActivity() {
                 intent.putExtra(OTPActivity.FROMWHERE, "ForgotPasswordActivity")
                 intent.putExtra(OTPActivity.ISEMAIL, isEmail)
                 startActivity(intent)
-                finish()
             }
         }
     }
