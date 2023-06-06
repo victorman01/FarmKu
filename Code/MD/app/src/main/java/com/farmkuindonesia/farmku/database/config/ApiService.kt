@@ -27,5 +27,7 @@ interface ApiService {
     ): Call<SignUpResponse>
 
     @GET("address")
-    fun getAllProvince(): Call<AddressResponse>
+    fun getAllProvince(
+        @Query("search") search:String
+    ): Call<AddressResponse>
 }

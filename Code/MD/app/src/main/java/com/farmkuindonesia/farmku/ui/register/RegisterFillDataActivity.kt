@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -35,30 +36,47 @@ class RegisterFillDataActivity : AppCompatActivity() {
         viewModelFac = ViewModelFactory.getInstance(this)
         registerViewModel = ViewModelProvider(this, viewModelFac)[RegisterViewModel::class.java]
 
-        binding.btnRegisterFillData.setOnClickListener{
+        registerViewModel.getProvince().observe(this) { provinceList ->
+            val adapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_item,
+                provinceList
+            )
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinnerProvince.adapter = adapter
+        }
+
+
+        binding.btnRegisterFillData.setOnClickListener {
             val phoneNumber = intent.getStringExtra(RegisterActivity.PHONENUMBERREGISTER)
             val name = binding.txtNameFillData.text.toString()
             val email = binding.txtEmailFillData.text.toString()
-            val address = binding.txtAlamatFillData.text.toString()
+//            val address = binding.txtAlamatFillData.text.toString()
             val password = binding.txtKataSandiFillData.text.toString()
             val repPass = binding.txtUlangKataSandiFillData.text.toString()
 
-            if (name.isNotEmpty() && email.isNotEmpty() && address.isNotEmpty() && password.isNotEmpty() && repPass.isNotEmpty()){
-                if (password == repPass){
-                    registerViewModel.register(name, email, address, phoneNumber.toString(), password).observe(this){
-                        if(it.success == true){
+            if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && repPass.isNotEmpty()) {
+                if (password == repPass) {
+                    registerViewModel.register(
+                        name,
+                        email,
+                        "address",
+                        phoneNumber.toString(),
+                        password
+                    ).observe(this) {
+                        if (it.success == true) {
                             val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                             finish()
                         }
                     }
+                } else {
+                    Toast.makeText(this, "Password yang anda isi tidak sama", Toast.LENGTH_SHORT)
+                        .show()
                 }
-                else{
-                    Toast.makeText(this,"Password yang anda isi tidak sama", Toast.LENGTH_SHORT).show()
-                }
-            }
-            else{
-                Toast.makeText(this,getString(R.string.mohon_isi_seluruh_data), Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, getString(R.string.mohon_isi_seluruh_data), Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }

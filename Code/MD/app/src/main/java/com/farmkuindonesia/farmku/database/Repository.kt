@@ -7,6 +7,7 @@ import com.farmkuindonesia.farmku.database.config.ApiService
 import com.farmkuindonesia.farmku.database.model.Address
 import com.farmkuindonesia.farmku.database.model.User
 import com.farmkuindonesia.farmku.database.responses.AddressResponse
+import com.farmkuindonesia.farmku.database.responses.AddressResponseItem
 import com.farmkuindonesia.farmku.database.responses.SignInResponse
 import com.farmkuindonesia.farmku.database.responses.SignUpResponse
 import com.farmkuindonesia.farmku.utils.event.Event
@@ -26,19 +27,17 @@ class Repository constructor(private val apiService: ApiService, private val pre
     private val _userLogin = MutableLiveData<User>()
     val userLogin: LiveData<User> = _userLogin
 
-    private val _addressProvince = MutableLiveData<AddressResponse>()
-    val addressProvince: LiveData<AddressResponse> = _addressProvince
 
     //Login
     fun signIn(email: String, password: String): LiveData<SignInResponse> {
-        _isLoading.value = true
+//        _isLoading.value = true
         val signInResponse = MutableLiveData<SignInResponse>()
         val client = apiService.signIn(email, password)
         client.enqueue(object : Callback<SignInResponse> {
             override fun onResponse(
                 call: Call<SignInResponse>, response: Response<SignInResponse>
             ) {
-                _isLoading.value = false
+//                _isLoading.value = false
                 if (response.isSuccessful) {
                     signInResponse.value = response.body()
 
@@ -74,7 +73,7 @@ class Repository constructor(private val apiService: ApiService, private val pre
 
             override fun onFailure(call: Call<SignInResponse>, t: Throwable) {
                 _messages.value = Event("$TAG, ${t.message.toString()}")
-                _isLoading.value = false
+//                _isLoading.value = false
             }
         })
         return signInResponse
@@ -116,33 +115,30 @@ class Repository constructor(private val apiService: ApiService, private val pre
 
             override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
                 _messages.value = Event("$TAG, ${t.message.toString()}")
-                _isLoading.value = false
+//                _isLoading.value = false
             }
         })
         return signUpResponse
     }
 
-    fun getAllProvince():LiveData<AddressResponse>{
-        val addressResponse = MutableLiveData<AddressResponse>()
-        val client = apiService.getAllProvince()
+    fun getAllProvince():LiveData<List<AddressResponseItem>>{
+        val addressResponse = MutableLiveData<List<AddressResponseItem>>()
+        val client = apiService.getAllProvince("province")
         client.enqueue(object : Callback<AddressResponse> {
             override fun onResponse(
                 call: Call<AddressResponse>, response: Response<AddressResponse>
             ) {
 //                _isLoading.value = false
                 if (response.isSuccessful) {
-                    addressResponse.value = response.body()
-                    if(addressResponse.value !=null){
-                        _addressProvince.value = addressResponse.value
-                    }
+                    addressResponse.value = response.body()?.addressResponse
                 } else {
-                    _messages.value = Event("Register Failed. Message: ${response.message()}")
+                    _messages.value = Event("Data Province is missing. Message: ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<AddressResponse>, t: Throwable) {
                 _messages.value = Event("$TAG, ${t.message.toString()}")
-                _isLoading.value = false
+//                _isLoading.value = false
             }
         })
         return addressResponse

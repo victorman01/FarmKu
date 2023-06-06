@@ -36,10 +36,13 @@
             android:id="@+id/textViewNamaFillData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="@string/nama_lengkap_text"
             android:textColor="@color/black"
-            tools:layout_editor_absoluteX="158dp"
-            tools:layout_editor_absoluteY="158dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarFillData" />
 
         <EditText
             android:id="@+id/txtNameFillData"
@@ -54,8 +57,9 @@
             android:paddingEnd="12dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/spinnerVillage"
-            tools:layout_editor_absoluteY="181dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNamaFillData" />
 
         <TextView
             android:id="@+id/textViewEmailFillData"
@@ -63,8 +67,9 @@
             android:layout_height="wrap_content"
             android:text="@string/email"
             android:textColor="@color/black"
-            tools:layout_editor_absoluteX="195dp"
-            tools:layout_editor_absoluteY="229dp" />
+            app:layout_constraintEnd_toEndOf="@+id/textViewNamaFillData"
+            app:layout_constraintStart_toStartOf="@+id/textViewNamaFillData"
+            app:layout_constraintTop_toBottomOf="@+id/txtNameFillData" />
 
         <com.farmkuindonesia.farmku.component.CustomViewEmailEditText
             android:id="@+id/txtEmailFillData"
@@ -91,20 +96,21 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="@+id/textViewEmailFillData"
             app:layout_constraintStart_toStartOf="@+id/textViewEmailFillData"
-            app:layout_constraintTop_toBottomOf="@+id/txtEmailFillData" />
+            tools:layout_editor_absoluteY="301dp" />
 
         <Spinner
             android:id="@+id/spinnerProvince"
             android:layout_width="352dp"
             android:layout_height="47dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="56dp"
             android:background="@drawable/oval_background"
             android:elevation="15dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/textViewAlamatFillData"
-            app:layout_constraintStart_toStartOf="@+id/textViewAlamatFillData"
-            app:layout_constraintTop_toBottomOf="@+id/textViewAlamatFillData" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.593"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEmailFillData" />
 
         <Spinner
             android:id="@+id/spinnerDistrict"
