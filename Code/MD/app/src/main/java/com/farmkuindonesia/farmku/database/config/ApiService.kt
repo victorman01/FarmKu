@@ -24,4 +24,5 @@ interface ApiService {
         @Field("phone_number") phone_number: String,
         @Field("address") address: String,
     ): Call<SignUpResponse>
+
 }

@@ -19,13 +19,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-//        auth = Firebase.auth
-//        val firebaseUser = auth.currentUser
-//        if (firebaseUser == null) {
-//            startActivity(Intent(this, OnBoardingActivity::class.java))
-//            finish()
-//            return
-//        }
+        auth = Firebase.auth
+        val firebaseUser = auth.currentUser
+        if (firebaseUser == null) {
+            startActivity(Intent(this, OnBoardingActivity::class.java))
+            finish()
+            return
+        }
 
         binding.btnSignOut.setOnClickListener{
             signOut()
@@ -33,8 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signOut() {
-//        auth.signOut()
-
+        auth.signOut()
         startActivity(Intent(this, OnBoardingActivity::class.java))
         finish()
     }

@@ -7,15 +7,17 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.widget.EditText
-import androidx.appcompat.content.res.AppCompatResources
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityOtpactivityBinding
+import com.farmkuindonesia.farmku.ui.forgotpassword.ForgotPasswordActivity
 import com.farmkuindonesia.farmku.ui.forgotpassword.ResetPasswordActivity
 import com.farmkuindonesia.farmku.ui.register.RegisterActivity
 import com.farmkuindonesia.farmku.ui.register.RegisterFillDataActivity
 
 class OTPActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOtpactivityBinding
+    private var phoneNumberRegister :String = ""
+    private var phoneNumberForgot :String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,20 @@ class OTPActivity : AppCompatActivity() {
 
         val fromWhere = intent.getStringExtra(FROMWHERE)
         val isEmail = intent.getBooleanExtra(ISEMAIL,false)
+
+
+        if(fromWhere == "ForgotPasswordActivity"){
+            if(isEmail){
+                binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_email_text)
+                phoneNumberRegister = intent.getStringExtra(RegisterActivity.PHONENUMBERREGISTER).toString()
+            }
+            else {
+                binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_num_text)
+                phoneNumberForgot = intent.getStringExtra(ForgotPasswordActivity.PHONENUMBERFORGOT).toString()
+            }
+        }else{
+            binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_num_text)
+        }
 
         binding.apply {
             editTextOtp1.apply {
@@ -52,24 +68,14 @@ class OTPActivity : AppCompatActivity() {
                     val intent = Intent(this@OTPActivity,ResetPasswordActivity::class.java)
                     startActivity(intent)
                 }else{
-                    val phoneNumber = intent.getStringExtra(RegisterActivity.PHONENUMBERREGISTER)
                     val intent = Intent(this@OTPActivity,RegisterFillDataActivity::class.java)
-                    intent.putExtra(RegisterActivity.PHONENUMBERREGISTER,phoneNumber)
+                    intent.putExtra(RegisterActivity.PHONENUMBERREGISTER, phoneNumberRegister)
                     startActivity(intent)
                 }
             }
         }
 
-        if(fromWhere == "ForgotPasswordActivity"){
-            if(isEmail){
-                binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_email_text)
-            }
-            else {
-                binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_num_text)
-            }
-        }else{
-            binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_num_text)
-        }
+
     }
 
     private fun EditText.jumpToNextEditText(nextEditText: EditText? = null, previousEditText: EditText? = null) {

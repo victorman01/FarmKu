@@ -48,9 +48,14 @@ class ForgotPasswordActivity : AppCompatActivity() {
             btnSendForgot.setOnClickListener {
                 val intent = Intent(this@ForgotPasswordActivity, OTPActivity::class.java)
                 intent.putExtra(OTPActivity.FROMWHERE, "ForgotPasswordActivity")
+                intent.putExtra(PHONENUMBERFORGOT, txtIsiNumber.text.toString())
                 intent.putExtra(OTPActivity.ISEMAIL, isEmail)
                 startActivity(intent)
             }
         }
+    }
+
+    companion object{
+        const val PHONENUMBERFORGOT = "PHONENUMBERFORGOT"
     }
 }

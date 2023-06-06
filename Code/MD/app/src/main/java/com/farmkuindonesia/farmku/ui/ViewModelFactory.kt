@@ -18,14 +18,6 @@ class ViewModelFactory(private val rep: Repository) : ViewModelProvider.NewInsta
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(rep) as T
             }
-//
-//            modelClass.isAssignableFrom(ListStoryViewModel::class.java) -> {
-//                ListStoryViewModel(rep) as T
-//            }
-//
-//            modelClass.isAssignableFrom(AddStoryViewModel::class.java) -> {
-//                AddStoryViewModel(rep) as T
-//            }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
