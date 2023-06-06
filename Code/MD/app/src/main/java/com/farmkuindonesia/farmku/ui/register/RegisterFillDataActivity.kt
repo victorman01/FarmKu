@@ -37,13 +37,20 @@ class RegisterFillDataActivity : AppCompatActivity() {
         registerViewModel = ViewModelProvider(this, viewModelFac)[RegisterViewModel::class.java]
 
         registerViewModel.getProvince().observe(this) { provinceList ->
+            val name: MutableList<String> = mutableListOf() // taruh luar
+            val id: MutableList<String> = mutableListOf() // taruh luar
+            provinceList.forEach {
+                name.add(it?.name.toString())
+                id.add(it?.id.toString())
+            }
             val adapter = ArrayAdapter(
                 this,
                 android.R.layout.simple_spinner_item,
-                provinceList
+                name
             )
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spinnerProvince.adapter = adapter
+
         }
 
 

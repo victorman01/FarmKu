@@ -1,6 +1,6 @@
 package com.farmkuindonesia.farmku.database.config
 
-import com.farmkuindonesia.farmku.database.responses.AddressResponse
+import com.farmkuindonesia.farmku.database.responses.AddressResponseItem
 import com.farmkuindonesia.farmku.database.responses.SignInResponse
 import com.farmkuindonesia.farmku.database.responses.SignUpResponse
 import okhttp3.MultipartBody
@@ -28,6 +28,12 @@ interface ApiService {
 
     @GET("address")
     fun getAllProvince(
-        @Query("search") search:String
-    ): Call<AddressResponse>
+        @Query("search") search: String
+    ): Call<List<AddressResponseItem>>
+
+    @GET("address")
+    fun getAddress(
+        @Query("search") search: String,
+        @Query("id") id:String
+    ): Call<List<AddressResponseItem>>
 }

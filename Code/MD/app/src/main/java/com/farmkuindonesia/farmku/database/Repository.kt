@@ -27,7 +27,6 @@ class Repository constructor(private val apiService: ApiService, private val pre
     private val _userLogin = MutableLiveData<User>()
     val userLogin: LiveData<User> = _userLogin
 
-
     //Login
     fun signIn(email: String, password: String): LiveData<SignInResponse> {
 //        _isLoading.value = true
@@ -121,30 +120,29 @@ class Repository constructor(private val apiService: ApiService, private val pre
         return signUpResponse
     }
 
-    fun getAllProvince():LiveData<List<AddressResponseItem>>{
-        val addressResponse = MutableLiveData<List<AddressResponseItem>>()
+    fun getAllProvince(): LiveData<List<AddressResponseItem?>> {
+        val addressResponse = MutableLiveData<List<AddressResponseItem?>>()
+
         val client = apiService.getAllProvince("province")
-        client.enqueue(object : Callback<AddressResponse> {
+        client.enqueue(object : Callback<List<AddressResponseItem>> {
             override fun onResponse(
-                call: Call<AddressResponse>, response: Response<AddressResponse>
+                call: Call<List<AddressResponseItem>>,
+                response: Response<List<AddressResponseItem>>
             ) {
-//                _isLoading.value = false
                 if (response.isSuccessful) {
-                    addressResponse.value = response.body()?.addressResponse
+                    addressResponse.value = response.body()
                 } else {
                     _messages.value = Event("Data Province is missing. Message: ${response.message()}")
                 }
             }
 
-            override fun onFailure(call: Call<AddressResponse>, t: Throwable) {
+            override fun onFailure(call: Call<List<AddressResponseItem>>, t: Throwable) {
                 _messages.value = Event("$TAG, ${t.message.toString()}")
-//                _isLoading.value = false
             }
         })
+
         return addressResponse
     }
-
-
 
     companion object {
         private const val TAG = "Repository"
