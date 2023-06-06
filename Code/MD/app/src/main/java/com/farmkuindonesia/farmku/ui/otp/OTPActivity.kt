@@ -54,7 +54,7 @@ class OTPActivity : AppCompatActivity() {
                 }else{
                     val phoneNumber = intent.getStringExtra(RegisterActivity.PHONENUMBERREGISTER)
                     val intent = Intent(this@OTPActivity,RegisterFillDataActivity::class.java)
-                    intent.putExtra("Data",phoneNumber)
+                    intent.putExtra(RegisterActivity.PHONENUMBERREGISTER,phoneNumber)
                     startActivity(intent)
                 }
             }

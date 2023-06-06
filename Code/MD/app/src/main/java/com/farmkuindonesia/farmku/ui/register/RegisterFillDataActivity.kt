@@ -36,7 +36,7 @@ class RegisterFillDataActivity : AppCompatActivity() {
         registerViewModel = ViewModelProvider(this, viewModelFac)[RegisterViewModel::class.java]
 
         binding.btnRegisterFillData.setOnClickListener{
-            val phoneNumber = intent.getStringExtra("Data")
+            val phoneNumber = intent.getStringExtra(RegisterActivity.PHONENUMBERREGISTER)
             val name = binding.txtNameFillData.text.toString()
             val email = binding.txtEmailFillData.text.toString()
             val address = binding.txtAlamatFillData.text.toString()
