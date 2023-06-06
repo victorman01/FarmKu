@@ -3,20 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".ui.register.RegisterFillDataActivity">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/appBarFillData"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="414dp"
+            android:layout_height="158dp"
             android:contentDescription="@string/appbar_register"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/appbar_register" />
@@ -25,34 +23,28 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
             android:text="@string/buat_akun_baru_text"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="28sp"
-            app:layout_constraintBottom_toBottomOf="@+id/appBarFillData"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.397" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textViewNamaFillData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:text="Nama Lengkap"
+            android:text="@string/nama_lengkap_text"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarFillData" />
+            tools:layout_editor_absoluteX="158dp"
+            tools:layout_editor_absoluteY="158dp" />
 
         <EditText
             android:id="@+id/txtNameFillData"
-            android:layout_width="0dp"
+            android:layout_width="352dp"
             android:layout_height="48dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
             android:background="@drawable/oval_background"
             android:elevation="15dp"
             android:ems="10"
@@ -62,28 +54,23 @@
             android:paddingEnd="12dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewNamaFillData" />
+            app:layout_constraintStart_toStartOf="@+id/spinnerVillage"
+            tools:layout_editor_absoluteY="181dp" />
 
         <TextView
             android:id="@+id/textViewEmailFillData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
             android:text="@string/email"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtNameFillData" />
+            tools:layout_editor_absoluteX="195dp"
+            tools:layout_editor_absoluteY="229dp" />
 
         <com.farmkuindonesia.farmku.component.CustomViewEmailEditText
             android:id="@+id/txtEmailFillData"
-            android:layout_width="0dp"
+            android:layout_width="352dp"
             android:layout_height="48dp"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
             android:background="@drawable/oval_background"
             android:elevation="15dp"
             android:ems="10"
@@ -92,59 +79,87 @@
             android:paddingEnd="12dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtNameFillData"
+            app:layout_constraintStart_toStartOf="@+id/txtNameFillData"
             app:layout_constraintTop_toBottomOf="@+id/textViewEmailFillData" />
 
         <TextView
             android:id="@+id/textViewAlamatFillData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
             android:text="@string/alamat"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewEmailFillData"
+            app:layout_constraintStart_toStartOf="@+id/textViewEmailFillData"
             app:layout_constraintTop_toBottomOf="@+id/txtEmailFillData" />
 
-        <EditText
-            android:id="@+id/txtAlamatFillData"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="24dp"
+        <Spinner
+            android:id="@+id/spinnerProvince"
+            android:layout_width="352dp"
+            android:layout_height="47dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
             android:background="@drawable/oval_background"
             android:elevation="15dp"
-            android:ems="10"
-            android:hint="@string/alamat_anda"
-            android:inputType="text"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewAlamatFillData"
+            app:layout_constraintStart_toStartOf="@+id/textViewAlamatFillData"
             app:layout_constraintTop_toBottomOf="@+id/textViewAlamatFillData" />
+
+        <Spinner
+            android:id="@+id/spinnerDistrict"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/oval_background"
+            android:elevation="15dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/spinnerProvince"
+            app:layout_constraintStart_toStartOf="@+id/spinnerProvince"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerProvince" />
+
+        <Spinner
+            android:id="@+id/spinnerRegency"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/oval_background"
+            android:elevation="15dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/spinnerDistrict"
+            app:layout_constraintStart_toStartOf="@+id/spinnerDistrict"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerDistrict" />
+
+        <Spinner
+            android:id="@+id/spinnerVillage"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/oval_background"
+            android:elevation="15dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/spinnerRegency"
+            app:layout_constraintStart_toStartOf="@+id/spinnerRegency"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerRegency" />
 
         <TextView
             android:id="@+id/textViewKataSandiFillData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
             android:text="@string/kata_sandi"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtAlamatFillData" />
+            app:layout_constraintEnd_toEndOf="@+id/spinnerVillage"
+            app:layout_constraintStart_toStartOf="@+id/spinnerVillage"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerVillage" />
 
         <com.farmkuindonesia.farmku.component.CustomViewPasswordEditText
             android:id="@+id/txtKataSandiFillData"
-            android:layout_width="0dp"
+            android:layout_width="352dp"
             android:layout_height="48dp"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
             android:background="@drawable/oval_background"
             android:elevation="15dp"
             android:ems="10"
@@ -153,28 +168,25 @@
             android:paddingEnd="12dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewKataSandiFillData"
+            app:layout_constraintStart_toStartOf="@+id/textViewKataSandiFillData"
             app:layout_constraintTop_toBottomOf="@+id/textViewKataSandiFillData" />
 
         <TextView
             android:id="@+id/textViewUlangKataSandiFillData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
             android:text="@string/ulangi_kata_sandi"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtKataSandiFillData"
+            app:layout_constraintStart_toStartOf="@+id/txtKataSandiFillData"
             app:layout_constraintTop_toBottomOf="@+id/txtKataSandiFillData" />
 
         <com.farmkuindonesia.farmku.component.CustomViewPasswordEditText
             android:id="@+id/txtUlangKataSandiFillData"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="24dp"
+            android:layout_width="352dp"
+            android:layout_height="46dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="24dp"
             android:background="@drawable/oval_background"
             android:elevation="15dp"
             android:ems="10"
@@ -183,8 +195,8 @@
             android:paddingEnd="12dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textViewUlangKataSandiFillData"
+            app:layout_constraintStart_toStartOf="@+id/textViewUlangKataSandiFillData"
             app:layout_constraintTop_toBottomOf="@+id/textViewUlangKataSandiFillData" />
 
         <CheckBox
@@ -215,5 +227,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cbSyaratKetentuan" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
