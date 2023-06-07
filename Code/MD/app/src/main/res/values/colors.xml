@@ -11,9 +11,11 @@
     <color name="dark_green">#52734D</color>
     <color name="dark_green_variant">#415C3D</color>
 
+    <color name="dark_background">#CCEDD2</color>
     <color name="background">#EFFCEF</color>
     <color name="very_light_gray">#FBFBFB</color>
     <color name="gray">#D9D9D9</color>
     <color name="light_green">#82C677</color>
+    <color name="lighter_green">#EBFCE7</color>
     <color name="blue">#0788FF</color>
 </resources>

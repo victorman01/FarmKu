@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="@color/dark_background">
 
     <ImageView
         android:id="@+id/imageView6"
@@ -18,12 +19,13 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="410dp"
+        android:layout_width="0dp"
         android:layout_height="73dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="1dp"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +33,7 @@
 
         <EditText
             android:id="@+id/editTextTextPersonName"
-            android:layout_width="341dp"
+            android:layout_width="300dp"
             android:layout_height="49dp"
             android:background="@drawable/search_background"
             android:drawableEnd="@drawable/baseline_search_24"
@@ -112,6 +114,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textView18"
                 android:layout_width="63dp"
                 android:layout_height="21dp"
                 android:text="@string/penyakit_terdeteksi_text"
@@ -124,7 +127,6 @@
                 android:id="@+id/textView22"
                 android:layout_width="63dp"
                 android:layout_height="21dp"
-                android:layout_marginTop="2dp"
                 android:text="@string/lahan_terdaftar_text"
                 android:textAlignment="center"
                 android:textSize="9sp"
@@ -133,9 +135,9 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="59dp"
-                android:layout_height="52dp"
-                android:layout_marginStart="8dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
                 android:src="@drawable/baseline_bug_report_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/divider4"
@@ -143,9 +145,9 @@
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="52dp"
-                android:layout_height="49dp"
-                android:layout_marginStart="4dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
                 android:src="@drawable/baseline_bug_report_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/divider5"
@@ -161,6 +163,7 @@
                 android:text="8"
                 android:textAlignment="center"
                 android:textSize="28sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -173,6 +176,7 @@
                 android:text="8"
                 android:textAlignment="center"
                 android:textSize="28sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView7"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -190,10 +194,10 @@
                 android:id="@+id/divider5"
                 android:layout_width="1dp"
                 android:layout_height="60dp"
-                android:layout_marginStart="152dp"
+                android:layout_marginStart="16dp"
                 android:background="@android:color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btnCekTanaman"
+                app:layout_constraintStart_toEndOf="@+id/textView18"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -218,7 +222,7 @@
         android:layout_marginTop="20dp"
         android:text="@string/all_features_text"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
@@ -231,7 +235,7 @@
         android:layout_marginTop="28dp"
         android:text="@string/hot_news_text"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView24" />
@@ -241,51 +245,51 @@
         android:layout_width="75dp"
         android:layout_height="74dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/information_background"
         android:elevation="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
         app:srcCompat="@drawable/baseline_location_on_24" />
 
     <ImageView
         android:id="@+id/btnDeteksiPenyakit"
         android:layout_width="75dp"
         android:layout_height="74dp"
-        android:layout_marginStart="112dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/information_background"
         android:elevation="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
+        android:padding="10dp"
+        app:layout_constraintStart_toEndOf="@+id/btnLahanSaya"
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
         app:srcCompat="@drawable/outline_photo_camera_24" />
 
     <ImageView
         android:id="@+id/button6"
         android:layout_width="75dp"
         android:layout_height="74dp"
-        android:layout_marginStart="208dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/information_background"
         android:elevation="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
+        android:padding="10dp"
+        app:layout_constraintStart_toEndOf="@+id/btnDeteksiPenyakit"
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
         app:srcCompat="@drawable/baseline_location_on_24" />
 
     <ImageView
         android:id="@+id/button7"
         android:layout_width="75dp"
         android:layout_height="74dp"
-        android:layout_marginStart="304dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/information_background"
         android:elevation="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
+        android:padding="10dp"
+        app:layout_constraintStart_toEndOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
         app:srcCompat="@drawable/baseline_location_on_24" />
 
     <TextView
@@ -341,13 +345,14 @@
         app:layout_constraintTop_toBottomOf="@+id/button7" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNews"
         android:layout_width="393dp"
-        android:layout_height="159dp"
-        android:layout_marginBottom="60dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28"
         tools:listitem="@layout/news_layout" />
 
 
