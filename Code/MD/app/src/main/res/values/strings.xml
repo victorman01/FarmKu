@@ -64,4 +64,9 @@
     <string name="terima_text">Terima</string>
     <string name="tolak_text">Tolak</string>
     <string name="password_tidak_sama_text">Password yang anda isi tidak sama</string>
+    <string name="pilih_provinsi_anda">Pilih provinsi anda</string>
+    <string name="pilih_kabupaten_kota_anda">Pilih kabupaten/kota anda</string>
+    <string name="pilih_kecamatan_anda">Pilih kecamatan anda</string>
+    <string name="pilih_desa_kelurahan_anda">Pilih desa/kelurahan anda</string>
+    <string name="anda_harus_menyetujui_syarat_dan_ketentuan_untuk_mendaftar">Anda harus menyetujui Syarat dan Ketentuan untuk mendaftar</string>
 </resources>

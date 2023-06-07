@@ -144,13 +144,12 @@ class Repository constructor(private val apiService: ApiService, private val pre
                     addressResponse.value = response.body()
                 } else {
                     _messages.value =
-                        Event("Data Province is missing. Message: ${response.message()}")
+                        Event("Data is missing. Message: ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<List<AddressResponseItem>>, t: Throwable) {
                 _messages.value = Event("$TAG, ${t.message.toString()}")
-                Log.d("HEHEHEHEHEHEHHE", t.message.toString())
             }
         })
 

@@ -33,11 +33,6 @@ class RegisterFillDataActivity : AppCompatActivity() {
     private lateinit var namesVillage: MutableList<String>
     private lateinit var idsVillage: MutableList<String>
 
-    val provinceHint = "Pilih provinsi anda"
-    val districtHint = "Pilih kabupaten/kota anda"
-    val regencyHint = "Pilih kecamatan anda"
-    val villageHint = "Pilih desa/kelurahan anda"
-
     var selectedIdp = "0"
     var selectedIdd = "0"
     var selectedIdr = "0"
@@ -73,7 +68,7 @@ class RegisterFillDataActivity : AppCompatActivity() {
                     id: Long
                 ) {
                     namesDistrict = mutableListOf()
-                    namesDistrict.add(districtHint)
+                    namesDistrict.add(getString(R.string.pilih_kabupaten_kota_anda))
                     idsDistrict = mutableListOf()
                     idsDistrict.add("0")
 
@@ -111,7 +106,7 @@ class RegisterFillDataActivity : AppCompatActivity() {
                     id: Long
                 ) {
                     namesRegency = mutableListOf()
-                    namesRegency.add(regencyHint)
+                    namesRegency.add(getString(R.string.pilih_kecamatan_anda))
                     idsRegency = mutableListOf()
                     idsRegency.add("0")
 
@@ -148,12 +143,12 @@ class RegisterFillDataActivity : AppCompatActivity() {
                     id: Long
                 ) {
                     namesVillage = mutableListOf()
-                    namesVillage.add(villageHint)
+                    namesVillage.add(getString(R.string.pilih_desa_kelurahan_anda))
                     idsVillage = mutableListOf()
                     idsVillage.add("0")
 
                     binding.spinnerVillage.setSelection(0)
-                    if (binding.spinnerDistrict.selectedItemPosition != 0) {
+                    if (binding.spinnerRegency.selectedItemPosition != 0) {
                         selectedIdr = idsRegency[position]
                         getVillage(selectedIdr)
                     } else{
@@ -177,7 +172,7 @@ class RegisterFillDataActivity : AppCompatActivity() {
                     position: Int,
                     id: Long
                 ) {
-                    if (binding.spinnerDistrict.selectedItemPosition != 0) {
+                    if (binding.spinnerVillage.selectedItemPosition != 0) {
                         selectedIdv = idsVillage[position]
                     }
                     addressSelected = selectedIdv
@@ -190,16 +185,16 @@ class RegisterFillDataActivity : AppCompatActivity() {
                 }
             }
 
-        setInitialSpinner(binding.spinnerProvince, provinceHint)
-        setInitialSpinner(binding.spinnerDistrict, districtHint)
-        setInitialSpinner(binding.spinnerRegency, regencyHint)
-        setInitialSpinner(binding.spinnerVillage, villageHint)
+        setInitialSpinner(binding.spinnerProvince, getString(R.string.pilih_provinsi_anda))
+        setInitialSpinner(binding.spinnerDistrict, getString(R.string.pilih_kabupaten_kota_anda))
+        setInitialSpinner(binding.spinnerRegency, getString(R.string.pilih_kecamatan_anda))
+        setInitialSpinner(binding.spinnerVillage, getString(R.string.pilih_desa_kelurahan_anda))
 
         binding.spinnerProvince.setSelection(0)
         registerViewModel.getProvince().observe(this) { provinceList ->
 
             namesProvince = mutableListOf()
-            namesProvince.add(provinceHint)
+            namesProvince.add(getString(R.string.pilih_provinsi_anda))
 
             idsProvince = mutableListOf()
             idsProvince.add("0")
@@ -225,9 +220,13 @@ class RegisterFillDataActivity : AppCompatActivity() {
             val email = binding.txtEmailFillData.text.toString()
             val password = binding.txtKataSandiFillData.text.toString()
             val repPass = binding.txtUlangKataSandiFillData.text.toString()
+            val spProvince = binding.spinnerProvince.selectedItemPosition
+            val spDistrict = binding.spinnerDistrict.selectedItemPosition
+            val spRegency = binding.spinnerRegency.selectedItemPosition
+            val spVillage = binding.spinnerVillage.selectedItemPosition
 
             Toast.makeText(this, addressSelected, Toast.LENGTH_SHORT).show()
-            if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && repPass.isNotEmpty()) {
+            if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && repPass.isNotEmpty() && spProvince != 0 && spDistrict != 0 && spRegency != 0 && spVillage != 0) {
                 if (password == repPass) {
                     registerViewModel.register(
                         name,
