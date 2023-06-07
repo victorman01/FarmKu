@@ -9,5 +9,5 @@ class LoginViewModel(private val rep: Repository) : ViewModel() {
     val isLoading = rep.isLoading
     val userLoginData = rep.userLogin
     fun login(email: String, pass: String) = rep.signIn(email, pass)
-    fun setLogin(user: User?) = rep.setUser(user)
+    fun setLogin(user: User?, loggedInWith: String) = rep.setUser(user, loggedInWith)
 }

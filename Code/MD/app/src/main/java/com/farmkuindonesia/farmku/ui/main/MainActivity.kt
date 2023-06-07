@@ -1,9 +1,11 @@
 package com.farmkuindonesia.farmku.ui.main
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.farmkuindonesia.farmku.R
+import com.farmkuindonesia.farmku.database.Preferences
 import com.farmkuindonesia.farmku.databinding.ActivityMainBinding
 import com.farmkuindonesia.farmku.ui.home.HomeFragment
 import com.farmkuindonesia.farmku.ui.onboarding.OnBoardingActivity
@@ -32,13 +34,24 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
 
-//        auth = Firebase.auth
-//        val firebaseUser = auth.currentUser
-//        if (firebaseUser == null) {
-//            startActivity(Intent(this, OnBoardingActivity::class.java))
-//            finish()
-//            return
-//        }
+        val preferences = getSharedPreferences(Preferences.PREFERENCES, Context.MODE_PRIVATE)
+        val loggedInWith = preferences.getString(Preferences.LOGGEDINWITH, "NONE")
+        if (loggedInWith == "EMAIL"){
+
+        }
+        else if(loggedInWith == "GOOGLE"){
+            auth = Firebase.auth
+            val firebaseUser = auth.currentUser
+            if (firebaseUser == null) {
+                startActivity(Intent(this, OnBoardingActivity::class.java))
+                finish()
+                return
+            }
+        }
+        else{
+            startActivity(Intent(this, OnBoardingActivity::class.java))
+            finish()
+        }
 
         binding.btnSignOut.setOnClickListener{
             signOut()
@@ -46,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signOut() {
-        auth.signOut()
+//        auth.signOut()
         startActivity(Intent(this, OnBoardingActivity::class.java))
         finish()
     }

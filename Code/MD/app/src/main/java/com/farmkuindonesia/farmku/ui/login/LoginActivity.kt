@@ -55,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
             if(email.isNotEmpty() && password.isNotEmpty()){
                 loginViewModel.login(email,password).observe(this@LoginActivity){
                     if (it.success == true) {
-                        loginViewModel.setLogin(loginViewModel.userLoginData.value)
+                        loginViewModel.setLogin(loginViewModel.userLoginData.value, "EMAIL")
                         moveHome()
                     } else {
                         Toast.makeText(this@LoginActivity,it.message, Toast.LENGTH_SHORT).show()

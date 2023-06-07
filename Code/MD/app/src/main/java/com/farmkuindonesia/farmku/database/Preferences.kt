@@ -8,7 +8,7 @@ class Preferences(context: Context) {
     private val preferences =
         context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE)
 
-    fun setLogin(user: User?) {
+    fun setLogin(user: User?, loggedInWith: String) {
         val editor = preferences.edit()
         editor.putString(USER_ID, user?.id)
         editor.putString(USER_NAME, user?.name)
@@ -22,6 +22,7 @@ class Preferences(context: Context) {
         editor.putString(USER_ROLE, user?.role)
         editor.putString(USER_CREATED_AT, user?.createdAt)
         editor.putString(USER_UPDATED_AT, user?.updatedAt)
+        editor.putString(LOGGEDINWITH, loggedInWith)
         editor.apply()
     }
 
@@ -76,7 +77,8 @@ class Preferences(context: Context) {
         private const val USER_ROLE = "userRole"
         private const val USER_CREATED_AT = "userCreatedAt"
         private const val USER_UPDATED_AT = "userUpdatedAt"
-        private val PREFERENCES = "pref"
+        const val LOGGEDINWITH = "loggedinwith"
+        val PREFERENCES = "pref"
 
         private var instance: Preferences? = null
 

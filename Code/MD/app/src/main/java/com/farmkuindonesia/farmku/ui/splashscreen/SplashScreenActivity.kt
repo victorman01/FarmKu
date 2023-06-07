@@ -1,12 +1,14 @@
 package com.farmkuindonesia.farmku.ui.splashscreen
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.constraintlayout.motion.widget.MotionLayout
+import com.farmkuindonesia.farmku.database.Preferences
 import com.farmkuindonesia.farmku.databinding.ActivitySplashScreenBinding
 import com.farmkuindonesia.farmku.ui.main.MainActivity
 import com.farmkuindonesia.farmku.ui.onboarding.OnBoardingActivity
@@ -48,7 +50,7 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun updateUI(currentUser: FirebaseUser?) {
-        if (currentUser != null) {
+        if (currentUser != null || checkPreferences()) {
             Handler(Looper.getMainLooper()).postDelayed({
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
@@ -61,6 +63,12 @@ class SplashScreenActivity : AppCompatActivity() {
                 finish()
             }, 4000L)
         }
+    }
+
+    private fun checkPreferences(): Boolean{
+        val preferences = getSharedPreferences(Preferences.PREFERENCES, Context.MODE_PRIVATE)
+        val loggedInWith = preferences.getString(Preferences.LOGGEDINWITH, "NONE")
+        return loggedInWith == "EMAIL"
     }
 
     override fun onStart() {
