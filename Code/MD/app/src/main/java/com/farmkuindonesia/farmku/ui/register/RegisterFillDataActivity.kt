@@ -4,12 +4,15 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityRegisterFillDataBinding
@@ -45,15 +48,17 @@ class RegisterFillDataActivity : AppCompatActivity() {
         supportActionBar?.hide()
         checkBox = binding.cbSyaratKetentuan
         checkBox.setOnCheckedChangeListener { _, isChecked ->
+            binding.btnRegisterFillData.isEnabled = isChecked
             if (isChecked) {
                 showTermsAndConditionsDialog()
             }
         }
 
+
         viewModelFac = ViewModelFactory.getInstance(this)
         registerViewModel = ViewModelProvider(this, viewModelFac)[RegisterViewModel::class.java]
 
-        binding.apply{
+        binding.apply {
             spinnerRegency.isEnabled = false
             spinnerDistrict.isEnabled = false
             spinnerVillage.isEnabled = false
@@ -75,21 +80,14 @@ class RegisterFillDataActivity : AppCompatActivity() {
                     if (binding.spinnerProvince.selectedItemPosition != 0) {
                         selectedIdp = idsProvince[position]
                         getDistrict(selectedIdp)
-                    } else{
+                    } else {
                         selectedIdp = "0"
                     }
                     binding.spinnerDistrict.setSelection(0)
 
-                    if (selectedIdp != "0"){
-                        binding.spinnerDistrict.isEnabled = true
-                        binding.spinnerRegency.isEnabled = false
-                        binding.spinnerVillage.isEnabled = false
-                    }
-                    else{
-                        binding.spinnerDistrict.isEnabled = false
-                        binding.spinnerRegency.isEnabled = false
-                        binding.spinnerVillage.isEnabled = false
-                    }
+                    binding.spinnerDistrict.isEnabled = selectedIdp != "0"
+                    binding.spinnerRegency.isEnabled = false
+                    binding.spinnerVillage.isEnabled = false
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -113,19 +111,13 @@ class RegisterFillDataActivity : AppCompatActivity() {
                     if (binding.spinnerDistrict.selectedItemPosition != 0) {
                         selectedIdd = idsDistrict[position]
                         getRegency(selectedIdd)
-                    } else{
+                    } else {
                         selectedIdd = "0"
                     }
                     binding.spinnerRegency.setSelection(0)
 
-                    if (selectedIdd != "0"){
-                        binding.spinnerRegency.isEnabled = true
-                        binding.spinnerVillage.isEnabled = false
-                    }
-                    else{
-                        binding.spinnerRegency.isEnabled = false
-                        binding.spinnerVillage.isEnabled = false
-                    }
+                    binding.spinnerRegency.isEnabled = selectedIdd != "0"
+                    binding.spinnerVillage.isEnabled = false
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -151,11 +143,10 @@ class RegisterFillDataActivity : AppCompatActivity() {
                     if (binding.spinnerRegency.selectedItemPosition != 0) {
                         selectedIdr = idsRegency[position]
                         getVillage(selectedIdr)
-                    } else{
+                    } else {
                         selectedIdr = "0"
                     }
                     binding.spinnerVillage.isEnabled = selectedIdr != "0"
-
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -213,7 +204,6 @@ class RegisterFillDataActivity : AppCompatActivity() {
             binding.spinnerProvince.adapter = adapter
         }
 
-
         binding.btnRegisterFillData.setOnClickListener {
             val phoneNumber = intent.getStringExtra(RegisterActivity.PHONENUMBERREGISTER)
             val name = binding.txtNameFillData.text.toString()
@@ -225,7 +215,6 @@ class RegisterFillDataActivity : AppCompatActivity() {
             val spRegency = binding.spinnerRegency.selectedItemPosition
             val spVillage = binding.spinnerVillage.selectedItemPosition
 
-            Toast.makeText(this, addressSelected, Toast.LENGTH_SHORT).show()
             if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && repPass.isNotEmpty() && spProvince != 0 && spDistrict != 0 && spRegency != 0 && spVillage != 0) {
                 if (password == repPass) {
                     registerViewModel.register(
@@ -234,23 +223,40 @@ class RegisterFillDataActivity : AppCompatActivity() {
                         addressSelected,
                         phoneNumber.toString(),
                         password
-                    ).observe(this) {
+                    ).observe(this, Observer {
                         if (it.success == true) {
                             val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                             finish()
                         }
-                    }
+                    })
                 } else {
-                    Toast.makeText(this, getString(R.string.password_tidak_sama_text), Toast.LENGTH_SHORT).show()
+                    showMessage(getString(R.string.password_tidak_sama_text))
                 }
             } else {
-                Toast.makeText(this, getString(R.string.mohon_isi_seluruh_data), Toast.LENGTH_SHORT).show()
+                showMessage(getString(R.string.mohon_isi_seluruh_data))
+            }
+        }
+        registerViewModel.messages.observe(this) { event ->
+            event.getContentIfNotHandled()?.let { text ->
+                showMessage(text)
             }
         }
     }
 
-    private fun getDistrict(selectedIdp: String){
+    private fun showMessage(msg: String) {
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container))
+        val textView = layout.findViewById<TextView>(R.id.custom_toast_text)
+        textView.text = msg
+        val toast = Toast(this@RegisterFillDataActivity)
+        toast.view = layout
+        toast.duration = Toast.LENGTH_SHORT
+        toast.setGravity(Gravity.CENTER, 0, 800)
+        toast.show()
+    }
+
+    private fun getDistrict(selectedIdp: String) {
         registerViewModel.getDistrict(selectedIdp)
             .observe(this@RegisterFillDataActivity) { districtList ->
                 districtList?.forEach {
@@ -269,7 +275,7 @@ class RegisterFillDataActivity : AppCompatActivity() {
             }
     }
 
-    private fun getRegency(selectedIdd: String){
+    private fun getRegency(selectedIdd: String) {
         registerViewModel.getRegency(selectedIdd)
             .observe(this@RegisterFillDataActivity) { regencyList ->
                 regencyList?.forEach {
@@ -288,7 +294,7 @@ class RegisterFillDataActivity : AppCompatActivity() {
             }
     }
 
-    private fun getVillage(selectedIdr: String){
+    private fun getVillage(selectedIdr: String) {
         registerViewModel.getVillage(selectedIdr)
             .observe(this@RegisterFillDataActivity) { villageList ->
 
@@ -307,20 +313,7 @@ class RegisterFillDataActivity : AppCompatActivity() {
                 binding.spinnerVillage.adapter = villageAdapter
             }
     }
-
-    private fun setInitialSpinner(spinner: Spinner, hint: String){
-        val hints = mutableListOf(hint)
-        val dadapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_item,
-            hints
-        )
-        dadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = dadapter
-    }
-
     private fun showTermsAndConditionsDialog() {
-
         val builder = AlertDialog.Builder(this)
 
         builder.setTitle(getString(R.string.syarat_dan_ketentuan_text))
@@ -335,8 +328,17 @@ class RegisterFillDataActivity : AppCompatActivity() {
             dialog.dismiss()
         }
 
-        builder.setOnCancelListener { checkBox.isChecked = false }
-
         builder.show()
+    }
+
+    private fun setInitialSpinner(spinner: Spinner, hint: String) {
+        val hints = mutableListOf(hint)
+        val dadapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            hints
+        )
+        dadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = dadapter
     }
 }
