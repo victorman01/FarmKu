@@ -63,4 +63,17 @@
     <string name="terima_text">Terima</string>
     <string name="tolak_text">Tolak</string>
     <string name="password_tidak_sama_text">Password yang anda isi tidak sama</string>
+    <string name="name_text">Name</string>
+    <string name="notification_button_text">Notification button</string>
+    <string name="cari_disini_text">Cari Disini</string>
+    <string name="template_hi">Hi, John Doe</string>
+    <string name="welcome_msg">Selamat Datang di FarmKu</string>
+    <string name="penyakit_terdeteksi_text">Penyakit Terdeteksi</string>
+    <string name="lahan_terdaftar_text">Lahan Terdaftar</string>
+    <string name="all_features_text">All Features</string>
+    <string name="lahan_saya_text">Lahan Saya</string>
+    <string name="deteksi_penyakit_text">Deteksi Penyakit</string>
+    <string name="hot_news_text">Hot News</string>
+    <string name="dummy_date">12 Oktober 2023</string>
+    <string name="dummy_title_news">SMART PRECISION FARMING di Sukoharjo sedang tidak baik baik ..</string>
 </resources>
