@@ -58,4 +58,9 @@
     <string name="onboarding3_subtitle"> Menyambut era baru pengetahuan bagi para petani di Indonesia. Tingkatkan hasil panenmu dan lindungi tanamanmu dengan solusi analisis tanah dan deteksi penyakit tanaman terdepan. Rasakan kekuatan pertanian presisi.</string>
     <string name="memulai_aplikasi_text">Memulai Aplikasi</string>
     <string name="nama_lengkap_text">Nama Lengkap</string>
+    <string name="syarat_dan_ketentuan_text">Syarat dan Ketentuan</string>
+    <string name="isi_syarat_dan_ketentuan_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+    <string name="terima_text">Terima</string>
+    <string name="tolak_text">Tolak</string>
+    <string name="password_tidak_sama_text">Password yang anda isi tidak sama</string>
 </resources>

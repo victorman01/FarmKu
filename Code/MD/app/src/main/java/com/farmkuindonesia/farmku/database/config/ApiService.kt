@@ -28,12 +28,8 @@ interface ApiService {
 
     @GET("address")
     fun getAllProvince(
-        @Query("search") search: String
-    ): Call<List<AddressResponseItem>>
-
-    @GET("address")
-    fun getAddress(
         @Query("search") search: String,
         @Query("id") id:String
     ): Call<List<AddressResponseItem>>
+
 }

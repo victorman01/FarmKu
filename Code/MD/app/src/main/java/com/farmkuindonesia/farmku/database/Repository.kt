@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import com.farmkuindonesia.farmku.database.config.ApiService
 import com.farmkuindonesia.farmku.database.model.Address
 import com.farmkuindonesia.farmku.database.model.User
-import com.farmkuindonesia.farmku.database.responses.AddressResponse
 import com.farmkuindonesia.farmku.database.responses.AddressResponseItem
 import com.farmkuindonesia.farmku.database.responses.SignInResponse
 import com.farmkuindonesia.farmku.database.responses.SignUpResponse
@@ -120,10 +119,10 @@ class Repository constructor(private val apiService: ApiService, private val pre
         return signUpResponse
     }
 
-    fun getAllProvince(): LiveData<List<AddressResponseItem?>> {
+    fun getAllAddress(search:String, id:String = ""): LiveData<List<AddressResponseItem?>> {
         val addressResponse = MutableLiveData<List<AddressResponseItem?>>()
 
-        val client = apiService.getAllProvince("province")
+        val client = apiService.getAllProvince(search, id)
         client.enqueue(object : Callback<List<AddressResponseItem>> {
             override fun onResponse(
                 call: Call<List<AddressResponseItem>>,
