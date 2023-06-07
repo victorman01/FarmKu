@@ -1,6 +1,7 @@
 package com.farmkuindonesia.farmku.database
 
 import android.os.Build
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.farmkuindonesia.farmku.database.config.ApiService
@@ -149,6 +150,7 @@ class Repository constructor(private val apiService: ApiService, private val pre
 
             override fun onFailure(call: Call<List<AddressResponseItem>>, t: Throwable) {
                 _messages.value = Event("$TAG, ${t.message.toString()}")
+                Log.d("HEHEHEHEHEHEHHE", t.message.toString())
             }
         })
 
