@@ -9,7 +9,7 @@ class RegisterViewModel(private val rep: Repository) : ViewModel() {
     fun register(name: String, email: String, address: String, phone: String, password: String) =
         rep.signUp(name, email, address, phone, password)
 
-    fun getProvince() = rep.getAllAddress("province")
+    fun getProvince() = rep.getAllAddress("province","0")
     fun getDistrict(id: String) = rep.getAllAddress("district", id)
     fun getRegency(id: String) = rep.getAllAddress("regency", id)
     fun getVillage(id: String) = rep.getAllAddress("village", id)

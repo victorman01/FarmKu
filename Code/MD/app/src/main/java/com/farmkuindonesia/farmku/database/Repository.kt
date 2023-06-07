@@ -82,7 +82,8 @@ class Repository constructor(private val apiService: ApiService, private val pre
         val parts = jwt.split(".")
         return try {
             val charset = charset("UTF-8")
-            val payload = String(Base64.getUrlDecoder().decode(parts[1].toByteArray(charset)), charset)
+            val payload =
+                String(Base64.getUrlDecoder().decode(parts[1].toByteArray(charset)), charset)
             payload
         } catch (e: Exception) {
             "Error parsing JWT: $e"
@@ -92,7 +93,13 @@ class Repository constructor(private val apiService: ApiService, private val pre
     fun setUser(user: User?) = pref.setLogin(user)
 
     // Register
-    fun signUp(name: String, email: String, address: String, phone: String, password: String): LiveData<SignUpResponse>{
+    fun signUp(
+        name: String,
+        email: String,
+        address: String,
+        phone: String,
+        password: String
+    ): LiveData<SignUpResponse> {
 //        _isLoading.value = true
         val signUpResponse = MutableLiveData<SignUpResponse>()
         val client = apiService.signUp(name, email, password, phone, address)
@@ -119,10 +126,14 @@ class Repository constructor(private val apiService: ApiService, private val pre
         return signUpResponse
     }
 
-    fun getAllAddress(search:String, id:String = ""): LiveData<List<AddressResponseItem?>> {
+    fun getAllAddress(search: String, id: String): LiveData<List<AddressResponseItem?>> {
         val addressResponse = MutableLiveData<List<AddressResponseItem?>>()
+        val client: Call<List<AddressResponseItem>> = if (id == "0") {
+            apiService.getAllProvince(search, "")
+        }else{
+            apiService.getAllProvince(search, id)
+        }
 
-        val client = apiService.getAllProvince(search, id)
         client.enqueue(object : Callback<List<AddressResponseItem>> {
             override fun onResponse(
                 call: Call<List<AddressResponseItem>>,
@@ -131,7 +142,8 @@ class Repository constructor(private val apiService: ApiService, private val pre
                 if (response.isSuccessful) {
                     addressResponse.value = response.body()
                 } else {
-                    _messages.value = Event("Data Province is missing. Message: ${response.message()}")
+                    _messages.value =
+                        Event("Data Province is missing. Message: ${response.message()}")
                 }
             }
 

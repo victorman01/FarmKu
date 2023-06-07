@@ -43,11 +43,12 @@ class RegisterFillDataActivity : AppCompatActivity() {
         val regencyHint = "Pilih kecamatan anda"
         val villageHint = "Pilih desa/kelurahan anda"
 
+        binding.spinnerProvince.setSelection(0)
         registerViewModel.getProvince().observe(this) { provinceList ->
             val namesProvince: MutableList<String> = mutableListOf()
             val idsProvince: MutableList<String> = mutableListOf()
             namesProvince.add(provinceHint)
-            idsProvince.add("")
+            idsProvince.add("0")
 
             provinceList?.forEach {
                 val idp = it?.id.toString()
@@ -72,12 +73,16 @@ class RegisterFillDataActivity : AppCompatActivity() {
                         position: Int,
                         id: Long
                     ) {
-                        val selectedIdp = idsProvince[position]
+                        var selectedIdp = "0"
                         val namesDistrict: MutableList<String> = mutableListOf()
                         val idsDistrict: MutableList<String> = mutableListOf()
+                        if (binding.spinnerProvince.selectedItemPosition != 0) {
+                            selectedIdp = idsProvince[position]
+                        }
 
                         namesDistrict.add(districtHint)
-                        idsDistrict.add("")
+                        idsDistrict.add("0")
+                        binding.spinnerDistrict.setSelection(0)
 
                         registerViewModel.getDistrict(selectedIdp)
                             .observe(this@RegisterFillDataActivity) { districtList ->
@@ -105,13 +110,15 @@ class RegisterFillDataActivity : AppCompatActivity() {
                                         ) {
                                             val namesRegency: MutableList<String> = mutableListOf()
                                             val idsRegency: MutableList<String> = mutableListOf()
-
-                                            val selectedIdd = idsDistrict[position]
                                             namesRegency.add(regencyHint)
-                                            idsRegency.add("")
+                                            idsRegency.add("0")
+                                            var selectedIdd = "0"
+                                            if (binding.spinnerDistrict.selectedItemPosition != 0) {
+                                                selectedIdd = idsDistrict[position]
+                                            }
+                                            binding.spinnerRegency.setSelection(0)
                                             registerViewModel.getRegency(selectedIdd)
                                                 .observe(this@RegisterFillDataActivity) { regencyList ->
-
                                                     regencyList?.forEach {
                                                         val idr = it?.id.toString()
                                                         val namer = it?.name.toString()
@@ -139,10 +146,13 @@ class RegisterFillDataActivity : AppCompatActivity() {
                                                                     mutableListOf()
                                                                 val idsVillage: MutableList<String> =
                                                                     mutableListOf()
-                                                                val selectedIdr =
-                                                                    idsRegency[position]
                                                                 namesVillage.add(villageHint)
-                                                                idsVillage.add("")
+                                                                idsVillage.add("0")
+                                                                var selectedIdr = "0"
+                                                                if (binding.spinnerDistrict.selectedItemPosition != 0) {
+                                                                    selectedIdr = idsDistrict[position]
+                                                                }
+                                                                binding.spinnerVillage.setSelection(0)
                                                                 registerViewModel.getVillage(
                                                                     selectedIdr
                                                                 )
@@ -177,8 +187,10 @@ class RegisterFillDataActivity : AppCompatActivity() {
                                                                                     position: Int,
                                                                                     id: Long
                                                                                 ) {
-                                                                                    val selectedIdv =
-                                                                                        idsVillage[position]
+                                                                                    var selectedIdv = "0"
+                                                                                    if (binding.spinnerDistrict.selectedItemPosition != 0) {
+                                                                                        selectedIdv = idsDistrict[position]
+                                                                                    }
                                                                                     addressSelected =
                                                                                         selectedIdv
                                                                                 }
