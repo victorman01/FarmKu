@@ -8,10 +8,10 @@
         android:id="@+id/navigation_news"
         android:icon="@drawable/newspaper_icon"
         android:title="@string/berita" />
-<!--    <item-->
-<!--        android:id="@+id/navigation_daftar_lahan"-->
-<!--        android:icon=""-->
-<!--        android:title="@string/title_notifications" />-->
+    <item
+        android:id="@+id/navigation_daftar_lahan"
+        android:icon="@drawable/baseline_auto_graph_24"
+        android:title="@string/daftar_lahan_text" />
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/person_icon"

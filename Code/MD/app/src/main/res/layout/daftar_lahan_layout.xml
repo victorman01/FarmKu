@@ -52,12 +52,11 @@
                 android:id="@+id/txtDateLand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
                 android:text="Kamis, 12 Januari 2023"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.159"
+                app:layout_constraintHorizontal_bias="0.143"
                 app:layout_constraintStart_toEndOf="@+id/imgLand"
                 app:layout_constraintTop_toBottomOf="@+id/txtLocLand" />
 

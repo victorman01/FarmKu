@@ -13,8 +13,14 @@
 
     <fragment
         android:id="@+id/navigation_news"
-        android:name="com.farmkuindonesia.farmku.ui.fragment.listland.ListLandFragment"
+        android:name="com.farmkuindonesia.farmku.ui.fragment.news.NewsFragment"
         android:label="@string/berita"
+        tools:layout="@layout/fragment_news" />
+
+    <fragment
+        android:id="@+id/navigation_daftar_lahan"
+        android:name="com.farmkuindonesia.farmku.ui.fragment.listland.ListLandFragment"
+        android:label="@string/daftar_lahan_text"
         tools:layout="@layout/fragment_list_land" />
 
     <fragment

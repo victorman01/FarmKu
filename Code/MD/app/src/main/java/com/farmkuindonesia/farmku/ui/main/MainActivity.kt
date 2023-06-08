@@ -35,36 +35,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
         val navController = findNavController(R.id.fragmentContainer)
 
         val appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.navigation_home, R.id.navigation_news, R.id.navigation_profile
+            R.id.navigation_home,
+            R.id.navigation_news,
+            R.id.navigation_daftar_lahan,
+            R.id.navigation_profile
         ).build()
 
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
 
         viewModelFac = ViewModelFactory.getInstance(this)
-        mainActivityViewModel = ViewModelProvider(this, viewModelFac)[MainActivityViewModel::class.java]
-
-//        val fragmentManager = supportFragmentManager
-//        val homeFragment = HomeFragment()
-//        val listLandFragment = ListLandFragment()
-//        val fragment = fragmentManager.findFragmentByTag(ListLandFragment::class.java.simpleName)
-//
-//        if (fragment == null) {
-//            fragmentManager
-//                .beginTransaction()
-//                .add(R.id.fragmentContainer, listLandFragment, ListLandFragment::class.java.simpleName)
-//                .commit()
-//        } else {
-//            fragmentManager
-//                .beginTransaction()
-//                .add(R.id.fragmentContainer, homeFragment, HomeFragment::class.java.simpleName)
-//                .commit()
-//        }
+        mainActivityViewModel =
+            ViewModelProvider(this, viewModelFac)[MainActivityViewModel::class.java]
 
         val preferences = getSharedPreferences(Preferences.PREFERENCES, Context.MODE_PRIVATE)
         loggedInWith = preferences.getString(Preferences.LOGGEDINWITH, "NONE")
@@ -83,18 +68,18 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.btnSignOut.setOnClickListener {
-            signOut()
-        }
+//        binding.btnSignOut.setOnClickListener {
+//            signOut()
+//        }
     }
-
-    private fun signOut() {
-        if (loggedInWith == "EMAIL") {
-            mainActivityViewModel.logout()
-        } else if (loggedInWith == "GOOGLE") {
-            auth.signOut()
-        }
-        startActivity(Intent(this, OnBoardingActivity::class.java))
-        finish()
-    }
+//
+//    private fun signOut() {
+//        if (loggedInWith == "EMAIL") {
+//            mainActivityViewModel.logout()
+//        } else if (loggedInWith == "GOOGLE") {
+//            auth.signOut()
+//        }
+//        startActivity(Intent(this, OnBoardingActivity::class.java))
+//        finish()
+//    }
 }
