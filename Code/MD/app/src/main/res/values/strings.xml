@@ -39,7 +39,7 @@
     <string name="masukan_otp_num_text">Masukkan kode OTP yang telah dikirimkan melalui SMS pada nomor anda.</string>
     <string name="masukan_otp_email_text">Masukkan kode OTP yang telah dikirimkan melalui e-mail pada e-mail anda.</string>
     <string name="masukkan_kode_otp_text">Masukkan Kode OTP</string>
-    <string name="hint_text_otp">0</string>
+    <string name="hint_text_otp">_</string>
     <string name="lanjut_text">Lanjut</string>
     <string name="resend_otp_text">Resend OTP</string>
     <string name="kirim_ulang_text">Kirim ulang kode OTP dalam 1:59</string>

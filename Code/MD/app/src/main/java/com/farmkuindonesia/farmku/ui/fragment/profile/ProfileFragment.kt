@@ -5,39 +5,72 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.farmkuindonesia.farmku.R
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.farmkuindonesia.farmku.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val adapter = ListProfileItemAdapter(getProfileItemList())
+        binding.apply {
+            rvProfileItem.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            rvProfileItem.isNestedScrollingEnabled = false
+            rvProfileItem.setHasFixedSize(true)
+            rvProfileItem.adapter = adapter
         }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+    ): View {
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun getProfileItemList(): ArrayList<ProfileItemData> {
+        val profileItemList = ArrayList<ProfileItemData>()
+        profileItemList.add(
+            ProfileItemData(
+                "Ubah Data Profil Saya",
+                R.drawable.person_setting_icon
+            )
+        )
+        profileItemList.add(
+            ProfileItemData(
+                "Pengaturan",
+                R.drawable.settings_icon
+            )
+        )
+        profileItemList.add(
+            ProfileItemData(
+                "Bantuan",
+                R.drawable.help_icon
+            )
+        )
+        profileItemList.add(
+            ProfileItemData(
+                "Syarat dan Ketentuan",
+                R.drawable.article_icon
+            )
+        )
+        profileItemList.add(
+            ProfileItemData(
+                "Tentang Aplikasi",
+                R.drawable.info_icon
+            )
+        )
+        profileItemList.add(
+            ProfileItemData(
+                "Keluar",
+                R.drawable.logout_icon
+            )
+        )
+        return profileItemList
     }
 }
