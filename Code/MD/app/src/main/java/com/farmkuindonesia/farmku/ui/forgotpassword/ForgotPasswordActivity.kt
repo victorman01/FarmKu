@@ -3,7 +3,10 @@ package com.farmkuindonesia.farmku.ui.forgotpassword
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityForgotPasswordBinding
@@ -54,6 +57,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
             }
         }
     }
+
 
     companion object{
         const val PHONENUMBERFORGOT = "PHONENUMBERFORGOT"

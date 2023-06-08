@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
@@ -58,11 +60,11 @@ class LoginActivity : AppCompatActivity() {
                         loginViewModel.setLogin(loginViewModel.userLoginData.value, "EMAIL")
                         moveHome()
                     } else {
-                        Toast.makeText(this@LoginActivity,it.message, Toast.LENGTH_SHORT).show()
+                        it.message?.let { it1 -> showMessage(it1) }
                     }
                 }
             }else{
-                Toast.makeText(this@LoginActivity,getString(R.string.mohon_isi_seluruh_data), Toast.LENGTH_SHORT).show()
+                showMessage(getString(R.string.mohon_isi_seluruh_data))
             }
         }
 
@@ -79,9 +81,9 @@ class LoginActivity : AppCompatActivity() {
         binding.btnSignInGoogle.setOnClickListener{
             signInUsingGoogleEmail()
         }
-        loginViewModel.messages.observe(this) {
-            it.getContentIfNotHandled()?.let { text ->
-                Toast.makeText(this@LoginActivity, text, Toast.LENGTH_SHORT).show()
+        loginViewModel.messages.observe(this) { event ->
+            event.getContentIfNotHandled()?.let { text ->
+                showMessage(text)
             }
         }
     }
@@ -129,6 +131,17 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this@LoginActivity, MainActivity::class.java))
             finish()
         }
+    }
+    private fun showMessage(msg: String) {
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container))
+        val textView = layout.findViewById<TextView>(R.id.custom_toast_text)
+        textView.text = msg
+        val toast = Toast(this@LoginActivity)
+        toast.view = layout
+        toast.duration = Toast.LENGTH_SHORT
+        toast.setGravity(Gravity.CENTER, 0, 800)
+        toast.show()
     }
 
     companion object {

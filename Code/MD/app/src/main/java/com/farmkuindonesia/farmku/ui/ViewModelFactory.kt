@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.farmkuindonesia.farmku.database.Repository
 import com.farmkuindonesia.farmku.ui.login.LoginViewModel
+import com.farmkuindonesia.farmku.ui.main.MainActivityViewModel
 import com.farmkuindonesia.farmku.ui.register.RegisterViewModel
 import com.farmkuindonesia.farmku.utils.injection.Injection
 
@@ -17,6 +18,9 @@ class ViewModelFactory(private val rep: Repository) : ViewModelProvider.NewInsta
             }
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(rep) as T
+            }
+            modelClass.isAssignableFrom(MainActivityViewModel::class.java)->{
+                MainActivityViewModel(rep) as T
             }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
