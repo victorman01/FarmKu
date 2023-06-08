@@ -17,8 +17,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.farmkuindonesia.farmku.ui.fragment.profile.ListProfileItemAdapter
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ListProfileItemAdapter.MainActivityCallback {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var mainActivityViewModel: MainActivityViewModel
@@ -63,19 +64,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, OnBoardingActivity::class.java))
             finish()
         }
-
-//        binding.btnSignOut.setOnClickListener {
-//            signOut()
-//        }
     }
-//
-//    private fun signOut() {
-//        if (loggedInWith == "EMAIL") {
-//            mainActivityViewModel.logout()
-//        } else if (loggedInWith == "GOOGLE") {
-//            auth.signOut()
-//        }
-//        startActivity(Intent(this, OnBoardingActivity::class.java))
-//        finish()
-//    }
+
+    override fun finishMainActivity() {
+        finish() // Finish the MainActivity
+    }
 }

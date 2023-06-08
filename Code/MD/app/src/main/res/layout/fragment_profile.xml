@@ -43,12 +43,11 @@
         android:id="@+id/rvProfileItem"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
         android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumberProfile"
+        app:layout_constraintTop_toBottomOf="@+id/view"
         tools:listitem="@layout/profile_item_layout" />
 
     <ImageView
@@ -83,5 +82,15 @@
         app:layout_constraintEnd_toEndOf="@+id/txtNameProfile"
         app:layout_constraintStart_toStartOf="@+id/txtNameProfile"
         app:layout_constraintTop_toBottomOf="@+id/txtNameProfile" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNumberProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
