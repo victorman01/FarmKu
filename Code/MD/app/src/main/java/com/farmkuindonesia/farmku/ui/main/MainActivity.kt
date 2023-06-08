@@ -16,6 +16,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
@@ -29,25 +35,36 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+
+        val navController = findNavController(R.id.fragmentContainer)
+
+        val appBarConfiguration = AppBarConfiguration.Builder(
+            R.id.navigation_home, R.id.navigation_news, R.id.navigation_profile
+        ).build()
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+
         viewModelFac = ViewModelFactory.getInstance(this)
         mainActivityViewModel = ViewModelProvider(this, viewModelFac)[MainActivityViewModel::class.java]
 
-        val fragmentManager = supportFragmentManager
-        val homeFragment = HomeFragment()
-        val listLandFragment = ListLandFragment()
-        val fragment = fragmentManager.findFragmentByTag(ListLandFragment::class.java.simpleName)
-
-        if (fragment == null) {
-            fragmentManager
-                .beginTransaction()
-                .add(R.id.fragmentContainer, listLandFragment, ListLandFragment::class.java.simpleName)
-                .commit()
-        } else {
-            fragmentManager
-                .beginTransaction()
-                .add(R.id.fragmentContainer, homeFragment, HomeFragment::class.java.simpleName)
-                .commit()
-        }
+//        val fragmentManager = supportFragmentManager
+//        val homeFragment = HomeFragment()
+//        val listLandFragment = ListLandFragment()
+//        val fragment = fragmentManager.findFragmentByTag(ListLandFragment::class.java.simpleName)
+//
+//        if (fragment == null) {
+//            fragmentManager
+//                .beginTransaction()
+//                .add(R.id.fragmentContainer, listLandFragment, ListLandFragment::class.java.simpleName)
+//                .commit()
+//        } else {
+//            fragmentManager
+//                .beginTransaction()
+//                .add(R.id.fragmentContainer, homeFragment, HomeFragment::class.java.simpleName)
+//                .commit()
+//        }
 
         val preferences = getSharedPreferences(Preferences.PREFERENCES, Context.MODE_PRIVATE)
         loggedInWith = preferences.getString(Preferences.LOGGEDINWITH, "NONE")

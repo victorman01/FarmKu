@@ -84,4 +84,7 @@
     <string name="dummy_date">12 Oktober 2023</string>
     <string name="dummy_title_news">SMART PRECISION FARMING di Sukoharjo sedang tidak baik baik ..</string>
     <string name="daftar_lahan_text">Daftar Lahan</string>
+    <string name="home">Home</string>
+    <string name="berita">Berita</string>
+    <string name="profile">Profile</string>
 </resources>
