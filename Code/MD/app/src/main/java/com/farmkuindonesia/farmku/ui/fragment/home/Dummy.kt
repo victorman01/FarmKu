@@ -1,4 +1,4 @@
-package com.farmkuindonesia.farmku.ui.home
+package com.farmkuindonesia.farmku.ui.fragment.home
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

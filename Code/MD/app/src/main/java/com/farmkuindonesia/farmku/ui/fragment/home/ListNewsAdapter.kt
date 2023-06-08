@@ -1,4 +1,4 @@
-package com.farmkuindonesia.farmku.ui.home
+package com.farmkuindonesia.farmku.ui.fragment.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import com.farmkuindonesia.farmku.databinding.NewsLayoutBinding
 
 class ListNewsAdapter(private val listNews: ArrayList<Dummy>): RecyclerView.Adapter<ListNewsAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder{
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val binding = NewsLayoutBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
         return ViewHolder(binding)
     }

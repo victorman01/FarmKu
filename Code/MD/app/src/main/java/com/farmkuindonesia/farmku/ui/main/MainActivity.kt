@@ -4,16 +4,13 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.database.Preferences
 import com.farmkuindonesia.farmku.databinding.ActivityMainBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
-import com.farmkuindonesia.farmku.ui.home.HomeFragment
-import com.farmkuindonesia.farmku.ui.login.LoginViewModel
+import com.farmkuindonesia.farmku.ui.fragment.home.HomeFragment
+import com.farmkuindonesia.farmku.ui.fragment.listland.ListLandFragment
 import com.farmkuindonesia.farmku.ui.onboarding.OnBoardingActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -22,7 +19,7 @@ import com.google.firebase.ktx.Firebase
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var mainActivityViewModel:MainActivityViewModel
+    private lateinit var mainActivityViewModel: MainActivityViewModel
     private lateinit var viewModelFac: ViewModelFactory
     private var loggedInWith: String? = ""
 
@@ -37,9 +34,15 @@ class MainActivity : AppCompatActivity() {
 
         val fragmentManager = supportFragmentManager
         val homeFragment = HomeFragment()
-        val fragment = fragmentManager.findFragmentByTag(HomeFragment::class.java.simpleName)
+        val listLandFragment = ListLandFragment()
+        val fragment = fragmentManager.findFragmentByTag(ListLandFragment::class.java.simpleName)
 
-        if (fragment !is HomeFragment) {
+        if (fragment == null) {
+            fragmentManager
+                .beginTransaction()
+                .add(R.id.fragmentContainer, listLandFragment, ListLandFragment::class.java.simpleName)
+                .commit()
+        } else {
             fragmentManager
                 .beginTransaction()
                 .add(R.id.fragmentContainer, homeFragment, HomeFragment::class.java.simpleName)
@@ -67,7 +70,6 @@ class MainActivity : AppCompatActivity() {
             signOut()
         }
     }
-
 
     private fun signOut() {
         if (loggedInWith == "EMAIL") {
