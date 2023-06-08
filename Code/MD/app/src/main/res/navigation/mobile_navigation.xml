@@ -18,9 +18,9 @@
         tools:layout="@layout/fragment_news" />
 
     <fragment
-        android:id="@+id/navigation_daftar_lahan"
+        android:id="@+id/navigation_lahan_saya"
         android:name="com.farmkuindonesia.farmku.ui.fragment.listland.ListLandFragment"
-        android:label="@string/daftar_lahan_text"
+        android:label="@string/lahan_saya_text"
         tools:layout="@layout/fragment_list_land" />
 
     <fragment

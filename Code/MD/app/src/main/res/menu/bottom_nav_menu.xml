@@ -9,9 +9,9 @@
         android:icon="@drawable/newspaper_icon"
         android:title="@string/berita" />
     <item
-        android:id="@+id/navigation_daftar_lahan"
+        android:id="@+id/navigation_lahan_saya"
         android:icon="@drawable/baseline_auto_graph_24"
-        android:title="@string/daftar_lahan_text" />
+        android:title="@string/lahan_saya_text" />
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/person_icon"

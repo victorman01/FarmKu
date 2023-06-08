@@ -66,7 +66,7 @@ class Preferences(context: Context) {
 
     companion object {
         private const val USER_ID = "userId"
-        private const val USER_NAME = "userName"
+        const val USER_NAME = "userName"
         private const val USER_EMAIL = "userEmail"
         private const val USER_PHONE_NUMBER = "userPhoneNumber"
         private const val USER_ADDRESS_ID = "userAddressId"

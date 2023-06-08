@@ -9,14 +9,10 @@ import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.database.Preferences
 import com.farmkuindonesia.farmku.databinding.ActivityMainBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
-import com.farmkuindonesia.farmku.ui.fragment.home.HomeFragment
-import com.farmkuindonesia.farmku.ui.fragment.listland.ListLandFragment
 import com.farmkuindonesia.farmku.ui.onboarding.OnBoardingActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -40,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration.Builder(
             R.id.navigation_home,
             R.id.navigation_news,
-            R.id.navigation_daftar_lahan,
+            R.id.navigation_lahan_saya,
             R.id.navigation_profile
         ).build()
 
