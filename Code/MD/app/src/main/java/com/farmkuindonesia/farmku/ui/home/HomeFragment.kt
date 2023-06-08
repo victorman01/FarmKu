@@ -34,29 +34,25 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentHomeBinding.inflate(layoutInflater)
-
-        binding.rvNews.setHasFixedSize(true)
-
-        showRecyclerView()
+        val adapter = ListNewsAdapter(getDummyNewsList())
+        binding.rvNews.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.rvNews.adapter = adapter
     }
 
-    private fun showRecyclerView() {
-        val listNews = arrayListOf(
-            Dummy("Wwkkw", "20-20-2020", R.drawable.home_banner),
-            Dummy("Tes", "20-20-2021", R.drawable.home_banner)
-        )
-        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvNews.layoutManager = layoutManager
-        binding.rvNews.adapter = ListNewsAdapter(listNews)
+    private fun getDummyNewsList(): ArrayList<Dummy> {
+        val dummyList = ArrayList<Dummy>()
+        dummyList.add(Dummy("News 1", "June 1, 2023", R.drawable.home_banner))
+        dummyList.add(Dummy("News 2", "June 2, 2023", R.drawable.home_banner))
+        dummyList.add(Dummy("News 3", "June 3, 2023", R.drawable.home_banner))
+        return dummyList
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
     companion object {
         @JvmStatic
