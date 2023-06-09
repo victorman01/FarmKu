@@ -22,7 +22,7 @@ class ProfileFragment : Fragment(), ListProfileItemAdapter.MainActivityCallback 
         val mainActivity = activity as MainActivity
 
         val preferences = requireActivity().getSharedPreferences(Preferences.PREFERENCES, Context.MODE_PRIVATE)
-        val adapter = ListProfileItemAdapter(getProfileItemList(), preferences, mainActivity)
+        val adapter = ListProfileItemAdapter(requireContext(),getProfileItemList(), mainActivity)
         binding.apply {
             rvProfileItem.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             rvProfileItem.isNestedScrollingEnabled = false

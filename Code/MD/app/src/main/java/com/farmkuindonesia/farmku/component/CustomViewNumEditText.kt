@@ -2,6 +2,7 @@ package com.farmkuindonesia.farmku.component
 
 import android.content.Context
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import android.util.AttributeSet
 import com.google.android.material.textfield.TextInputEditText
@@ -14,6 +15,9 @@ class CustomViewNumEditText : TextInputEditText {
         attrs,
         defStyleAttr
     )
+    init {
+        maxCharacters(13)
+    }
 
     init {
         inputType = android.text.InputType.TYPE_CLASS_NUMBER
@@ -24,7 +28,7 @@ class CustomViewNumEditText : TextInputEditText {
             override fun afterTextChanged(s: Editable?) {
                 val text = s.toString()
 
-                error = if (text.matches(Regex("^[+]?[0-9]{10,}$"))) {
+                error = if (text.matches(Regex("^[+]?[0-9]{10,13}$"))) {
                     if (text.isNotEmpty()) {
                         null
                     } else {
@@ -39,5 +43,8 @@ class CustomViewNumEditText : TextInputEditText {
                 }
             }
         })
+    }
+    private fun maxCharacters(maxLength: Int) {
+        filters = arrayOf(InputFilter.LengthFilter(maxLength))
     }
 }

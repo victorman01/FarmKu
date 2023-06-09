@@ -1,6 +1,7 @@
 package com.farmkuindonesia.farmku.component
 
 import android.content.Context
+import android.text.InputFilter
 import android.util.AttributeSet
 import android.view.MotionEvent
 import com.farmkuindonesia.farmku.R

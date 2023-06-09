@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.widget.EditText
+import android.widget.Toast
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityOtpactivityBinding
 import com.farmkuindonesia.farmku.ui.forgotpassword.ForgotPasswordActivity
@@ -16,8 +17,7 @@ import com.farmkuindonesia.farmku.ui.register.RegisterFillDataActivity
 
 class OTPActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOtpactivityBinding
-    private var phoneNumberRegister :String = ""
-    private var phoneNumberForgot :String = ""
+    private var phoneNumber :String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,14 +32,16 @@ class OTPActivity : AppCompatActivity() {
         if(fromWhere == "ForgotPasswordActivity"){
             if(isEmail){
                 binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_email_text)
-                phoneNumberRegister = intent.getStringExtra(RegisterActivity.PHONENUMBERREGISTER).toString()
+
             }
             else {
                 binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_num_text)
-                phoneNumberForgot = intent.getStringExtra(ForgotPasswordActivity.PHONENUMBERFORGOT).toString()
+                phoneNumber = intent.getStringExtra(ForgotPasswordActivity.PHONENUMBERFORGOT).toString()
             }
         }else{
             binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_num_text)
+            phoneNumber = intent.getStringExtra(RegisterActivity.PHONENUMBERREGISTER).toString()
+            Toast.makeText(this, "ehe", Toast.LENGTH_SHORT).show()
         }
 
         binding.apply {
@@ -69,7 +71,7 @@ class OTPActivity : AppCompatActivity() {
                     startActivity(intent)
                 }else{
                     val intent = Intent(this@OTPActivity,RegisterFillDataActivity::class.java)
-                    intent.putExtra(RegisterActivity.PHONENUMBERREGISTER, phoneNumberRegister)
+                    intent.putExtra(RegisterActivity.PHONENUMBERREGISTER, phoneNumber)
                     startActivity(intent)
                 }
             }
