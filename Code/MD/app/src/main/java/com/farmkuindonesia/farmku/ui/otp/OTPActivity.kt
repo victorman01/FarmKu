@@ -41,7 +41,6 @@ class OTPActivity : AppCompatActivity() {
         }else{
             binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_num_text)
             phoneNumber = intent.getStringExtra(RegisterActivity.PHONENUMBERREGISTER).toString()
-            Toast.makeText(this, "ehe", Toast.LENGTH_SHORT).show()
         }
 
         binding.apply {
