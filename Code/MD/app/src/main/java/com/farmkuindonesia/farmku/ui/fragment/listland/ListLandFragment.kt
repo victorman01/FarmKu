@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.FragmentListLandBinding
-import com.farmkuindonesia.farmku.ui.fragment.home.Dummy
+import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.Dummy
 
 
 class ListLandFragment : Fragment() {

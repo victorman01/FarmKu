@@ -61,7 +61,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/oval_background"
-        android:drawableEnd="@drawable/outline_visibility_off_24"
+        android:drawableEnd="@drawable/show_password_off_icon"
         android:elevation="15dp"
         android:hint="@string/kata_sandi_anda"
         android:inputType="textPassword"

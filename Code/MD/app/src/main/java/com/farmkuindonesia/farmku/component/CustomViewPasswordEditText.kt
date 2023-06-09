@@ -29,7 +29,7 @@ class CustomViewPasswordEditText : TextInputEditText {
         setCompoundDrawablesRelativeWithIntrinsicBounds(
             null,
             null,
-            AppCompatResources.getDrawable(context, R.drawable.outline_visibility_off_24),
+            AppCompatResources.getDrawable(context, R.drawable.show_password_off_icon),
             null
         )
 
@@ -52,7 +52,7 @@ class CustomViewPasswordEditText : TextInputEditText {
             setCompoundDrawablesRelativeWithIntrinsicBounds(
                 null,
                 null,
-                AppCompatResources.getDrawable(context, R.drawable.outline_visibility_24),
+                AppCompatResources.getDrawable(context, R.drawable.show_password_on_icon),
                 null
             )
             android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
@@ -60,7 +60,7 @@ class CustomViewPasswordEditText : TextInputEditText {
             setCompoundDrawablesRelativeWithIntrinsicBounds(
                 null,
                 null,
-                AppCompatResources.getDrawable(context, R.drawable.outline_visibility_off_24),
+                AppCompatResources.getDrawable(context, R.drawable.show_password_off_icon),
                 null
             )
             android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD

@@ -16,8 +16,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.FragmentHomeBinding
+import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.ListHotNewsAdapter
+import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.HotNews
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -31,7 +32,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ListNewsAdapter(getDummyNewsList())
+        val adapter = ListHotNewsAdapter(HotNews().getDummyNewsList())
         binding.rvNews.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvNews.adapter = adapter
@@ -47,32 +48,6 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    private fun getDummyNewsList(): ArrayList<Dummy> {
-        val dummyList = ArrayList<Dummy>()
-        dummyList.add(
-            Dummy(
-                "Merangkak Naik, Harga TBS Sawit di Babel Naik Rp 100 dari Rp 1.300 per Kg menjadi Rp 1.400 per Kg",
-                "June 1, 2023",
-                R.drawable.home_banner
-            )
-        )
-        dummyList.add(
-            Dummy(
-                "Distan Mataram mengoptimalkan pengolahan tanah tingkatkan produksi padi",
-                "June 2, 2023",
-                R.drawable.home_banner
-            )
-        )
-        dummyList.add(
-            Dummy(
-                "Gagal Tanam Padi, Petani Desa Rahayu Minta PHE TEJ Beri Ganti Rugi",
-                "June 3, 2023",
-                R.drawable.home_banner
-            )
-        )
-        return dummyList
     }
 
     private fun showOptionsDialog() {

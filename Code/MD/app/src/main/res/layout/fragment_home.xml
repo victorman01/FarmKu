@@ -112,7 +112,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="8dp"
                     android:background="@android:color/transparent"
-                    android:drawableTop="@drawable/outline_photo_camera_24"
+                    android:drawableTop="@drawable/camera_icon"
                     android:text="@string/cek_tanaman_text"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -246,8 +246,8 @@
 
         <ImageView
             android:id="@+id/btnLahanSaya"
-            android:layout_width="75dp"
-            android:layout_height="74dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/information_background"
@@ -259,8 +259,8 @@
 
         <ImageView
             android:id="@+id/btnDeteksiPenyakit"
-            android:layout_width="75dp"
-            android:layout_height="74dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/information_background"
@@ -268,12 +268,12 @@
             android:padding="10dp"
             app:layout_constraintStart_toEndOf="@+id/btnLahanSaya"
             app:layout_constraintTop_toBottomOf="@+id/textView23"
-            app:srcCompat="@drawable/outline_photo_camera_24" />
+            app:srcCompat="@drawable/camera_icon" />
 
         <ImageView
             android:id="@+id/button6"
-            android:layout_width="75dp"
-            android:layout_height="74dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/information_background"
@@ -285,8 +285,8 @@
 
         <ImageView
             android:id="@+id/button7"
-            android:layout_width="75dp"
-            android:layout_height="74dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/information_background"
@@ -357,7 +357,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView28"
-            tools:listitem="@layout/news_layout" />
+            tools:listitem="@layout/hot_news_layout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
