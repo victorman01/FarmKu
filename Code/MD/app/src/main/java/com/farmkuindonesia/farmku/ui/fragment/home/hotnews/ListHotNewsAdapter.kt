@@ -24,8 +24,8 @@ class ListHotNewsAdapter(private val listNews: ArrayList<Dummy>): RecyclerView.A
     override fun getItemCount(): Int = listNews.size
 
     inner class ViewHolder(binding: HotNewsLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        val imgNews: ImageView = binding.imgNews
-        val txtTitleNews: TextView = binding.txtTitleNews
-        val txtDateNews: TextView = binding.txtDateNews
+        val imgNews: ImageView = binding.imgHotNews
+        val txtTitleNews: TextView = binding.txtTitleHotNews
+        val txtDateNews: TextView = binding.txtDateHotNews
     }
 }

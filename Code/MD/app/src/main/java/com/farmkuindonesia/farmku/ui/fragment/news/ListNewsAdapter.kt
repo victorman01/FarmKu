@@ -16,17 +16,17 @@ class ListNewsAdapter(private val listNews: ArrayList<Dummy>): RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val (name, date, photo) = listNews[position]
-//        holder.imgNews.setImageResource(photo)
-//        holder.txtTitleNews.text = name
-//        holder.txtDateNews.text = date
+        val (name, date, photo) = listNews[position]
+        holder.imgNews.setImageResource(photo)
+        holder.txtTitleNews.text = name
+        holder.txtDateNews.text = date
     }
 
     override fun getItemCount(): Int = listNews.size
 
     inner class ViewHolder(binding: NewsLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-//        val imgNews: ImageView = binding.imgNews
-//        val txtTitleNews: TextView = binding.txtTitleNews
-//        val txtDateNews: TextView = binding.txtDateNews
+        val imgNews: ImageView = binding.imgNewsNews
+        val txtTitleNews: TextView = binding.txtTitleNews
+        val txtDateNews: TextView = binding.txtDateNews
     }
 }
