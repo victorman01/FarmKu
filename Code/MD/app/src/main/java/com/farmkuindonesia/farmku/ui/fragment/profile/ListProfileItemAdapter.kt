@@ -2,20 +2,15 @@ package com.farmkuindonesia.farmku.ui.fragment.profile
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStore
 import androidx.recyclerview.widget.RecyclerView
 import com.farmkuindonesia.farmku.database.Preferences
 import com.farmkuindonesia.farmku.databinding.ProfileItemLayoutBinding
-import com.farmkuindonesia.farmku.ui.ViewModelFactory
-import com.farmkuindonesia.farmku.ui.main.MainActivity
 import com.farmkuindonesia.farmku.ui.onboarding.OnBoardingActivity
 import com.google.firebase.auth.FirebaseAuth
 

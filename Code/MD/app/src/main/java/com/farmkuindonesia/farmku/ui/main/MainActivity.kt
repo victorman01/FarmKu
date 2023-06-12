@@ -9,7 +9,6 @@ import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.database.Preferences
 import com.farmkuindonesia.farmku.databinding.ActivityMainBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
-import com.farmkuindonesia.farmku.ui.onboarding.OnBoardingActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -18,6 +17,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.farmkuindonesia.farmku.ui.fragment.profile.ListProfileItemAdapter
+import com.farmkuindonesia.farmku.ui.onboarding.OnBoardingActivity
 
 class MainActivity : AppCompatActivity(), ListProfileItemAdapter.MainActivityCallback {
     private lateinit var binding: ActivityMainBinding
