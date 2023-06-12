@@ -16,7 +16,7 @@ class ListLandAdapter(private val listNews: ArrayList<Dummy>): RecyclerView.Adap
     override fun getItemCount(): Int = listNews.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val (name, date, photo) = listNews[position]
+        val (name, date) = listNews[position]
         holder.txtLocLand.text = name
         holder.txtDateLand.text = date
     }

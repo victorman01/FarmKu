@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.farmkuindonesia.farmku.database.Preferences
 import com.farmkuindonesia.farmku.databinding.ProfileItemLayoutBinding
+import com.farmkuindonesia.farmku.ui.editprofile.EditProfileActivity
 import com.farmkuindonesia.farmku.ui.onboarding.OnBoardingActivity
 import com.google.firebase.auth.FirebaseAuth
 
@@ -51,7 +53,8 @@ class ListProfileItemAdapter(
         override fun onClick(view: View) {
             when (absoluteAdapterPosition) {
                 0 -> {
-                    Toast.makeText(view.context, "Ubah data", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(view.context, EditProfileActivity::class.java)
+                    view.context.startActivity(intent)
                 }
                 1 -> {
                     Toast.makeText(view.context, "Pengaturan", Toast.LENGTH_SHORT).show()
@@ -63,7 +66,7 @@ class ListProfileItemAdapter(
                     Toast.makeText(view.context, "Syarat dan Ketentuan", Toast.LENGTH_SHORT).show()
                 }
                 4 -> {
-                    Toast.makeText(view.context, "Tentang Aplikasi", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(view.context, "App version: 1.0", Toast.LENGTH_SHORT).show()
                 }
                 5 -> {
                     signOut(view)
