@@ -15,8 +15,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.farmkuindonesia.farmku.database.model.User
 import com.farmkuindonesia.farmku.databinding.FragmentHomeBinding
+import com.farmkuindonesia.farmku.ui.ViewModelFactory
 import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.ListHotNewsAdapter
 import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.HotNews
 
@@ -28,17 +31,28 @@ class HomeFragment : Fragment() {
     private val GALLERY_PERMISSION_REQUEST_CODE = 1002
     private val CAMERA_REQUEST_CODE = 2001
     private val GALLERY_REQUEST_CODE = 2002
+    private lateinit var homeFragmentViewModel: HomeFragmentViewModel
+    private lateinit var viewModelFac: ViewModelFactory
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = ListHotNewsAdapter(HotNews().getDummyNewsList())
-        binding.rvNews.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvNews.adapter = adapter
+        viewModelFac = ViewModelFactory.getInstance(this.requireContext())
+        homeFragmentViewModel = ViewModelProvider(this, viewModelFac)[HomeFragmentViewModel::class.java]
 
-        binding.btnDeteksiPenyakit.setOnClickListener {
-            showOptionsDialog()
+        val user = homeFragmentViewModel.getUser()
+        val adapter = ListHotNewsAdapter(HotNews().getDummyNewsList())
+
+        binding.apply {
+            txtHiName.text = "Hi, ${user.name.toString()}"
+
+            rvNews.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            rvNews.adapter = adapter
+
+            btnDeteksiPenyakit.setOnClickListener {
+                showOptionsDialog()
+            }
         }
     }
 

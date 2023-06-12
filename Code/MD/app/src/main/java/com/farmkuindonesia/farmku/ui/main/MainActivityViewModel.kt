@@ -7,5 +7,5 @@ import com.farmkuindonesia.farmku.database.model.User
 class MainActivityViewModel(private val rep: Repository) : ViewModel()  {
     val message = rep.messages
     val isLoading = rep.isLoading
-    fun logout() = rep.logOutUser()
+//    fun logout() = rep.logOutUser()
 }

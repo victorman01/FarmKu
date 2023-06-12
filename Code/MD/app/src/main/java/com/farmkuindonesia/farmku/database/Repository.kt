@@ -92,7 +92,8 @@ class Repository constructor(private val apiService: ApiService, private val pre
     }
 
     fun setUser(user: User?, loggedInWith: String) = pref.setLogin(user, loggedInWith)
-    fun logOutUser() = pref.setLogout()
+//    fun logOutUser() = pref.setLogout()
+    fun getUser() = pref.getUser()
 
     // Register
     fun signUp(

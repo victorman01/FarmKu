@@ -27,11 +27,11 @@ class Preferences(context: Context) {
         editor.apply()
     }
 
-    fun setLogout() {
-        val editor = preferences.edit()
-        editor.clear()
-        editor.apply()
-    }
+//    fun setLogout() {
+//        val editor = preferences.edit()
+//        editor.clear()
+//        editor.apply()
+//    }
 
     fun getUser(): User {
         val userId = preferences.getString(USER_ID, "") ?: ""
