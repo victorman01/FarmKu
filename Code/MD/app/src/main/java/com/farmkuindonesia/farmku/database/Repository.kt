@@ -8,9 +8,11 @@ import com.farmkuindonesia.farmku.database.config.ApiService
 import com.farmkuindonesia.farmku.database.model.Address
 import com.farmkuindonesia.farmku.database.model.User
 import com.farmkuindonesia.farmku.database.responses.AddressResponseItem
+import com.farmkuindonesia.farmku.database.responses.DetectionResponse
 import com.farmkuindonesia.farmku.database.responses.SignInResponse
 import com.farmkuindonesia.farmku.database.responses.SignUpResponse
 import com.farmkuindonesia.farmku.utils.event.Event
+import okhttp3.MultipartBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,6 +28,9 @@ class Repository constructor(private val apiService: ApiService, private val pre
 
     private val _userLogin = MutableLiveData<User>()
     val userLogin: LiveData<User> = _userLogin
+
+    private val _preprocess = MutableLiveData<DetectionResponse>()
+    val preprocess: LiveData<DetectionResponse> = _preprocess
 
     //Login
     fun signIn(email: String, password: String): LiveData<SignInResponse> {
@@ -156,6 +161,27 @@ class Repository constructor(private val apiService: ApiService, private val pre
         })
 
         return addressResponse
+    }
+
+    fun preprocessRepository(file: MultipartBody.Part){
+        val client = apiService.addImage(file)
+        client.enqueue(object : Callback<DetectionResponse> {
+            override fun onResponse(
+                call: Call<DetectionResponse>,
+                response: Response<DetectionResponse>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d("hasil", response.body().toString())
+                    _preprocess.value = response.body()
+                } else {
+                    Log.d("Error", "eror disini")
+                }
+            }
+
+            override fun onFailure(call: Call<DetectionResponse>, t: Throwable) {
+                Log.d("Error2", t.message.toString())
+            }
+        })
     }
 
     companion object {

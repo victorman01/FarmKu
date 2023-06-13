@@ -87,4 +87,8 @@
     <string name="home">Home</string>
     <string name="berita">Berita</string>
     <string name="profile">Profile</string>
+    <string name="descriptiontext">description</string>
+    <string name="detect_text">Deteksi Penyakit</string>
+    <string name="melalui_kamera_text">Melalui Kamera</string>
+    <string name="melalui_galeri_text">Melalui Galeri</string>
 </resources>

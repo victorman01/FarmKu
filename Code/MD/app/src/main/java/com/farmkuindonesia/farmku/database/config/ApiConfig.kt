@@ -38,31 +38,19 @@ object ApiConfig {
     }
 
     fun getApiServiceML(): ApiService {
-        val loggingInterceptor = if (BuildConfig.DEBUG) {
+        val authInterceptor = if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         } else {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
         }
-
-        val apiKeyInterceptor = Interceptor { chain ->
-            val originalRequest = chain.request()
-            val modifiedRequest = originalRequest.newBuilder()
-                .header("x-api-key",BuildConfig.API_KEY)
-                .build()
-            chain.proceed(modifiedRequest)
-        }
-
         val client = OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
-            .addInterceptor(apiKeyInterceptor)
+            .addInterceptor(authInterceptor)
             .build()
-
         val retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.URL_API2)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-
         return retrofit.create(ApiService::class.java)
     }
 }

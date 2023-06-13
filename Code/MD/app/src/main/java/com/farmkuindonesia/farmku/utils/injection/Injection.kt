@@ -8,7 +8,7 @@ import com.farmkuindonesia.farmku.database.config.ApiConfig
 object Injection {
     fun provideRepository(context: Context): Repository {
         val preferences = Preferences.getInstance(context)
-        val apiService = ApiConfig.getApiService()
+        val apiService = ApiConfig.getApiServiceML()
         return Repository.getInstance(preferences, apiService)
     }
 }

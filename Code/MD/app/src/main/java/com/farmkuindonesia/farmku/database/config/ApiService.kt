@@ -1,6 +1,7 @@
 package com.farmkuindonesia.farmku.database.config
 
 import com.farmkuindonesia.farmku.database.responses.AddressResponseItem
+import com.farmkuindonesia.farmku.database.responses.DetectionResponse
 import com.farmkuindonesia.farmku.database.responses.SignInResponse
 import com.farmkuindonesia.farmku.database.responses.SignUpResponse
 import okhttp3.MultipartBody
@@ -32,4 +33,9 @@ interface ApiService {
         @Query("id") id:String
     ): Call<List<AddressResponseItem>>
 
+    @Multipart
+    @POST("preprocess")
+    fun addImage(
+        @Part image:MultipartBody.Part
+    ): Call<DetectionResponse>
 }

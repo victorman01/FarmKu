@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.farmkuindonesia.farmku.database.model.User
 import com.farmkuindonesia.farmku.databinding.FragmentHomeBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
+import com.farmkuindonesia.farmku.ui.forgotpassword.ForgotPasswordActivity
+import com.farmkuindonesia.farmku.ui.fragment.home.deteksipenyakit.DiseaseDetectionActivity
 import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.ListHotNewsAdapter
 import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.HotNews
 
@@ -51,7 +53,8 @@ class HomeFragment : Fragment() {
             rvNews.adapter = adapter
 
             btnDeteksiPenyakit.setOnClickListener {
-                showOptionsDialog()
+                val intent = Intent(requireContext(), DiseaseDetectionActivity::class.java)
+                startActivity(intent)
             }
         }
     }
@@ -62,108 +65,6 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    private fun showOptionsDialog() {
-        val options = arrayOf("Ambil Gambar dengan Kamera", "Pilih Gambar dari Galeri")
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Pilih Sumber Gambar")
-            .setItems(options) { dialog: DialogInterface, which: Int ->
-                when (which) {
-                    0 -> checkCameraPermission()
-                    1 -> checkGalleryPermission()
-                }
-                dialog.dismiss()
-            }
-        builder.create().show()
-    }
-
-    private fun checkCameraPermission() {
-        currentPermissionRequestCode = CAMERA_PERMISSION_REQUEST_CODE
-        if (ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.CAMERA
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            openCamera()
-        } else {
-            requestCameraPermission()
-        }
-    }
-
-    private fun requestCameraPermission() {
-        ActivityCompat.requestPermissions(
-            requireActivity(),
-            arrayOf(Manifest.permission.CAMERA),
-            CAMERA_PERMISSION_REQUEST_CODE
-        )
-    }
-
-    private fun checkGalleryPermission() {
-        currentPermissionRequestCode = GALLERY_PERMISSION_REQUEST_CODE
-        if (ContextCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            openGallery()
-        } else {
-            requestGalleryPermission()
-        }
-    }
-
-    private fun requestGalleryPermission() {
-        ActivityCompat.requestPermissions(
-            requireActivity(),
-            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-            GALLERY_PERMISSION_REQUEST_CODE
-        )
-    }
-
-    private fun openCamera() {
-        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE)
-    }
-
-    private fun openGallery() {
-        val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(galleryIntent, GALLERY_REQUEST_CODE)
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            CAMERA_PERMISSION_REQUEST_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    openCamera()
-                }
-            }
-            GALLERY_PERMISSION_REQUEST_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    openGallery()
-                }
-            }
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == AppCompatActivity.RESULT_OK) {
-            when (requestCode) {
-                CAMERA_REQUEST_CODE -> {
-                    val imageFromCamera = data?.extras?.get("data") as Bitmap
-                    // Lakukan sesuatu dengan gambar dari kamera
-                }
-                GALLERY_REQUEST_CODE -> {
-                    val uri = data?.data
-                    // Lakukan sesuatu dengan gambar dari galeri
-                }
-            }
-        }
     }
 
     override fun onDestroyView() {
