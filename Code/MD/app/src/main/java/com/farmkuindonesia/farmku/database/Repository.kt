@@ -19,7 +19,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-class Repository constructor(private val apiService: ApiService, private val pref: Preferences) {
+class Repository constructor(
+    private val apiService: ApiService,
+    private val pref: Preferences,
+    private val apiServiceML: ApiService
+) {
     private val _messages = MutableLiveData<Event<String>>()
     val messages: LiveData<Event<String>> = _messages
 
@@ -65,7 +69,7 @@ class Repository constructor(private val apiService: ApiService, private val pre
                             JSONObject(userData).getString("created_at"),
                             JSONObject(userData).getString("updated_at")
                         )
-                        setUser(user,"EMAIL")
+                        setUser(user, "EMAIL")
                         _userLogin.value = user
                         _messages.value = Event("Login Success")
                     } else {
@@ -98,7 +102,8 @@ class Repository constructor(private val apiService: ApiService, private val pre
     }
 
     fun setUser(user: User?, loggedInWith: String) = pref.setLogin(user, loggedInWith)
-//    fun logOutUser() = pref.setLogout()
+
+    //    fun logOutUser() = pref.setLogout()
     fun getUser() = pref.getUser()
 
     // Register
@@ -139,7 +144,7 @@ class Repository constructor(private val apiService: ApiService, private val pre
         val addressResponse = MutableLiveData<List<AddressResponseItem?>>()
         val client: Call<List<AddressResponseItem>> = if (id == "0") {
             apiService.getAllProvince(search, "")
-        }else{
+        } else {
             apiService.getAllProvince(search, id)
         }
 
@@ -164,23 +169,27 @@ class Repository constructor(private val apiService: ApiService, private val pre
         return addressResponse
     }
 
-    fun preprocessRepository(file: MultipartBody.Part){
-        val client = apiService.addImage(file)
+    fun preprocessRepository(file: MultipartBody.Part) {
+        _isLoading.value = true
+        val client = apiServiceML.addImage(file)
         client.enqueue(object : Callback<DetectionResponse> {
             override fun onResponse(
                 call: Call<DetectionResponse>,
                 response: Response<DetectionResponse>
             ) {
+                _isLoading.value = false
                 if (response.isSuccessful) {
-                    Log.d("hasil", response.body().toString())
+                    Log.d(TAG, response.body().toString())
                     _preprocess.value = response.body()
                 } else {
-                    Log.d("Error", "eror disini")
+                    Log.d(TAG, "Error saat deteksi. Message = ${response.message()}")
+                    _messages.value = Event("$TAG, Error saat deteksi. Message = ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<DetectionResponse>, t: Throwable) {
-                Log.d("Error2", t.message.toString())
+                _isLoading.value = false
+                Log.d(TAG, t.message.toString())
             }
         })
     }
@@ -189,9 +198,13 @@ class Repository constructor(private val apiService: ApiService, private val pre
         private const val TAG = "Repository"
         private var instance: Repository? = null
 
-        fun getInstance(pref: Preferences, apiService: ApiService): Repository =
+        fun getInstance(
+            pref: Preferences,
+            apiService: ApiService,
+            apiServiceML: ApiService
+        ): Repository =
             instance ?: synchronized(this) {
-                instance ?: Repository(apiService, pref)
+                instance ?: Repository(apiService, pref, apiServiceML)
             }.also { instance = it }
     }
 }

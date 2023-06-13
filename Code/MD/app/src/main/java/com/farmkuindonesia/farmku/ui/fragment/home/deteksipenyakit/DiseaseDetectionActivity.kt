@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -32,8 +34,8 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
 class DiseaseDetectionActivity : AppCompatActivity() {
-    private lateinit var addStoryBinding: ActivityDiseaseDetectionBinding
-    private lateinit var addStoryViewModel: DiseaseDetectionViewModel
+    private lateinit var binding: ActivityDiseaseDetectionBinding
+    private lateinit var diseaseDetectionViewModel: DiseaseDetectionViewModel
     private lateinit var viewModelFac: ViewModelFactory
     private lateinit var currentPhotoPath: String
     private var getFile: File? = null
@@ -50,13 +52,15 @@ class DiseaseDetectionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addStoryBinding = ActivityDiseaseDetectionBinding.inflate(layoutInflater)
-        setContentView(addStoryBinding.root)
+        binding = ActivityDiseaseDetectionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportActionBar?.hide()
         viewModelFac = ViewModelFactory.getInstance(this)
-        addStoryViewModel = ViewModelProvider(this, viewModelFac)[DiseaseDetectionViewModel::class.java]
+        diseaseDetectionViewModel =
+            ViewModelProvider(this, viewModelFac)[DiseaseDetectionViewModel::class.java]
+        binding.groupBox.visibility = View.GONE
 
-        addStoryBinding.buttonAddCamera.setOnClickListener {
+        binding.buttonAddCamera.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
                     this,
                     Manifest.permission.CAMERA
@@ -72,7 +76,7 @@ class DiseaseDetectionActivity : AppCompatActivity() {
             }
         }
 
-        addStoryBinding.buttonAddGallery.setOnClickListener {
+        binding.buttonAddGallery.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
                     this,
                     Manifest.permission.READ_EXTERNAL_STORAGE
@@ -96,42 +100,52 @@ class DiseaseDetectionActivity : AppCompatActivity() {
 //            }
 //        }
 
-        addStoryBinding.buttonAdd.setOnClickListener {
-//            if (addStoryBinding.edAddDescription.text.isEmpty()) {
-//                Toast.makeText(
-//                    this@DiseaseDetectionActivity,
-//                    getString(R.string.null_description_message),
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//                return@setOnClickListener
-//            }
+        binding.buttonAdd.setOnClickListener {
             if (getFile != null) {
                 val file = reduceFileImage(getFile as File)
-                val description = addStoryBinding.edAddDescription.text.toString()
-                    .toRequestBody("text/plain".toMediaType())
                 val requestImageFile = file.asRequestBody("image/jpeg".toMediaType())
                 val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                     "photo",
                     file.name,
                     requestImageFile
                 )
+                diseaseDetectionViewModel.result(imageMultipart)
+                diseaseDetectionViewModel.preprocess.observe(this) { result ->
+                    val confidencePercentage: Int = (result.confidence * 100).toInt()
+                    binding.resultText.text = getString(R.string.result_text, result.result)
+                    binding.confidenceText.text =
+                        getString(R.string.confidence_text, confidencePercentage)
+                    binding.groupBox.visibility = View.VISIBLE
+                }
+            } else {
+                Toast.makeText(
+                    this@DiseaseDetectionActivity,
+                    getString(R.string.null_picture_message),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-//            else {
-//                Toast.makeText(
-//                    this@DiseaseDetectionActivity,
-//                    getString(R.string.null_picture_message),
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-//            addStoryViewModel.messages.observe(this) {
-//                it.getContentIfNotHandled()?.let { text ->
-//                    Toast.makeText(this@AddStoryActivity, text, Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//            addStoryViewModel.isLoading.observe(this@AddStoryActivity) {
-//                showLoading(it)
-//            }
+            diseaseDetectionViewModel.message.observe(this) { event ->
+                event.getContentIfNotHandled()?.let { text ->
+                    showMessage(text)
+                }
+            }
+            diseaseDetectionViewModel.isLoading.observe(this@DiseaseDetectionActivity) {
+                showLoading(it)
+            }
         }
+    }
+
+    private fun showMessage(msg: String) {
+        val inflater = layoutInflater
+        val layout =
+            inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container))
+        val textView = layout.findViewById<TextView>(R.id.custom_toast_text)
+        textView.text = msg
+        val toast = Toast(this@DiseaseDetectionActivity)
+        toast.view = layout
+        toast.duration = Toast.LENGTH_SHORT
+        toast.setGravity(Gravity.CENTER, 0, 800)
+        toast.show()
     }
 
     private val launcherIntentCamera = registerForActivityResult(
@@ -141,7 +155,7 @@ class DiseaseDetectionActivity : AppCompatActivity() {
             val myFile = File(currentPhotoPath)
             getFile = myFile
             val bitmap = BitmapFactory.decodeFile(myFile.path)
-            addStoryBinding.ivAddPhoto.setImageBitmap(bitmap)
+            binding.ivAddPhoto.setImageBitmap(bitmap)
         }
     }
 
@@ -152,7 +166,7 @@ class DiseaseDetectionActivity : AppCompatActivity() {
             val selectedImageUri: Uri = it.data?.data as Uri
             val myFile = uriToFile(selectedImageUri, this)
             getFile = myFile
-            addStoryBinding.ivAddPhoto.setImageURI(selectedImageUri)
+            binding.ivAddPhoto.setImageURI(selectedImageUri)
         }
     }
 
@@ -187,7 +201,7 @@ class DiseaseDetectionActivity : AppCompatActivity() {
             override fun onLocationChanged(location: Location) {
                 long = location.longitude
                 lat = location.latitude
-                Log.d("AddStoryActivity", "Longitude: $long, Latitude: $lat")
+                Log.d("DiseaseDetectionActivity", "Longitude: $long, Latitude: $lat")
             }
 
             override fun onProviderEnabled(provider: String) {}
@@ -215,7 +229,7 @@ class DiseaseDetectionActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        addStoryBinding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     override fun onRequestPermissionsResult(

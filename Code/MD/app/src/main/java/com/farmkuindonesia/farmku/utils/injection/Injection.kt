@@ -9,6 +9,7 @@ object Injection {
     fun provideRepository(context: Context): Repository {
         val preferences = Preferences.getInstance(context)
         val apiService = ApiConfig.getApiService()
-        return Repository.getInstance(preferences, apiService)
+        val apiServiceML = ApiConfig.getApiServiceML()
+        return Repository.getInstance(preferences, apiService, apiServiceML)
     }
 }

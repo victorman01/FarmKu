@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class DetectionResponse(
     @field:SerializedName("confidence")
-    val confidence: String? = null,
+    val confidence: Float,
 
     @field:SerializedName("result")
     val result: String? = null

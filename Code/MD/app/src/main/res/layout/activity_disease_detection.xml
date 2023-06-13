@@ -2,17 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/iv_add_photo"
-        android:layout_width="419dp"
-        android:layout_height="557dp"
+        android:layout_width="407dp"
+        android:layout_height="428dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/ed_add_description"
+        app:layout_constraintBottom_toTopOf="@+id/group_box"
         app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,43 +19,55 @@
         app:layout_constraintVertical_bias="0.4"
         app:srcCompat="@drawable/home_banner" />
 
-    <EditText
-        android:id="@+id/ed_add_description"
+    <LinearLayout
+        android:id="@+id/group_box"
         android:layout_width="0dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:hint="@string/descriptiontext"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/button_add"
-        app:layout_constraintEnd_toEndOf="@id/iv_add_photo"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/group_box_background"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="@id/iv_add_photo"
-        app:layout_constraintTop_toBottomOf="@id/iv_add_photo"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintEnd_toEndOf="@id/iv_add_photo"
+        app:layout_constraintBottom_toTopOf="@id/button_add">
+
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/confidenceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/button_add"
         android:layout_width="383dp"
         android:layout_height="35dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:background="#000000"
         android:text="@string/detect_text"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@id/ed_add_description"
-        app:layout_constraintStart_toStartOf="@id/ed_add_description"
-        app:layout_constraintTop_toBottomOf="@+id/ed_add_description" />
+        app:layout_constraintEnd_toEndOf="@id/group_box"
+        app:layout_constraintStart_toStartOf="@id/group_box"
+        app:layout_constraintTop_toBottomOf="@id/group_box" />
 
     <LinearLayout
         android:id="@+id/ll_add_buttons"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@id/ed_add_description"
-        app:layout_constraintStart_toStartOf="@id/ed_add_description"
-        app:layout_constraintTop_toBottomOf="@+id/iv_add_photo"
-        app:layout_constraintBottom_toTopOf="@+id/ed_add_description"
+        app:layout_constraintEnd_toEndOf="@id/iv_add_photo"
+        app:layout_constraintStart_toStartOf="@id/iv_add_photo"
+        app:layout_constraintTop_toBottomOf="@+id/button_add"
         app:layout_constraintVertical_bias="0.5"
         android:gravity="center">
 
@@ -73,7 +84,6 @@
             android:text="@string/melalui_galeri_text"/>
     </LinearLayout>
 
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
@@ -84,4 +94,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

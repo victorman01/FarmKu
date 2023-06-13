@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         btnPredict.setOnClickListener {
 //            val requestBody: RequestBody = RequestBody.create("image/jpeg".toMediaTypeOrNull(), imageBytes)
 //            val imagePart: MultipartBody.Part = MultipartBody.Part.createFormData("image", "image.jpg", requestBody)
-            imageMultipart?.let { it -> preprocessViewModel.result(it) }
+            imageMultipart?.let { preprocessViewModel.result(it) }
             preprocessViewModel.preprocess.observe(this){
                 Toast.makeText(this, "Result: " + it.result + " and Confidence: " +
                         it.confidence, Toast.LENGTH_LONG).show()

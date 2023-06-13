@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.farmkuindonesia.farmku.R
-import com.farmkuindonesia.farmku.database.Preferences
 import com.farmkuindonesia.farmku.databinding.FragmentProfileBinding
 import com.farmkuindonesia.farmku.ui.main.MainActivity
 

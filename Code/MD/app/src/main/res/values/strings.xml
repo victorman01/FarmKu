@@ -91,4 +91,7 @@
     <string name="detect_text">Deteksi Penyakit</string>
     <string name="melalui_kamera_text">Melalui Kamera</string>
     <string name="melalui_galeri_text">Melalui Galeri</string>
+    <string name="result_text">Result: %s</string>
+    <string name="confidence_text">Confidence: %d%%</string>
+    <string name="null_picture_message">Please add the picture you want to detect</string>
 </resources>
