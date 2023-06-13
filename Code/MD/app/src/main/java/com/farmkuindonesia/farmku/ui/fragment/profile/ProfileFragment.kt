@@ -20,8 +20,6 @@ class ProfileFragment : Fragment(), ListProfileItemAdapter.MainActivityCallback 
         super.onViewCreated(view, savedInstanceState)
 
         val mainActivity = activity as MainActivity
-
-        val preferences = requireActivity().getSharedPreferences(Preferences.PREFERENCES, Context.MODE_PRIVATE)
         val adapter = ListProfileItemAdapter(requireContext(),getProfileItemList(), mainActivity)
         binding.apply {
             rvProfileItem.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -81,6 +79,6 @@ class ProfileFragment : Fragment(), ListProfileItemAdapter.MainActivityCallback 
     }
 
     override fun finishMainActivity() {
-        activity?.finish() // Finish the MainActivity
+        activity?.finish()
     }
 }

@@ -28,11 +28,6 @@ import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.HotNews
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private var currentPermissionRequestCode: Int = 0
-    private val CAMERA_PERMISSION_REQUEST_CODE = 1001
-    private val GALLERY_PERMISSION_REQUEST_CODE = 1002
-    private val CAMERA_REQUEST_CODE = 2001
-    private val GALLERY_REQUEST_CODE = 2002
     private lateinit var homeFragmentViewModel: HomeFragmentViewModel
     private lateinit var viewModelFac: ViewModelFactory
 
@@ -46,7 +41,7 @@ class HomeFragment : Fragment() {
         val adapter = ListHotNewsAdapter(HotNews().getDummyNewsList())
 
         binding.apply {
-            txtHiName.text = "Hi, ${user.name.toString()}"
+            txtHiName.text = "Hi, ${user.name}"
 
             rvNews.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)

@@ -65,8 +65,9 @@ class Repository constructor(private val apiService: ApiService, private val pre
                             JSONObject(userData).getString("created_at"),
                             JSONObject(userData).getString("updated_at")
                         )
+                        setUser(user,"EMAIL")
                         _userLogin.value = user
-                        _messages.value = Event("Login Success, Hello ${user.name}")
+                        _messages.value = Event("Login Success")
                     } else {
                         _messages.value = Event("Token is missing")
                     }
