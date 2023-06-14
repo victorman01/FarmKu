@@ -9,6 +9,7 @@ import com.farmkuindonesia.farmku.ui.fragment.home.deteksipenyakit.DiseaseDetect
 import com.farmkuindonesia.farmku.ui.login.LoginViewModel
 import com.farmkuindonesia.farmku.ui.main.MainActivityViewModel
 import com.farmkuindonesia.farmku.ui.register.RegisterViewModel
+import com.farmkuindonesia.farmku.ui.soildatacollection.SoilDataCollectionViewModel
 import com.farmkuindonesia.farmku.utils.injection.Injection
 
 class ViewModelFactory(private val rep: Repository) : ViewModelProvider.NewInstanceFactory() {
@@ -29,6 +30,9 @@ class ViewModelFactory(private val rep: Repository) : ViewModelProvider.NewInsta
             }
             modelClass.isAssignableFrom(DiseaseDetectionViewModel::class.java)->{
                 DiseaseDetectionViewModel(rep) as T
+            }
+            modelClass.isAssignableFrom(SoilDataCollectionViewModel::class.java)->{
+                SoilDataCollectionViewModel(rep) as T
             }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)

@@ -24,6 +24,7 @@ import com.farmkuindonesia.farmku.ui.forgotpassword.ForgotPasswordActivity
 import com.farmkuindonesia.farmku.ui.fragment.home.deteksipenyakit.DiseaseDetectionActivity
 import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.ListHotNewsAdapter
 import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.HotNews
+import com.farmkuindonesia.farmku.ui.soildatacollection.SoilDataCollectionActivity
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -49,6 +50,10 @@ class HomeFragment : Fragment() {
 
             btnDeteksiPenyakit.setOnClickListener {
                 val intent = Intent(requireContext(), DiseaseDetectionActivity::class.java)
+                startActivity(intent)
+            }
+            btnData.setOnClickListener{
+                val intent = Intent(requireContext(), SoilDataCollectionActivity::class.java)
                 startActivity(intent)
             }
         }

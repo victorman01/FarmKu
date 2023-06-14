@@ -53,4 +53,21 @@ object ApiConfig {
             .build()
         return retrofit.create(ApiService::class.java)
     }
+
+    fun getApiServiceML2(): ApiService {
+        val authInterceptor = if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        } else {
+            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
+        }
+        val client = OkHttpClient.Builder()
+            .addInterceptor(authInterceptor)
+            .build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.URL_API3)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+        return retrofit.create(ApiService::class.java)
+    }
 }

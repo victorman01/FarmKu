@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.Gravity
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -54,11 +55,15 @@ class DiseaseDetectionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDiseaseDetectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
+
+        var actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+        }
+
         viewModelFac = ViewModelFactory.getInstance(this)
         diseaseDetectionViewModel =
             ViewModelProvider(this, viewModelFac)[DiseaseDetectionViewModel::class.java]
-        binding.groupBox.visibility = View.GONE
 
         binding.buttonAddCamera.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
@@ -100,7 +105,7 @@ class DiseaseDetectionActivity : AppCompatActivity() {
 //            }
 //        }
 
-        binding.buttonAdd.setOnClickListener {
+        binding.buttonDetect.setOnClickListener {
             if (getFile != null) {
                 val file = reduceFileImage(getFile as File)
                 val requestImageFile = file.asRequestBody("image/jpeg".toMediaType())
@@ -115,7 +120,6 @@ class DiseaseDetectionActivity : AppCompatActivity() {
                     binding.resultText.text = getString(R.string.result_text, result.result)
                     binding.confidenceText.text =
                         getString(R.string.confidence_text, confidencePercentage)
-                    binding.groupBox.visibility = View.VISIBLE
                 }
             } else {
                 Toast.makeText(
@@ -130,6 +134,20 @@ class DiseaseDetectionActivity : AppCompatActivity() {
                 }
             }
             diseaseDetectionViewModel.isLoading.observe(this@DiseaseDetectionActivity) {
+                if (it){
+                    binding.apply {
+                        buttonDetect.isEnabled = false
+                        buttonAddCamera.isEnabled = false
+                        buttonAddGallery.isEnabled = false
+                    }
+                }
+                else{
+                    binding.apply{
+                        binding.buttonDetect.isEnabled = true
+                        binding.buttonAddCamera.isEnabled = true
+                        binding.buttonAddGallery.isEnabled = true
+                    }
+                }
                 showLoading(it)
             }
         }
@@ -255,5 +273,15 @@ class DiseaseDetectionActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

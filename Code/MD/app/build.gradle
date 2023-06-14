@@ -16,8 +16,9 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField("String", "URL_API", '"https://7138-125-166-134-121.ngrok-free.app/"')
+        buildConfigField("String", "URL_API", '"https://farmku-backend-hwmomiroxq-et.a.run.app/"')
         buildConfigField("String", "URL_API2", '"http://34.101.59.1:3003/"')
+        buildConfigField("String", "URL_API3", '"https://farmku-api-hwmomiroxq-uc.a.run.app/"')
         buildConfigField("String", "API_KEY", '"zuOoKBIoHzAEpQuH0uN3waw6yRXdpKTJl7Z24mqybtfUEyhw6O5ns5F7fS47ttQgHsSzrjkcrQxEopelU5UmuEH61wZvzllvBHUZpC7YHlq5v6z7BajG3kB47Qj5CHKu8xu6MH7uWMYR7D3zYNSJVDG4pdwN7OruVAAbNbU7Q4aT9KK3qLYAX7e8LtqIjXRj1lLLDqIfmhOQUGcwEQLb87hYXKKfqIYsGblnqQk2ISIcerTQYtjesbL7R9mnrSrF"')
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
