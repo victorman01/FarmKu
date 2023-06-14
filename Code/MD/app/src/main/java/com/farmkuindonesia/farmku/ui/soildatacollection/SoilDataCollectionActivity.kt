@@ -1,5 +1,6 @@
 package com.farmkuindonesia.farmku.ui.soildatacollection
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.farmkuindonesia.farmku.database.responses.SoilDataCollectionResponseItem
 import com.farmkuindonesia.farmku.databinding.ActivitySoilDataCollectionBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
+import com.farmkuindonesia.farmku.ui.soildatacollection.add.AddSoilDataActivity
 
 class SoilDataCollectionActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySoilDataCollectionBinding
@@ -19,7 +21,7 @@ class SoilDataCollectionActivity : AppCompatActivity() {
         binding = ActivitySoilDataCollectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Soils Data"
+        supportActionBar?.title = "Data Tanah"
 
         viewModelFac = ViewModelFactory.getInstance(this)
         soilDataCollectionViewModel =
@@ -34,6 +36,11 @@ class SoilDataCollectionActivity : AppCompatActivity() {
             binding.rvSoilData.adapter = adapter
             binding.rvSoilData.layoutManager =
                 LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        }
+
+        binding.fabAddSoilData.setOnClickListener{
+            val intent = Intent(this, AddSoilDataActivity::class.java)
+            startActivity(intent)
         }
     }
 
