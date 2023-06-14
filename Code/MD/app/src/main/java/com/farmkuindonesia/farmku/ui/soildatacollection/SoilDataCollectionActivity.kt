@@ -19,6 +19,8 @@ class SoilDataCollectionActivity : AppCompatActivity() {
         binding = ActivitySoilDataCollectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Soils Data"
+
         viewModelFac = ViewModelFactory.getInstance(this)
         soilDataCollectionViewModel =
             ViewModelProvider(this, viewModelFac)[SoilDataCollectionViewModel::class.java]

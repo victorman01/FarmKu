@@ -3,6 +3,7 @@ package com.farmkuindonesia.farmku.database.responses
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import okhttp3.MultipartBody
 
 @Parcelize
 data class SoilDataCollectionResponse(

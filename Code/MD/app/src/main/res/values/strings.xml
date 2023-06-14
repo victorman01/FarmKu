@@ -94,4 +94,7 @@
     <string name="result_text">Result: %s</string>
     <string name="confidence_text">Confidence: %d%%</string>
     <string name="null_picture_message">Please add the picture you want to detect</string>
+    <string name="title_activity_soil_data_collection_detail_maps">
+        SoilDataCollectionDetailMapsActivity
+    </string>
 </resources>
