@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.farmkuindonesia.farmku.database.model.Dummy
 import com.farmkuindonesia.farmku.databinding.HotNewsLayoutBinding
 
 class ListHotNewsAdapter(private val listNews: ArrayList<Dummy>): RecyclerView.Adapter<ListHotNewsAdapter.ViewHolder>() {
@@ -16,7 +18,9 @@ class ListHotNewsAdapter(private val listNews: ArrayList<Dummy>): RecyclerView.A
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val (name, date, photo) = listNews[position]
-        holder.imgNews.setImageResource(photo)
+        Glide.with(holder.itemView.context)
+            .load(photo)
+            .into(holder.imgNews)
         holder.txtTitleNews.text = name
         holder.txtDateNews.text = date
     }

@@ -1,4 +1,4 @@
-package com.farmkuindonesia.farmku.ui.fragment.home.hotnews
+package com.farmkuindonesia.farmku.database.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -7,5 +7,5 @@ import kotlinx.parcelize.Parcelize
 data class Dummy(
     val name: String,
     val date: String,
-    val photo: Int
+    val photo: String
 ) : Parcelable

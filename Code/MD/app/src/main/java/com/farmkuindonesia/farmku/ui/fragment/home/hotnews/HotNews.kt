@@ -1,29 +1,29 @@
 package com.farmkuindonesia.farmku.ui.fragment.home.hotnews
 
-import com.farmkuindonesia.farmku.R
+import com.farmkuindonesia.farmku.database.model.Dummy
 
 class HotNews {
     fun getDummyNewsList(): ArrayList<Dummy> {
         val dummyList = ArrayList<Dummy>()
         dummyList.add(
             Dummy(
-                "Merangkak Naik, Harga TBS Sawit di Babel Naik Rp 100 dari Rp 1.300 per Kg menjadi Rp 1.400 per Kg",
-                "June 1, 2023",
-                R.drawable.home_banner
+                "Ribuan Hektare Sawah di Kabupaten Bandung Barat Terancam Kekeringan, Pemkab Siapkan Cadangan Pangan",
+                "Dipublikasikan: June 1, 2023",
+                "https://cdn-2.tstatic.net/jabar/foto/bank/images/lahan-tembakau-rusak-karena-kering.jpg"
             )
         )
         dummyList.add(
             Dummy(
-                "Distan Mataram mengoptimalkan pengolahan tanah tingkatkan produksi padi",
-                "June 2, 2023",
-                R.drawable.home_banner
+                "Upaya Petani Padi Sleman Hadapi Potensi Kekeringan",
+                "Dipublikasikan: June 2, 2023",
+                "https://static.republika.co.id/uploads/images/inpicture_slide/089398700-1642066877-830-556.jpg"
             )
         )
         dummyList.add(
             Dummy(
-                "Gagal Tanam Padi, Petani Desa Rahayu Minta PHE TEJ Beri Ganti Rugi",
-                "June 3, 2023",
-                R.drawable.home_banner
+                "Mengenal Mangenta, Tradisi Menyambut Masa Panen Padi Suku Dayak",
+                "Dipublikasikan: June 3, 2023",
+                "https://cdn.medcom.id/dynamic/content/2023/06/14/1579013/WKRfmQrJtq.jpg?w=1024"
             )
         )
         return dummyList
