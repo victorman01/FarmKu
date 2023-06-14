@@ -60,6 +60,7 @@ class DiseaseDetectionActivity : AppCompatActivity() {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
+        actionBar?.title = "Deteksi Penyakit"
 
         viewModelFac = ViewModelFactory.getInstance(this)
         diseaseDetectionViewModel =

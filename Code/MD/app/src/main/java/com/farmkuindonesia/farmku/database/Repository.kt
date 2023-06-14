@@ -197,7 +197,6 @@ class Repository constructor(
 
     fun getSoilData(){
         _isLoading.value = true
-        var data = listOf<SoilDataCollectionResponseItem>()
         val client = apiServiceML2.getSoilDataCollection()
         client.enqueue(object : Callback<List<SoilDataCollectionResponseItem>> {
             override fun onResponse(

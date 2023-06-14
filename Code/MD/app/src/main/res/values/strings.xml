@@ -97,4 +97,6 @@
     <string name="title_activity_soil_data_collection_detail_maps">
         SoilDataCollectionDetailMapsActivity
     </string>
+    <string name="hint_double">0.0</string>
+    <string name="tambahkan_data_tanah">Tambahkan Data Tanah</string>
 </resources>

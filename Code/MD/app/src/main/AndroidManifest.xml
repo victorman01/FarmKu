@@ -38,7 +38,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".AddSoilDataActivity"
+            android:name=".ui.soildatacollection.add.AddSoilDataActivity"
             android:exported="false" />
 
         <meta-data

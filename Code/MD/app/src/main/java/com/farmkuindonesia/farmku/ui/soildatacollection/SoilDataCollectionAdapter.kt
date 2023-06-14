@@ -1,12 +1,17 @@
 package com.farmkuindonesia.farmku.ui.soildatacollection
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.farmkuindonesia.farmku.database.responses.SoilDataCollectionResponseItem
 import com.farmkuindonesia.farmku.databinding.SoilDataCollectionLayoutBinding
 import com.farmkuindonesia.farmku.ui.soildatacollection.detail.SoilDataCollectionDetailActivity
@@ -33,6 +38,20 @@ class SoilDataCollectionAdapter(private val listData: List<SoilDataCollectionRes
         holder.txtNList.text = "N = $n"
         holder.txtPList.text = "P = $p"
         holder.txtKList.text = "K = $k"
+
+        Glide.with(holder.itemView.context)
+            .asBitmap()
+            .load(imgUrl)
+            .into(object : CustomTarget<Bitmap>() {
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    // Set the loaded image bitmap to the ImageView
+                    holder.imgSoilDataCollection.setImageBitmap(resource)
+                }
+
+                override fun onLoadCleared(placeholder: Drawable?) {
+                    // Optional: Handle any cleanup or placeholder display if needed
+                }
+            })
 
         holder.itemView.setOnClickListener{
             val intent = Intent(holder.itemView.context, SoilDataCollectionDetailActivity::class.java)

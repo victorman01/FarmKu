@@ -37,8 +37,18 @@ data class SoilDataCollectionResponseItem(
 	val latitude: Double? = null,
 
 	@field:SerializedName("Image")
-	val image: String? = null,
+	val image: Image? = null,
 
 	@field:SerializedName("Description")
 	val description: String? = null
+) : Parcelable
+
+@Parcelize
+data class Image(
+
+	@field:SerializedName("data")
+	val data: ByteArray? = null,
+
+	@field:SerializedName("type")
+	val type: String? = null
 ) : Parcelable

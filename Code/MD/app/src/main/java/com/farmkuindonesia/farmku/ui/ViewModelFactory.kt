@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.farmkuindonesia.farmku.database.Repository
 import com.farmkuindonesia.farmku.ui.fragment.home.HomeFragmentViewModel
 import com.farmkuindonesia.farmku.ui.fragment.home.deteksipenyakit.DiseaseDetectionViewModel
+import com.farmkuindonesia.farmku.ui.fragment.profile.ProfileViewModel
 import com.farmkuindonesia.farmku.ui.login.LoginViewModel
 import com.farmkuindonesia.farmku.ui.main.MainActivityViewModel
 import com.farmkuindonesia.farmku.ui.register.RegisterViewModel
@@ -27,6 +28,9 @@ class ViewModelFactory(private val rep: Repository) : ViewModelProvider.NewInsta
             }
             modelClass.isAssignableFrom(HomeFragmentViewModel::class.java)->{
                 HomeFragmentViewModel(rep) as T
+            }
+            modelClass.isAssignableFrom(ProfileViewModel::class.java)->{
+                ProfileViewModel(rep) as T
             }
             modelClass.isAssignableFrom(DiseaseDetectionViewModel::class.java)->{
                 DiseaseDetectionViewModel(rep) as T
