@@ -1,12 +1,11 @@
 package com.farmkuindonesia.farmku.database.config
 
-import com.farmkuindonesia.farmku.database.responses.AddressResponseItem
-import com.farmkuindonesia.farmku.database.responses.SignInResponse
-import com.farmkuindonesia.farmku.database.responses.SignUpResponse
+import com.farmkuindonesia.farmku.database.responses.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
+import java.util.ArrayList
 
 interface ApiService {
     @FormUrlEncoded
@@ -32,4 +31,12 @@ interface ApiService {
         @Query("id") id:String
     ): Call<List<AddressResponseItem>>
 
+    @Multipart
+    @POST("preprocess")
+    fun addImage(
+        @Part image:MultipartBody.Part
+    ): Call<DetectionResponse>
+
+    @GET("data-collection")
+    fun getSoilDataCollection(): Call<List<SoilDataCollectionResponseItem>>
 }

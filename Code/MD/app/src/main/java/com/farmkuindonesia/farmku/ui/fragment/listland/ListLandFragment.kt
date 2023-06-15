@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.FragmentListLandBinding
-import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.Dummy
+import com.farmkuindonesia.farmku.database.model.Dummy
 
 
 class ListLandFragment : Fragment() {
@@ -37,15 +36,9 @@ class ListLandFragment : Fragment() {
 
     private fun getDummyNewsList(): ArrayList<Dummy> {
         val dummyList = ArrayList<Dummy>()
-        dummyList.add(Dummy("Sawah Padi Rojo Lele", "June 1, 2023", R.drawable.home_banner))
-        dummyList.add(Dummy("Sawah Padi Rojo Lele", "June 2, 2023", R.drawable.home_banner))
-        dummyList.add(Dummy("Sawah Padi Rojo Lele", "June 3, 2023", R.drawable.home_banner))
-        dummyList.add(Dummy("Sawah Padi Rojo Lele", "June 4, 2023", R.drawable.home_banner))
-        dummyList.add(Dummy("Sawah Padi Rojo Lele", "June 5, 2023", R.drawable.home_banner))
-        dummyList.add(Dummy("Sawah Padi Rojo Lele", "June 6, 2023", R.drawable.home_banner))
-        dummyList.add(Dummy("Sawah Padi Rojo Lele", "June 7, 2023", R.drawable.home_banner))
-        dummyList.add(Dummy("Sawah Padi Rojo Lele", "June 8, 2023", R.drawable.home_banner))
-        dummyList.add(Dummy("Sawah Padi Rojo Lele", "June 9, 2023", R.drawable.home_banner))
+        dummyList.add(Dummy("Sawah Padi Rojo Lele", "June 1, 2023", "https://polinela.ac.id/wp-content/uploads/2020/06/Tanaman-padi-varietas-M400.jpg"))
+        dummyList.add(Dummy("Sawah Jagung", "June 3, 2023", "https://file.sulselprov.go.id/upload/post/1664361605.jpg"))
+        dummyList.add(Dummy("Sawah Kentang", "June 5, 2023", "https://i2.wp.com/gdm.id/wp-content/uploads/2022/11/pupuk-tanaman-padi.jpg"))
         return dummyList
     }
 

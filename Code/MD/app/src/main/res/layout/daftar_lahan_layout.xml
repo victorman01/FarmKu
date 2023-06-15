@@ -25,9 +25,10 @@
 
             <ImageView
                 android:id="@+id/imgLand"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="24dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -37,8 +38,8 @@
                 android:id="@+id/txtLocLand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
                 android:text="Sawah Padi Rojo Lele"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -52,11 +53,12 @@
                 android:id="@+id/txtDateLand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:text="Kamis, 12 Januari 2023"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.143"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imgLand"
                 app:layout_constraintTop_toBottomOf="@+id/txtLocLand" />
 

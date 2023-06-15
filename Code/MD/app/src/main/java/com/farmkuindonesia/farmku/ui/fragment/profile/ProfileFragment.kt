@@ -6,23 +6,36 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.farmkuindonesia.farmku.R
-import com.farmkuindonesia.farmku.database.Preferences
 import com.farmkuindonesia.farmku.databinding.FragmentProfileBinding
+import com.farmkuindonesia.farmku.ui.ViewModelFactory
+import com.farmkuindonesia.farmku.ui.fragment.home.HomeFragmentViewModel
 import com.farmkuindonesia.farmku.ui.main.MainActivity
 
 class ProfileFragment : Fragment(), ListProfileItemAdapter.MainActivityCallback {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var profileViewModel: ProfileViewModel
+    private lateinit var viewModelFac: ViewModelFactory
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mainActivity = activity as MainActivity
+        viewModelFac = ViewModelFactory.getInstance(this.requireContext())
+        profileViewModel = ViewModelProvider(this, viewModelFac)[ProfileViewModel::class.java]
 
-        val preferences = requireActivity().getSharedPreferences(Preferences.PREFERENCES, Context.MODE_PRIVATE)
-        val adapter = ListProfileItemAdapter(getProfileItemList(), preferences, mainActivity)
+        val user = profileViewModel.getUser()
+
+        binding.apply {
+            txtNameProfile.text = user.name
+            txtNumberProfile.text = user.phoneNumber
+        }
+
+        val mainActivity = activity as MainActivity
+        val adapter = ListProfileItemAdapter(requireContext(),getProfileItemList(), mainActivity)
         binding.apply {
             rvProfileItem.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             rvProfileItem.isNestedScrollingEnabled = false
@@ -81,6 +94,6 @@ class ProfileFragment : Fragment(), ListProfileItemAdapter.MainActivityCallback 
     }
 
     override fun finishMainActivity() {
-        activity?.finish() // Finish the MainActivity
+        activity?.finish()
     }
 }

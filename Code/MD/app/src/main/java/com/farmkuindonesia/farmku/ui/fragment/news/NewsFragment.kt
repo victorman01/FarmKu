@@ -5,11 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.FragmentNewsBinding
-import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.Dummy
+import com.farmkuindonesia.farmku.database.model.Dummy
 
 class NewsFragment : Fragment() {
     private var _binding: FragmentNewsBinding? = null
@@ -35,65 +33,51 @@ class NewsFragment : Fragment() {
         val dummyList = ArrayList<Dummy>()
         dummyList.add(
             Dummy(
-                "Merangkak Naik, Harga TBS Sawit di Babel Naik Rp 100 dari Rp 1.300 per Kg menjadi Rp 1.400 per Kg",
+                "Ribuan Hektare Sawah di Kabupaten Bandung Barat Terancam Kekeringan, Pemkab Siapkan Cadangan Pangan",
                 "Dipublikasikan: June 1, 2023",
-                R.drawable.home_banner
+                "https://cdn-2.tstatic.net/jabar/foto/bank/images/lahan-tembakau-rusak-karena-kering.jpg"
             )
         )
         dummyList.add(
             Dummy(
-                "Distan Mataram mengoptimalkan pengolahan tanah tingkatkan produksi padi",
+                "Upaya Petani Padi Sleman Hadapi Potensi Kekeringan",
                 "Dipublikasikan: June 2, 2023",
-                R.drawable.home_banner
+                "https://static.republika.co.id/uploads/images/inpicture_slide/089398700-1642066877-830-556.jpg"
             )
         )
         dummyList.add(
             Dummy(
-                "Gagal Tanam Padi, Petani Desa Rahayu Minta PHE TEJ Beri Ganti Rugi",
+                "Mengenal Mangenta, Tradisi Menyambut Masa Panen Padi Suku Dayak",
                 "Dipublikasikan: June 3, 2023",
-                R.drawable.home_banner
+                "https://cdn.medcom.id/dynamic/content/2023/06/14/1579013/WKRfmQrJtq.jpg?w=1024"
             )
         )
         dummyList.add(
             Dummy(
-                "Merangkak Naik, Harga TBS Sawit di Babel Naik Rp 100 dari Rp 1.300 per Kg menjadi Rp 1.400 per Kg",
+                "Perbedaan Panen Padi Manual dan Mekanis",
                 "Dipublikasikan: June 1, 2023",
-                R.drawable.home_banner
+                "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1axARX.img?w=750&h=500&m=6&x=120&y=120&s=280&d=280"
             )
         )
         dummyList.add(
             Dummy(
-                "Distan Mataram mengoptimalkan pengolahan tanah tingkatkan produksi padi",
+                "Daerah yang Jadi Lumbung Padi di Jawa Tengah",
                 "Dipublikasikan: June 2, 2023",
-                R.drawable.home_banner
+                "https://radarmadiun.jawapos.com/wp-content/uploads/2023/06/1_DSCN7569.jpg"
             )
         )
         dummyList.add(
             Dummy(
-                "Gagal Tanam Padi, Petani Desa Rahayu Minta PHE TEJ Beri Ganti Rugi",
-                "Dipublikasikan: June 3, 2023",
-                R.drawable.home_banner
-            )
-        )
-        dummyList.add(
-            Dummy(
-                "Merangkak Naik, Harga TBS Sawit di Babel Naik Rp 100 dari Rp 1.300 per Kg menjadi Rp 1.400 per Kg",
-                "Dipublikasikan: June 1, 2023",
-                R.drawable.home_banner
-            )
-        )
-        dummyList.add(
-            Dummy(
-                "Distan Mataram mengoptimalkan pengolahan tanah tingkatkan produksi padi",
+                "Tahun Ke-5 Perbaikan Genetik Padi Merah Munduk, Dirancang Panen Cepat dan Cocok di Semua Lahan",
                 "Dipublikasikan: June 2, 2023",
-                R.drawable.home_banner
+                "https://www.nusabali.com/article_images/143846/tahun-ke-5-perbaikan-genetik-padi-merah-munduk-di-800-2023-06-14-051557_0.jpg"
             )
         )
         dummyList.add(
             Dummy(
-                "Gagal Tanam Padi, Petani Desa Rahayu Minta PHE TEJ Beri Ganti Rugi",
-                "Dipublikasikan: June 3, 2023",
-                R.drawable.home_banner
+                "Dilanda Musim Kemarau, Tanaman Padi Warga Nagan Raya Terancam Mati",
+                "Dipublikasikan: June 2, 2023",
+                "https://cdn.habaaceh.id/files/images/20230614-whatsapp-image-2023-06-14-at-11-57-13-1.jpeg"
             )
         )
         return dummyList

@@ -1,6 +1,7 @@
 package com.farmkuindonesia.farmku.database
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.farmkuindonesia.farmku.database.model.Address
 import com.farmkuindonesia.farmku.database.model.User
 
@@ -26,11 +27,11 @@ class Preferences(context: Context) {
         editor.apply()
     }
 
-    fun setLogout() {
-        val editor = preferences.edit()
-        editor.clear()
-        editor.apply()
-    }
+//    fun setLogout() {
+//        val editor = preferences.edit()
+//        editor.clear()
+//        editor.apply()
+//    }
 
     fun getUser(): User {
         val userId = preferences.getString(USER_ID, "") ?: ""
@@ -86,5 +87,11 @@ class Preferences(context: Context) {
             instance ?: synchronized(this) {
                 instance ?: Preferences(context)
             }
+
+        fun setLogout(preferences: SharedPreferences) {
+            val editor = preferences.edit()
+            editor.clear()
+            editor.apply()
+        }
     }
 }

@@ -30,7 +30,7 @@ class CustomViewEmailNumEditText : TextInputEditText {
                     } else {
                         "Email is required"
                     }
-                } else if (text.matches(Regex("^[+]?[0-9]{10,}$"))) {
+                } else if (text.matches(Regex("^[+]?[0-9]{10,13}$"))) {
                     error = if (text.isNotEmpty()) {
                         null
                     } else {

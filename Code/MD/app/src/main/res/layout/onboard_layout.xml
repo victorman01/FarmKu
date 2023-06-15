@@ -6,39 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtTitleOnBoarding"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/onboarding1_title"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgOnBoarding" />
-
-    <TextView
-        android:id="@+id/txtSubTitleOnBoarding"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/onboarding1_subtitle"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitleOnBoarding"
-        app:layout_constraintVertical_bias="0.058" />
-
     <ImageView
         android:id="@+id/imgOnBoarding"
         android:layout_width="411dp"
-        android:layout_height="455dp"
+        android:layout_height="734dp"
         android:scaleType="centerCrop"
         android:src="@drawable/onboarding1"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,6 +17,48 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.666" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="411dp"
+        android:layout_height="179dp"
+        android:background="@drawable/background_tulisan_onboarding"
+        app:layout_constraintBottom_toBottomOf="@+id/imgOnBoarding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.945">
+
+        <TextView
+            android:id="@+id/txtTitleOnBoarding"
+            android:layout_width="398dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/onboarding1_title"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtSubTitleOnBoarding"
+            android:layout_width="364dp"
+            android:layout_height="101dp"
+            android:text="@string/onboarding1_subtitle"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitleOnBoarding"
+            app:layout_constraintVertical_bias="0.243" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

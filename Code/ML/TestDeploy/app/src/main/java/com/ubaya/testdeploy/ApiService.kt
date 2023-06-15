@@ -9,7 +9,7 @@ import com.ubaya.testdeploy.PreprocessResponse
 
 interface ApiService {
     @Multipart
-    @POST("upload.php")
+    @POST("preprocess")
     fun addImage(
         @Part image:MultipartBody.Part
     ): Call<PreprocessResponse>

@@ -7,17 +7,22 @@ import androidx.lifecycle.MutableLiveData
 import com.farmkuindonesia.farmku.database.config.ApiService
 import com.farmkuindonesia.farmku.database.model.Address
 import com.farmkuindonesia.farmku.database.model.User
-import com.farmkuindonesia.farmku.database.responses.AddressResponseItem
-import com.farmkuindonesia.farmku.database.responses.SignInResponse
-import com.farmkuindonesia.farmku.database.responses.SignUpResponse
+import com.farmkuindonesia.farmku.database.responses.*
 import com.farmkuindonesia.farmku.utils.event.Event
+import okhttp3.MultipartBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import kotlin.collections.ArrayList
 
-class Repository constructor(private val apiService: ApiService, private val pref: Preferences) {
+class Repository constructor(
+    private val apiService: ApiService,
+    private val pref: Preferences,
+    private val apiServiceML: ApiService,
+    private val apiServiceML2: ApiService
+) {
     private val _messages = MutableLiveData<Event<String>>()
     val messages: LiveData<Event<String>> = _messages
 
@@ -26,6 +31,12 @@ class Repository constructor(private val apiService: ApiService, private val pre
 
     private val _userLogin = MutableLiveData<User>()
     val userLogin: LiveData<User> = _userLogin
+
+    private val _preprocess = MutableLiveData<DetectionResponse>()
+    val preprocess: LiveData<DetectionResponse> = _preprocess
+
+    private val _soilData = MutableLiveData<List<SoilDataCollectionResponseItem>>()
+    val soilData: LiveData<List<SoilDataCollectionResponseItem>> = _soilData
 
     //Login
     fun signIn(email: String, password: String): LiveData<SignInResponse> {
@@ -60,8 +71,9 @@ class Repository constructor(private val apiService: ApiService, private val pre
                             JSONObject(userData).getString("created_at"),
                             JSONObject(userData).getString("updated_at")
                         )
+                        setUser(user, "EMAIL")
                         _userLogin.value = user
-                        _messages.value = Event("Login Success, Hello ${user.name}")
+                        _messages.value = Event("Login Success")
                     } else {
                         _messages.value = Event("Token is missing")
                     }
@@ -92,7 +104,8 @@ class Repository constructor(private val apiService: ApiService, private val pre
     }
 
     fun setUser(user: User?, loggedInWith: String) = pref.setLogin(user, loggedInWith)
-    fun logOutUser() = pref.setLogout()
+
+    fun getUser() = pref.getUser()
 
     // Register
     fun signUp(
@@ -132,7 +145,7 @@ class Repository constructor(private val apiService: ApiService, private val pre
         val addressResponse = MutableLiveData<List<AddressResponseItem?>>()
         val client: Call<List<AddressResponseItem>> = if (id == "0") {
             apiService.getAllProvince(search, "")
-        }else{
+        } else {
             apiService.getAllProvince(search, id)
         }
 
@@ -157,13 +170,67 @@ class Repository constructor(private val apiService: ApiService, private val pre
         return addressResponse
     }
 
+    fun preprocessRepository(file: MultipartBody.Part) {
+        _isLoading.value = true
+        val client = apiServiceML.addImage(file)
+        client.enqueue(object : Callback<DetectionResponse> {
+            override fun onResponse(
+                call: Call<DetectionResponse>,
+                response: Response<DetectionResponse>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    Log.d(TAG, response.body().toString())
+                    _preprocess.value = response.body()
+                } else {
+                    Log.d(TAG, "Error saat deteksi. Message = ${response.message()}")
+                    _messages.value = Event("$TAG, Error saat deteksi. Message = ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<DetectionResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.d(TAG, t.message.toString())
+            }
+        })
+    }
+
+    fun getSoilData(){
+        _isLoading.value = true
+        val client = apiServiceML2.getSoilDataCollection()
+        client.enqueue(object : Callback<List<SoilDataCollectionResponseItem>> {
+            override fun onResponse(
+                call: Call<List<SoilDataCollectionResponseItem>>,
+                response: Response<List<SoilDataCollectionResponseItem>>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    _soilData.value = response.body()
+                } else {
+                    Log.d(TAG, "Error saat ambil data soil. Message = ${response.message()}")
+                    _messages.value = Event("$TAG, Error saat ambil data soil. Message = ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<SoilDataCollectionResponseItem>>, t: Throwable) {
+                _isLoading.value = false
+                Log.d(TAG, t.message.toString())
+            }
+        })
+    }
+
     companion object {
         private const val TAG = "Repository"
         private var instance: Repository? = null
 
-        fun getInstance(pref: Preferences, apiService: ApiService): Repository =
+        fun getInstance(
+            pref: Preferences,
+            apiService: ApiService,
+            apiServiceML: ApiService,
+            apiServiceML2: ApiService
+        ): Repository =
             instance ?: synchronized(this) {
-                instance ?: Repository(apiService, pref)
+                instance ?: Repository(apiService, pref, apiServiceML, apiServiceML2)
             }.also { instance = it }
     }
 }

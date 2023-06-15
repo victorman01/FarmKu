@@ -57,7 +57,6 @@ class LoginActivity : AppCompatActivity() {
             if(email.isNotEmpty() && password.isNotEmpty()){
                 loginViewModel.login(email,password).observe(this@LoginActivity){
                     if (it.success == true) {
-                        loginViewModel.setLogin(loginViewModel.userLoginData.value, "EMAIL")
                         moveHome()
                     } else {
                         it.message?.let { it1 -> showMessage(it1) }

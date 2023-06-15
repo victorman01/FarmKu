@@ -90,8 +90,8 @@
 
         <LinearLayout
             android:id="@+id/linearLayout5"
-            android:layout_width="350dp"
-            android:layout_height="80dp"
+            android:layout_width="316dp"
+            android:layout_height="74dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/information_background"
             android:elevation="10dp"
@@ -105,19 +105,6 @@
                 android:elevation="100dp"
                 android:ems="10">
 
-                <Button
-                    android:id="@+id/btnCekTanaman"
-                    android:layout_width="67dp"
-                    android:layout_height="51dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@android:color/transparent"
-                    android:drawableTop="@drawable/camera_icon"
-                    android:text="@string/cek_tanaman_text"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <TextView
                     android:id="@+id/textView18"
                     android:layout_width="63dp"
@@ -129,7 +116,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/txt_jumlah_Penyakit" />
 
                 <TextView
-                    android:id="@+id/textView22"
+                    android:id="@+id/txtPSoilDataDetail"
                     android:layout_width="63dp"
                     android:layout_height="21dp"
                     android:text="@string/lahan_terdaftar_text"
@@ -142,17 +129,17 @@
                     android:id="@+id/imageView"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="36dp"
                     android:src="@drawable/baseline_bug_report_24"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/divider4"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageView7"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="24dp"
                     android:src="@drawable/baseline_location_on_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/divider5"
@@ -185,41 +172,23 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
-                    android:id="@+id/divider4"
-                    android:layout_width="1dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@android:color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/btnCekTanaman"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
                     android:id="@+id/divider5"
                     android:layout_width="1dp"
                     android:layout_height="60dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="36dp"
                     android:background="@android:color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView18"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.473"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView21"
-                    android:layout_width="67dp"
-                    android:layout_height="14dp"
-                    android:layout_marginStart="12dp"
-                    android:text="@string/cek_tanaman_text"
-                    android:textAlignment="center"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnCekTanaman" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView23"
+            android:id="@+id/txtKSoilDataDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -242,7 +211,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView24" />
+            app:layout_constraintTop_toBottomOf="@+id/txtPHSoilDataDetail" />
 
         <ImageView
             android:id="@+id/btnLahanSaya"
@@ -254,7 +223,7 @@
             android:elevation="20dp"
             android:padding="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView23"
+            app:layout_constraintTop_toBottomOf="@+id/txtKSoilDataDetail"
             app:srcCompat="@drawable/baseline_location_on_24" />
 
         <ImageView
@@ -267,11 +236,11 @@
             android:elevation="20dp"
             android:padding="10dp"
             app:layout_constraintStart_toEndOf="@+id/btnLahanSaya"
-            app:layout_constraintTop_toBottomOf="@+id/textView23"
+            app:layout_constraintTop_toBottomOf="@+id/txtKSoilDataDetail"
             app:srcCompat="@drawable/camera_icon" />
 
         <ImageView
-            android:id="@+id/button6"
+            android:id="@+id/btnData"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="20dp"
@@ -280,7 +249,7 @@
             android:elevation="20dp"
             android:padding="10dp"
             app:layout_constraintStart_toEndOf="@+id/btnDeteksiPenyakit"
-            app:layout_constraintTop_toBottomOf="@+id/textView23"
+            app:layout_constraintTop_toBottomOf="@+id/txtKSoilDataDetail"
             app:srcCompat="@drawable/baseline_location_on_24" />
 
         <ImageView
@@ -292,12 +261,12 @@
             android:background="@drawable/information_background"
             android:elevation="20dp"
             android:padding="10dp"
-            app:layout_constraintStart_toEndOf="@+id/button6"
-            app:layout_constraintTop_toBottomOf="@+id/textView23"
+            app:layout_constraintStart_toEndOf="@+id/btnData"
+            app:layout_constraintTop_toBottomOf="@+id/txtKSoilDataDetail"
             app:srcCompat="@drawable/baseline_location_on_24" />
 
         <TextView
-            android:id="@+id/textView24"
+            android:id="@+id/txtPHSoilDataDetail"
             android:layout_width="68dp"
             android:layout_height="33dp"
             android:layout_marginTop="8dp"
@@ -327,13 +296,13 @@
             android:layout_width="68dp"
             android:layout_height="33dp"
             android:layout_marginTop="8dp"
-            android:text="@string/lahan_saya_text"
+            android:text="Data"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/button6"
-            app:layout_constraintStart_toStartOf="@+id/button6"
-            app:layout_constraintTop_toBottomOf="@+id/button6" />
+            app:layout_constraintEnd_toEndOf="@+id/btnData"
+            app:layout_constraintStart_toStartOf="@+id/btnData"
+            app:layout_constraintTop_toBottomOf="@+id/btnData" />
 
         <TextView
             android:id="@+id/textView27"
