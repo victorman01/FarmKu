@@ -15,10 +15,12 @@ import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -28,7 +30,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityAddSoilDataBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
-import com.farmkuindonesia.farmku.ui.fragment.home.deteksipenyakit.DiseaseDetectionViewModel
 import com.farmkuindonesia.farmku.utils.createCustomTempFile
 import com.farmkuindonesia.farmku.utils.reduceFileImage
 import com.farmkuindonesia.farmku.utils.uriToFile
@@ -65,18 +66,14 @@ class AddSoilDataActivity : AppCompatActivity() {
         binding = ActivityAddSoilDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Tambahkan data tanah"
+        supportActionBar?.title = getString(R.string.tambahkan_data_tanah_text)
 
         viewModelFac = ViewModelFactory.getInstance(this)
         addSoilDataViewModel = ViewModelProvider(this, viewModelFac)[AddSoilDataViewModel::class.java]
 
-        addSoilDataViewModel.message.observe(this){ pesan ->
-            if (pesan == "SUCCESS"){
-               Toast.makeText(this, "Sukses tambah data", Toast.LENGTH_SHORT).show()
-               finish()
-            }
-            else if (pesan == "FAILED"){
-                Toast.makeText(this, "Tambah data gagal", Toast.LENGTH_SHORT).show()
+        addSoilDataViewModel.message.observe(this) { event ->
+            event.getContentIfNotHandled()?.let { text ->
+                showMessage(text)
             }
         }
 
@@ -90,7 +87,7 @@ class AddSoilDataActivity : AppCompatActivity() {
                     if (s.length == 200) {
                         Toast.makeText(
                             this@AddSoilDataActivity,
-                            "Maksimum karakter tercapai",
+                            getString(R.string.maksimum_karakter_tercapai_text),
                             Toast.LENGTH_SHORT
                         ).show()
                         binding.txtDescriptionAddSoilData.clearFocus()
@@ -181,6 +178,17 @@ class AddSoilDataActivity : AppCompatActivity() {
             binding.imgAddSoilData.setImageBitmap(bitmap)
         }
     }
+    private fun showMessage(msg: String) {
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container))
+        val textView = layout.findViewById<TextView>(R.id.custom_toast_text)
+        textView.text = msg
+        val toast = Toast(this@AddSoilDataActivity)
+        toast.view = layout
+        toast.duration = Toast.LENGTH_SHORT
+        toast.setGravity(Gravity.CENTER, 0, 800)
+        toast.show()
+    }
 
     private fun startTakePhoto() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -224,7 +232,7 @@ class AddSoilDataActivity : AppCompatActivity() {
             override fun onLocationChanged(location: Location) {
                 long = location.longitude
                 lat = location.latitude
-                Log.d("DiseaseDetectionActivity", "Longitude: $long, Latitude: $lat")
+                Log.d(TAG, "Longitude: $long, Latitude: $lat")
             }
 
             override fun onProviderEnabled(provider: String) {}
@@ -266,5 +274,9 @@ class AddSoilDataActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    companion object{
+        const val TAG = "DiseaseDetectionActivity"
     }
 }

@@ -2,10 +2,8 @@ package com.farmkuindonesia.farmku.database.config
 
 import com.farmkuindonesia.farmku.database.responses.*
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
-import java.util.ArrayList
 
 interface ApiService {
     @FormUrlEncoded
@@ -28,13 +26,13 @@ interface ApiService {
     @GET("address")
     fun getAllProvince(
         @Query("search") search: String,
-        @Query("id") id:String
+        @Query("id") id: String
     ): Call<List<AddressResponseItem>>
 
     @Multipart
     @POST("preprocess")
     fun addImage(
-        @Part image:MultipartBody.Part
+        @Part image: MultipartBody.Part
     ): Call<DetectionResponse>
 
     @GET("data-collection")
@@ -44,7 +42,7 @@ interface ApiService {
     @Multipart
     @POST("data-collection")
     fun addSoilDataCollection(
-        @Part Image:MultipartBody.Part,
+        @Part Image: MultipartBody.Part,
         @Field("nama_varietas") nama_varietas: String,
         @Field("N") N: Double,
         @Field("P") P: Double,
@@ -57,11 +55,19 @@ interface ApiService {
 
     @GET("land")
     fun getLandByUserId(
-        @Query("user_id") user_id:String
-    ):Call<ListLandResponse>
+        @Query("user_id") user_id: String?
+    ): Call<ListLandResponse>
 
-    @GET("record")
-    fun getNPKRecord(
-
-    )
+    @GET("variety")
+    fun getVariety(): Call<VaerityResponse>
+    @FormUrlEncoded
+    @POST("land")
+    fun addNewLand(
+        @Field("name") name: String,
+        @Field("user_id") userId: String,
+        @Field("variety_id") varietyId: String,
+        @Field("area") area: Int,
+        @Field("address_id") addressId: String,
+        @Field("location") location: LocationAddLand,
+    ): Call<AddLandResponse>
 }

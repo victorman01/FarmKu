@@ -3,6 +3,7 @@ package com.farmkuindonesia.farmku.ui.fragment.listland
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.farmkuindonesia.farmku.database.responses.LandItem
 import com.farmkuindonesia.farmku.databinding.DaftarLahanLayoutBinding
@@ -26,7 +27,7 @@ class ListLandAdapter(private val listLand: List<LandItem?>) :
         with(holder.binding) {
             txtLocLand.text = land?.name
             txtDateLand.text = address
-            root.setOnClickListener{
+            holder.itemView.setOnClickListener{
                 val intent = Intent(it.context, LandActivity::class.java)
                 intent.putExtra(LandActivity.IDLAND,land?.id)
                 intent.putExtra(LandActivity.NAMELAND,land?.name)

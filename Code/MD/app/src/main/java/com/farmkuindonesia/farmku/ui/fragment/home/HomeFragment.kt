@@ -1,28 +1,16 @@
 package com.farmkuindonesia.farmku.ui.fragment.home
 
-import android.Manifest
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.farmkuindonesia.farmku.database.model.User
 import com.farmkuindonesia.farmku.database.responses.LandItem
 import com.farmkuindonesia.farmku.databinding.FragmentHomeBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
-import com.farmkuindonesia.farmku.ui.forgotpassword.ForgotPasswordActivity
 import com.farmkuindonesia.farmku.ui.fragment.home.deteksipenyakit.DiseaseDetectionActivity
 import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.ListHotNewsAdapter
 import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.HotNews
@@ -43,7 +31,7 @@ class HomeFragment : Fragment() {
 
         val user = homeFragmentViewModel.getUser()
         val adapter = ListHotNewsAdapter(HotNews().getDummyNewsList())
-        homeFragmentViewModel.getCountLand(user.id.toString())
+        homeFragmentViewModel.getCountLand(user.id)
         var listLand: List<LandItem?>? = null
 
         homeFragmentViewModel.landCount.observe(this.viewLifecycleOwner) {

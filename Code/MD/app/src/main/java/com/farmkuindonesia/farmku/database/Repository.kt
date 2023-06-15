@@ -1,9 +1,11 @@
 package com.farmkuindonesia.farmku.database
 
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.database.config.ApiService
 import com.farmkuindonesia.farmku.database.model.Address
 import com.farmkuindonesia.farmku.database.model.User
@@ -15,9 +17,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import kotlin.collections.ArrayList
 
 class Repository constructor(
+    private val context: Context,
     private val apiService: ApiService,
     private val pref: Preferences,
     private val apiServiceML: ApiService,
@@ -25,9 +27,6 @@ class Repository constructor(
 ) {
     private val _messages = MutableLiveData<Event<String>>()
     val messages: LiveData<Event<String>> = _messages
-
-    private val _pesan = MutableLiveData<String>()
-    val pesan: LiveData<String> = _pesan
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -43,6 +42,9 @@ class Repository constructor(
 
     private val _listLand = MutableLiveData<List<LandItem?>>()
     val listLand: LiveData<List<LandItem?>> = _listLand
+
+    private val _varietyList = MutableLiveData<List<DataItemVariety>?>()
+    val varietyList: LiveData<List<DataItemVariety>?> = _varietyList
 
     //Login
     fun signIn(email: String, password: String): LiveData<SignInResponse> {
@@ -79,12 +81,13 @@ class Repository constructor(
                         )
                         setUser(user, "EMAIL")
                         _userLogin.value = user
-                        _messages.value = Event("Login Success")
+                        _messages.value = Event(context.getString(R.string.login_berhasil_text))
                     } else {
-                        _messages.value = Event("Token is missing")
+                        _messages.value =
+                            Event(context.getString(R.string.token_anda_menghilang_text))
                     }
                 } else {
-                    _messages.value = Event("Login Failed. Message: ${response.message()}")
+                    _messages.value = Event(context.getString(R.string.login_gagal_text))
                 }
             }
 
@@ -133,9 +136,10 @@ class Repository constructor(
                     signUpResponse.value = response.body()
                     if (signUpResponse.value?.id == null) {
                         _messages.value = Event(signUpResponse.value?.message.toString())
+                        _messages.value = Event(context.getString(R.string.register_berhasil_text))
                     }
                 } else {
-                    _messages.value = Event("Register Failed. Message: ${response.message()}")
+                    _messages.value = Event(context.getString(R.string.register_gagal_text))
                 }
             }
 
@@ -164,7 +168,7 @@ class Repository constructor(
                     addressResponse.value = response.body()
                 } else {
                     _messages.value =
-                        Event("Data is missing. Message: ${response.message()}")
+                        Event(context.getString(R.string.data_alamat_menghilang_text))
                 }
             }
 
@@ -186,12 +190,12 @@ class Repository constructor(
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
-                    Log.d(TAG, response.body().toString())
                     _preprocess.value = response.body()
+                    _messages.value = Event(context.getString(R.string.deteksi_berhasil_text))
                 } else {
-                    Log.d(TAG, "Error saat deteksi. Message = ${response.message()}")
+                    Log.d(TAG, context.getString(R.string.terdapat_error_saat_deteksi_text))
                     _messages.value =
-                        Event("$TAG, Error saat deteksi. Message = ${response.message()}")
+                        Event(context.getString(R.string.deteksi_gagal_text))
                 }
             }
 
@@ -215,9 +219,9 @@ class Repository constructor(
                     _soilData.value = response.body()
 
                 } else {
-                    Log.d(TAG, "Error saat ambil data soil. Message = ${response.message()}")
+                    Log.d(TAG, context.getString(R.string.error_saat_ambil_data_soil_text))
                     _messages.value =
-                        Event("$TAG, Error saat ambil data soil. Message = ${response.message()}")
+                        Event(context.getString(R.string.error_saat_ambil_data_soil_text))
                 }
             }
 
@@ -228,7 +232,17 @@ class Repository constructor(
         })
     }
 
-    fun addSoilData(name: String, n: Double, p: Double, k: Double, ph: Double, lon: Double, lat: Double, image: MultipartBody.Part, desc: String){
+    fun addSoilData(
+        name: String,
+        n: Double,
+        p: Double,
+        k: Double,
+        ph: Double,
+        lon: Double,
+        lat: Double,
+        image: MultipartBody.Part,
+        desc: String
+    ) {
         _isLoading.value = true
         val client = apiServiceML2.addSoilDataCollection(image, name, n, p, k, ph, lon, lat, desc)
         client.enqueue(object : Callback<SoilDataCollectionResponseItem> {
@@ -238,11 +252,10 @@ class Repository constructor(
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
-                    _pesan.value = "SUCCESS"
-
+                    _messages.value = Event(context.getString(R.string.berhasil_text))
                 } else {
-                    Log.d(TAG, "Error saat mengirim data soil. Message = ${response.message()}")
-                    _pesan.value = "FAILED"
+                    Log.d(TAG, context.getString(R.string.error_saat_mengirim_data_soil_text))
+                    _messages.value = Event(context.getString(R.string.failed_text))
                 }
             }
 
@@ -253,7 +266,7 @@ class Repository constructor(
         })
     }
 
-    fun getListLandByIdUser(id: String) {
+    fun getListLandByIdUser(id: String?) {
         _isLoading.value = true
         val client = apiService.getLandByUserId(id)
         client.enqueue(object : Callback<ListLandResponse> {
@@ -272,18 +285,66 @@ class Repository constructor(
         })
     }
 
+    fun getVariety() {
+        val client = apiService.getVariety()
+        client.enqueue(object : Callback<VaerityResponse> {
+            override fun onResponse(
+                call: Call<VaerityResponse>,
+                response: Response<VaerityResponse>
+            ) {
+                _isLoading.value = false
+                _varietyList.value = response.body()?.data
+            }
+
+            override fun onFailure(call: Call<VaerityResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.d(TAG, t.message.toString())
+            }
+        })
+    }
+
+    fun addNewLand(
+        name: String,
+        userId: String,
+        varietyId: String,
+        area: Int,
+        addressId: String,
+        location: LocationAddLand
+    ) {
+        val client = apiService.addNewLand(name, userId, varietyId, area, addressId, location)
+        client.enqueue(object : Callback<AddLandResponse> {
+            override fun onResponse(
+                call: Call<AddLandResponse>,
+                response: Response<AddLandResponse>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    Event(context.getString(R.string.add_new_land_success_text))
+                } else {
+                    Event(context.getString(R.string.add_new_land_failed_text))
+                }
+            }
+
+            override fun onFailure(call: Call<AddLandResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.d(TAG, t.message.toString())
+            }
+        })
+    }
+
     companion object {
         private const val TAG = "Repository"
         private var instance: Repository? = null
 
         fun getInstance(
+            context: Context,
             pref: Preferences,
             apiService: ApiService,
             apiServiceML: ApiService,
             apiServiceML2: ApiService
         ): Repository =
             instance ?: synchronized(this) {
-                instance ?: Repository(apiService, pref, apiServiceML, apiServiceML2)
+                instance ?: Repository(context, apiService, pref, apiServiceML, apiServiceML2)
             }.also { instance = it }
     }
 }

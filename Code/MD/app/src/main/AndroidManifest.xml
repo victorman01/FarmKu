@@ -38,6 +38,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.fragment.listland.addland.AddLandActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.fragment.listland.land.LandActivity"
             android:exported="false" />
         <activity
@@ -105,13 +108,12 @@
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.farmkuindonesia.farmku.ui"
-            android:grantUriPermissions="true"
-            android:exported="false">
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
     </application>
 
 </manifest>
