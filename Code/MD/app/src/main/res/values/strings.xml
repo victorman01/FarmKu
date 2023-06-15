@@ -104,4 +104,6 @@
     <string name="k_dummy_text">K: 21.4</string>
     <string name="gambar_dari_data_collection_text">Gambar dari Data Collection</string>
     <string name="tombol_add_data_collection_text">Tombol Add Data Collection</string>
+    <string name="land_name_text">Land Name</string>
+    <string name="appbar_land_activity_text">AppBar Land Activity</string>
 </resources>

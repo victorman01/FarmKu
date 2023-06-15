@@ -15,9 +15,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.farmkuindonesia.farmku.database.model.User
+import com.farmkuindonesia.farmku.database.responses.LandItem
 import com.farmkuindonesia.farmku.databinding.FragmentHomeBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
 import com.farmkuindonesia.farmku.ui.forgotpassword.ForgotPasswordActivity
@@ -36,14 +38,24 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModelFac = ViewModelFactory.getInstance(this.requireContext())
-        homeFragmentViewModel = ViewModelProvider(this, viewModelFac)[HomeFragmentViewModel::class.java]
+        homeFragmentViewModel =
+            ViewModelProvider(this, viewModelFac)[HomeFragmentViewModel::class.java]
 
         val user = homeFragmentViewModel.getUser()
         val adapter = ListHotNewsAdapter(HotNews().getDummyNewsList())
+        homeFragmentViewModel.getCountLand(user.id.toString())
+        var listLand: List<LandItem?>? = null
 
+        homeFragmentViewModel.landCount.observe(this.viewLifecycleOwner) {
+            listLand = it
+        }
         binding.apply {
             txtHiName.text = "Hi, ${user.name}"
-
+            if(listLand.isNullOrEmpty()){
+                txtJumlahLahan.text = "0"
+            }else{
+                txtJumlahLahan.text = listLand?.size.toString()
+            }
             rvNews.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             rvNews.adapter = adapter
@@ -52,7 +64,7 @@ class HomeFragment : Fragment() {
                 val intent = Intent(requireContext(), DiseaseDetectionActivity::class.java)
                 startActivity(intent)
             }
-            btnData.setOnClickListener{
+            btnData.setOnClickListener {
                 val intent = Intent(requireContext(), SoilDataCollectionActivity::class.java)
                 startActivity(intent)
             }

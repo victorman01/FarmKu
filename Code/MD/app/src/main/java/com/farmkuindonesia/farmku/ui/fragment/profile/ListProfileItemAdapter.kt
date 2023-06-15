@@ -23,7 +23,8 @@ class ListProfileItemAdapter(
 ) : RecyclerView.Adapter<ListProfileItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ProfileItemLayoutBinding.inflate(LayoutInflater.from(context), viewGroup, false)
+        val binding =
+            ProfileItemLayoutBinding.inflate(LayoutInflater.from(context), viewGroup, false)
         return ViewHolder(binding)
     }
 
@@ -35,19 +36,18 @@ class ListProfileItemAdapter(
 
     override fun getItemCount(): Int = listProfileItem.size
 
-    inner class ViewHolder(binding: ProfileItemLayoutBinding) :
+    inner class ViewHolder(private val binding: ProfileItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
         init {
             itemView.setOnClickListener(this)
         }
 
-        private val imgIconProfile: ImageView = binding.imgIconProfile
-        private val txtItemProfileName: TextView = binding.txtItemProfileName
-
         fun bind(item: ProfileItemData) {
-            imgIconProfile.setImageResource(item.item_icon)
-            txtItemProfileName.text = item.item_name
+            binding.apply {
+                imgIconProfile.setImageResource(item.item_icon)
+                txtItemProfileName.text = item.item_name
+            }
         }
 
         override fun onClick(view: View) {
@@ -83,6 +83,7 @@ class ListProfileItemAdapter(
                     Preferences.setLogout(preferences)
                 }
                 "GOOGLE" -> {
+                    auth = FirebaseAuth.getInstance()
                     auth.signOut()
                 }
                 else -> {

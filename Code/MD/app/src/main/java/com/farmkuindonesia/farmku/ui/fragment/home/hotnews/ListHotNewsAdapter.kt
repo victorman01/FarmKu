@@ -9,27 +9,31 @@ import com.bumptech.glide.Glide
 import com.farmkuindonesia.farmku.database.model.Dummy
 import com.farmkuindonesia.farmku.databinding.HotNewsLayoutBinding
 
-class ListHotNewsAdapter(private val listNews: ArrayList<Dummy>): RecyclerView.Adapter<ListHotNewsAdapter.ViewHolder>() {
+class ListHotNewsAdapter(private val listNews: ArrayList<Dummy>) : RecyclerView.Adapter<ListHotNewsAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val binding = HotNewsLayoutBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = HotNewsLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val (name, date, photo) = listNews[position]
-        Glide.with(holder.itemView.context)
-            .load(photo)
-            .into(holder.imgNews)
-        holder.txtTitleNews.text = name
-        holder.txtDateNews.text = date
+        val newsItem = listNews[position]
+        holder.bind(newsItem)
     }
 
     override fun getItemCount(): Int = listNews.size
 
-    inner class ViewHolder(binding: HotNewsLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        val imgNews: ImageView = binding.imgHotNews
-        val txtTitleNews: TextView = binding.txtTitleHotNews
-        val txtDateNews: TextView = binding.txtDateHotNews
+    inner class ViewHolder(private val binding: HotNewsLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val imgNews: ImageView = binding.imgHotNews
+        private val txtTitleNews: TextView = binding.txtTitleHotNews
+        private val txtDateNews: TextView = binding.txtDateHotNews
+
+        fun bind(newsItem: Dummy) {
+            Glide.with(itemView.context)
+                .load(newsItem.photo)
+                .into(imgNews)
+            txtTitleNews.text = newsItem.name
+            txtDateNews.text = newsItem.date
+        }
     }
 }

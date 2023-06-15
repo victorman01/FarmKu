@@ -7,6 +7,8 @@ import com.farmkuindonesia.farmku.database.Repository
 import com.farmkuindonesia.farmku.ui.fragment.home.HomeFragmentViewModel
 import com.farmkuindonesia.farmku.ui.fragment.home.deteksipenyakit.DiseaseDetectionViewModel
 import com.farmkuindonesia.farmku.ui.fragment.listland.ListLandViewModel
+import com.farmkuindonesia.farmku.ui.fragment.listland.land.LandViewModel
+import com.farmkuindonesia.farmku.ui.fragment.profile.ProfileViewModel
 import com.farmkuindonesia.farmku.ui.login.LoginViewModel
 import com.farmkuindonesia.farmku.ui.main.MainActivityViewModel
 import com.farmkuindonesia.farmku.ui.register.RegisterViewModel
@@ -20,23 +22,37 @@ class ViewModelFactory(private val rep: Repository) : ViewModelProvider.NewInsta
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(rep) as T
             }
+
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(rep) as T
             }
-            modelClass.isAssignableFrom(MainActivityViewModel::class.java)->{
+
+            modelClass.isAssignableFrom(MainActivityViewModel::class.java) -> {
                 MainActivityViewModel(rep) as T
             }
-            modelClass.isAssignableFrom(HomeFragmentViewModel::class.java)->{
+
+            modelClass.isAssignableFrom(HomeFragmentViewModel::class.java) -> {
                 HomeFragmentViewModel(rep) as T
             }
-            modelClass.isAssignableFrom(ListLandViewModel::class.java)->{
+
+            modelClass.isAssignableFrom(ListLandViewModel::class.java) -> {
                 ListLandViewModel(rep) as T
             }
-            modelClass.isAssignableFrom(DiseaseDetectionViewModel::class.java)->{
+
+            modelClass.isAssignableFrom(DiseaseDetectionViewModel::class.java) -> {
                 DiseaseDetectionViewModel(rep) as T
             }
-            modelClass.isAssignableFrom(SoilDataCollectionViewModel::class.java)->{
+
+            modelClass.isAssignableFrom(SoilDataCollectionViewModel::class.java) -> {
                 SoilDataCollectionViewModel(rep) as T
+            }
+
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(rep) as T
+            }
+
+            modelClass.isAssignableFrom(LandViewModel::class.java) -> {
+                LandViewModel(rep) as T
             }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)

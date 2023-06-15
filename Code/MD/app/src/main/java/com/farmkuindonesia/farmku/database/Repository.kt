@@ -233,13 +233,7 @@ class Repository constructor(
                 response: Response<ListLandResponse>
             ) {
                 _isLoading.value = false
-                if (response.isSuccessful) {
-                    _listLand.value = response.body()?.data
-                } else {
-                    Log.d(TAG, "Error saat ambil data lahan. Message = ${response.message()}")
-                    _messages.value =
-                        Event("$TAG, Error saat ambil data lahan. Message = ${response.message()}")
-                }
+                _listLand.value = response.body()?.data
             }
 
             override fun onFailure(call: Call<ListLandResponse>, t: Throwable) {

@@ -26,14 +26,24 @@ class ListLandFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModelFac = ViewModelFactory.getInstance(this.requireContext())
         listLandViewModel = ViewModelProvider(this, viewModelFac)[ListLandViewModel::class.java]
-        val id = listLandViewModel.getUserId().id.toString()
+//        val id = listLandViewModel.getUserId().id.toString()
+        val id = "2cb9c27e-cc71-4870-95c2-a2a2f4aad07a"
         var listLand: List<LandItem?>?
         listLandViewModel.getListLand(id)
         listLandViewModel.listLand.observe(this.viewLifecycleOwner) {
             listLand = it
-            val adapter = listLand?.let {land -> ListLandAdapter(land) }
-            binding.rvLands.layoutManager = LinearLayoutManager(requireContext())
-            binding.rvLands.adapter = adapter
+            if(listLand == null){
+                binding.apply {
+                    txtEmptyListLand.text = "Ups, Anda belum mendaftarkan lahan anda"
+                    txtEmptyListLand.visibility = View.VISIBLE
+                    imgNullData.visibility = View.VISIBLE
+                }
+            }else{
+                val adapter = listLand?.let {land -> ListLandAdapter(land) }
+                binding.rvLands.layoutManager = LinearLayoutManager(requireContext())
+                binding.rvLands.adapter = adapter
+            }
+
         }
     }
 

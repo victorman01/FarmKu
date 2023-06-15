@@ -51,12 +51,13 @@
 
             <TextView
                 android:id="@+id/txtDateLand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="181dp"
+                android:layout_height="26dp"
                 android:layout_marginStart="24dp"
-                android:text="Kamis, 12 Januari 2023"
+                android:layout_marginEnd="100dp"
+                android:text="Panularan, Laweyan, KOTA SURAKARTA, JAWA TENGAH"
                 android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imgLand"
