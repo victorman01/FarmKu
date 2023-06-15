@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -16,7 +15,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_banner" />
+        app:srcCompat="@drawable/home_banner"
+        android:contentDescription="@string/gambar_dari_data_collection_text" />
 
     <TextView
         android:id="@+id/txtNList"
@@ -26,7 +26,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:maxLines="1"
-        android:text="N: 10.5"
+        android:text="@string/n_dummy_text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgSoilDataCollection"
@@ -39,7 +39,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:maxLines="1"
-        android:text="P: 21.4"
+        android:text="@string/p_dummy_text"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/txtKList"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:maxLines="1"
-        android:text="K: 21.4"
+        android:text="@string/k_dummy_text"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

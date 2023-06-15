@@ -38,6 +38,9 @@ class Repository constructor(
     private val _soilData = MutableLiveData<List<SoilDataCollectionResponseItem>>()
     val soilData: LiveData<List<SoilDataCollectionResponseItem>> = _soilData
 
+    private val _listLand = MutableLiveData<List<LandItem?>>()
+    val listLand: LiveData<List<LandItem?>> = _listLand
+
     //Login
     fun signIn(email: String, password: String): LiveData<SignInResponse> {
 //        _isLoading.value = true
@@ -184,7 +187,8 @@ class Repository constructor(
                     _preprocess.value = response.body()
                 } else {
                     Log.d(TAG, "Error saat deteksi. Message = ${response.message()}")
-                    _messages.value = Event("$TAG, Error saat deteksi. Message = ${response.message()}")
+                    _messages.value =
+                        Event("$TAG, Error saat deteksi. Message = ${response.message()}")
                 }
             }
 
@@ -195,7 +199,7 @@ class Repository constructor(
         })
     }
 
-    fun getSoilData(){
+    fun getSoilData() {
         _isLoading.value = true
         val client = apiServiceML2.getSoilDataCollection()
         client.enqueue(object : Callback<List<SoilDataCollectionResponseItem>> {
@@ -208,11 +212,37 @@ class Repository constructor(
                     _soilData.value = response.body()
                 } else {
                     Log.d(TAG, "Error saat ambil data soil. Message = ${response.message()}")
-                    _messages.value = Event("$TAG, Error saat ambil data soil. Message = ${response.message()}")
+                    _messages.value =
+                        Event("$TAG, Error saat ambil data soil. Message = ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<List<SoilDataCollectionResponseItem>>, t: Throwable) {
+                _isLoading.value = false
+                Log.d(TAG, t.message.toString())
+            }
+        })
+    }
+
+    fun getListLandByIdUser(id: String) {
+        _isLoading.value = true
+        val client = apiService.getLandByUserId(id)
+        client.enqueue(object : Callback<ListLandResponse> {
+            override fun onResponse(
+                call: Call<ListLandResponse>,
+                response: Response<ListLandResponse>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    _listLand.value = response.body()?.data
+                } else {
+                    Log.d(TAG, "Error saat ambil data lahan. Message = ${response.message()}")
+                    _messages.value =
+                        Event("$TAG, Error saat ambil data lahan. Message = ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ListLandResponse>, t: Throwable) {
                 _isLoading.value = false
                 Log.d(TAG, t.message.toString())
             }

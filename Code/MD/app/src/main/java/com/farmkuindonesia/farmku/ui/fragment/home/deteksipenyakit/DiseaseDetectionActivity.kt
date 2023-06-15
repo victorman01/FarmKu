@@ -56,10 +56,8 @@ class DiseaseDetectionActivity : AppCompatActivity() {
         binding = ActivityDiseaseDetectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true)
-        }
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.title = "Deteksi Penyakit"
 
         viewModelFac = ViewModelFactory.getInstance(this)

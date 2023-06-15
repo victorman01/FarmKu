@@ -99,4 +99,9 @@
     </string>
     <string name="hint_double">0.0</string>
     <string name="tambahkan_data_tanah">Tambahkan Data Tanah</string>
+    <string name="n_dummy_text">N: 10.5</string>
+    <string name="p_dummy_text">P: 21.4</string>
+    <string name="k_dummy_text">K: 21.4</string>
+    <string name="gambar_dari_data_collection_text">Gambar dari Data Collection</string>
+    <string name="tombol_add_data_collection_text">Tombol Add Data Collection</string>
 </resources>
