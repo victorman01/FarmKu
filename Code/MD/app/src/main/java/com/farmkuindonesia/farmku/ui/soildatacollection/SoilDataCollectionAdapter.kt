@@ -16,9 +16,17 @@ import com.farmkuindonesia.farmku.database.responses.SoilDataCollectionResponseI
 import com.farmkuindonesia.farmku.databinding.SoilDataCollectionLayoutBinding
 import com.farmkuindonesia.farmku.ui.soildatacollection.detail.SoilDataCollectionDetailActivity
 
-class SoilDataCollectionAdapter(private val listData: List<SoilDataCollectionResponseItem>): RecyclerView.Adapter<SoilDataCollectionAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SoilDataCollectionAdapter.ViewHolder {
-        val binding = SoilDataCollectionLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+class SoilDataCollectionAdapter(private val listData: List<SoilDataCollectionResponseItem>) :
+    RecyclerView.Adapter<SoilDataCollectionAdapter.ViewHolder>() {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): SoilDataCollectionAdapter.ViewHolder {
+        val binding = SoilDataCollectionLayoutBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return ViewHolder(binding)
     }
 
@@ -44,30 +52,33 @@ class SoilDataCollectionAdapter(private val listData: List<SoilDataCollectionRes
             .load(imgUrl)
             .into(object : CustomTarget<Bitmap>() {
                 override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                    // Set the loaded image bitmap to the ImageView
                     holder.imgSoilDataCollection.setImageBitmap(resource)
                 }
 
                 override fun onLoadCleared(placeholder: Drawable?) {
-                    // Optional: Handle any cleanup or placeholder display if needed
                 }
             })
 
-        holder.itemView.setOnClickListener{
-            val intent = Intent(holder.itemView.context, SoilDataCollectionDetailActivity::class.java)
-            intent.putExtra(SoilDataCollectionDetailActivity.ID, id)
-            intent.putExtra(SoilDataCollectionDetailActivity.N, n)
-            intent.putExtra(SoilDataCollectionDetailActivity.P, p)
-            intent.putExtra(SoilDataCollectionDetailActivity.K, k)
-            intent.putExtra(SoilDataCollectionDetailActivity.PH, ph)
-            intent.putExtra(SoilDataCollectionDetailActivity.LONGITUDE, long)
-            intent.putExtra(SoilDataCollectionDetailActivity.LATITUDE, lat)
-            intent.putExtra(SoilDataCollectionDetailActivity.IMAGE, imgUrl)
-            intent.putExtra(SoilDataCollectionDetailActivity.DESCRIPTION, desc)
+        holder.itemView.setOnClickListener {
+            val intent =
+                Intent(holder.itemView.context, SoilDataCollectionDetailActivity::class.java)
+            intent.apply {
+                putExtra(SoilDataCollectionDetailActivity.ID, id)
+                putExtra(SoilDataCollectionDetailActivity.N, n)
+                putExtra(SoilDataCollectionDetailActivity.P, p)
+                putExtra(SoilDataCollectionDetailActivity.K, k)
+                putExtra(SoilDataCollectionDetailActivity.PH, ph)
+                putExtra(SoilDataCollectionDetailActivity.LONGITUDE, long)
+                putExtra(SoilDataCollectionDetailActivity.LATITUDE, lat)
+                putExtra(SoilDataCollectionDetailActivity.IMAGE, imgUrl)
+                putExtra(SoilDataCollectionDetailActivity.DESCRIPTION, desc)
+            }
             holder.itemView.context.startActivity(intent)
         }
     }
-    inner class ViewHolder(binding: SoilDataCollectionLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    inner class ViewHolder(binding: SoilDataCollectionLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         val imgSoilDataCollection: ImageView = binding.imgSoilDataCollection
         val txtNList: TextView = binding.txtNList
         val txtPList: TextView = binding.txtPList

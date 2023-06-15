@@ -94,4 +94,5 @@
     <string name="result_text">Result: %s</string>
     <string name="confidence_text">Confidence: %d%%</string>
     <string name="null_picture_message">Please add the picture you want to detect</string>
+    <string name="tombol_add_data_collection_text">Tombol Add Data Collection</string>
 </resources>

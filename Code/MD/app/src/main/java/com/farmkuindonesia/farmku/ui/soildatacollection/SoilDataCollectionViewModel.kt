@@ -7,6 +7,5 @@ class SoilDataCollectionViewModel(private val rep: Repository) : ViewModel() {
     val messages = rep.messages
     val isLoading = rep.isLoading
     val soilData = rep.soilData
-
     fun getSoilData() = rep.getSoilData()
 }

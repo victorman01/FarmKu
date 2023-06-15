@@ -39,4 +39,9 @@ interface ApiService {
 
     @GET("data-collection")
     fun getSoilDataCollection(): Call<List<SoilDataCollectionResponseItem>>
+
+    @GET("land")
+    fun getLandByUserId(
+        @Query("user_id") user_id:String
+    ):Call<ListLandResponse>
 }

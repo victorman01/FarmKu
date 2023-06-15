@@ -21,17 +21,20 @@ class AddSoilDataActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Tambahkan data tanah"
-        
+
         binding.txtDescriptionAddSoilData.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // Do nothing
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (s.length <= 200) {
                     binding.txtCharCounterAddSoil.text = "${s.length}/200"
-                    if (s.length == 200){
-                        Toast.makeText(this@AddSoilDataActivity, "Maksimum karakter tercapai", Toast.LENGTH_SHORT).show()
+                    if (s.length == 200) {
+                        Toast.makeText(
+                            this@AddSoilDataActivity,
+                            "Maksimum karakter tercapai",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         binding.txtDescriptionAddSoilData.clearFocus()
                         hideKeyboard(this@AddSoilDataActivity)
                     }
