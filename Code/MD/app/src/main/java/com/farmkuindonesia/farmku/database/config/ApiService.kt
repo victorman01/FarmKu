@@ -44,4 +44,9 @@ interface ApiService {
     fun getLandByUserId(
         @Query("user_id") user_id:String
     ):Call<ListLandResponse>
+
+    @GET("record")
+    fun getNPKRecord(
+
+    )
 }
