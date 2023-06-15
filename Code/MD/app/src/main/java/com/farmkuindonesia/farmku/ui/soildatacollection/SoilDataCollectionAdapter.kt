@@ -3,6 +3,7 @@ package com.farmkuindonesia.farmku.ui.soildatacollection
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -15,6 +16,8 @@ import com.bumptech.glide.request.transition.Transition
 import com.farmkuindonesia.farmku.database.responses.SoilDataCollectionResponseItem
 import com.farmkuindonesia.farmku.databinding.SoilDataCollectionLayoutBinding
 import com.farmkuindonesia.farmku.ui.soildatacollection.detail.SoilDataCollectionDetailActivity
+import org.json.JSONArray
+import org.json.JSONObject
 
 class SoilDataCollectionAdapter(private val listData: List<SoilDataCollectionResponseItem>) :
     RecyclerView.Adapter<SoilDataCollectionAdapter.ViewHolder>() {
@@ -33,6 +36,33 @@ class SoilDataCollectionAdapter(private val listData: List<SoilDataCollectionRes
     override fun getItemCount(): Int = listData.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        val tes = listData.toString()
+        val jsonArray = JSONArray(tes)
+
+        if (jsonArray.length() > 0) {
+            val jsonObject = jsonArray.getJSONObject(0)
+            val imageArray = jsonObject.getJSONArray("Image")
+            if (imageArray.length() > 0) {
+                val imageObject = imageArray.getJSONObject(0)
+                val path = imageObject.getString("path")
+                val imageUrl = "https://farmku-api-hwmomiroxq-uc.a.run.app/data-collection/$path"
+                Log.d("WKWK", imageUrl)
+
+                Glide.with(holder.itemView.context)
+                    .asBitmap()
+                    .load(imageUrl)
+                    .into(object : CustomTarget<Bitmap>() {
+                        override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                            holder.imgSoilDataCollection.setImageBitmap(resource)
+                        }
+
+                        override fun onLoadCleared(placeholder: Drawable?) {
+                        }
+                    })
+            }
+        }
+
         val id = listData[position].id
         val n = listData[position].n
         val p = listData[position].p
@@ -40,24 +70,13 @@ class SoilDataCollectionAdapter(private val listData: List<SoilDataCollectionRes
         val ph = listData[position].pH
         val long = listData[position].longitude
         val lat = listData[position].latitude
-        val imgUrl = listData[position].image
         val desc = listData[position].description
 
         holder.txtNList.text = "N = $n"
         holder.txtPList.text = "P = $p"
         holder.txtKList.text = "K = $k"
 
-        Glide.with(holder.itemView.context)
-            .asBitmap()
-            .load(imgUrl)
-            .into(object : CustomTarget<Bitmap>() {
-                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                    holder.imgSoilDataCollection.setImageBitmap(resource)
-                }
 
-                override fun onLoadCleared(placeholder: Drawable?) {
-                }
-            })
 
         holder.itemView.setOnClickListener {
             val intent =
@@ -70,7 +89,7 @@ class SoilDataCollectionAdapter(private val listData: List<SoilDataCollectionRes
                 putExtra(SoilDataCollectionDetailActivity.PH, ph)
                 putExtra(SoilDataCollectionDetailActivity.LONGITUDE, long)
                 putExtra(SoilDataCollectionDetailActivity.LATITUDE, lat)
-                putExtra(SoilDataCollectionDetailActivity.IMAGE, imgUrl)
+//                putExtra(SoilDataCollectionDetailActivity.IMAGE, imgUrl)
                 putExtra(SoilDataCollectionDetailActivity.DESCRIPTION, desc)
             }
             holder.itemView.context.startActivity(intent)

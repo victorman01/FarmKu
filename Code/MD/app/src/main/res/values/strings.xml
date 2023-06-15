@@ -106,4 +106,5 @@
     <string name="tombol_add_data_collection_text">Tombol Add Data Collection</string>
     <string name="land_name_text">Land Name</string>
     <string name="appbar_land_activity_text">AppBar Land Activity</string>
+    <string name="Silahkan_ambil_foto_terlebih_dahulu">Silahkan ambil foto terlebih dahulu</string>
 </resources>

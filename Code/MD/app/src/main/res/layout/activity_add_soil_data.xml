@@ -120,7 +120,7 @@
             android:text="Nitrogen (N)"
             app:layout_constraintEnd_toEndOf="@+id/txtNAdd"
             app:layout_constraintStart_toStartOf="@+id/txtNAdd"
-            app:layout_constraintTop_toBottomOf="@+id/button3" />
+            app:layout_constraintTop_toBottomOf="@+id/btnGalleryAddSoil" />
 
         <TextView
             android:id="@+id/textView22"
@@ -130,7 +130,7 @@
             android:text="Kalium (K)"
             app:layout_constraintEnd_toEndOf="@+id/txtKAdd"
             app:layout_constraintStart_toStartOf="@+id/txtKAdd"
-            app:layout_constraintTop_toBottomOf="@+id/button3" />
+            app:layout_constraintTop_toBottomOf="@+id/btnGalleryAddSoil" />
 
         <TextView
             android:id="@+id/textView23"
@@ -153,7 +153,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtKAdd" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnGalleryAddSoil"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -163,7 +163,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnCameraAddSoil"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"

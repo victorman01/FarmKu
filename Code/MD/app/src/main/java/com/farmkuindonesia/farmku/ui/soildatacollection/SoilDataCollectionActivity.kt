@@ -36,7 +36,6 @@ class SoilDataCollectionActivity : AppCompatActivity() {
         soilDataCollectionViewModel.getSoilData()
         soilDataCollectionViewModel.soilData.observe(this) {
             data = it
-
             val adapter = SoilDataCollectionAdapter(data)
             binding.rvSoilData.adapter = adapter
             binding.rvSoilData.layoutManager =

@@ -217,12 +217,12 @@
             android:id="@+id/btnLahanSaya"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/information_background"
             android:elevation="20dp"
             android:padding="10dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnDeteksiPenyakit"
             app:layout_constraintTop_toBottomOf="@+id/txtKSoilDataDetail"
             app:srcCompat="@drawable/baseline_location_on_24" />
 
@@ -230,12 +230,12 @@
             android:id="@+id/btnDeteksiPenyakit"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="50dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/information_background"
             android:elevation="20dp"
             android:padding="10dp"
-            app:layout_constraintStart_toEndOf="@+id/btnLahanSaya"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintTop_toBottomOf="@+id/txtKSoilDataDetail"
             app:srcCompat="@drawable/camera_icon" />
 
@@ -243,12 +243,12 @@
             android:id="@+id/btnData"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/information_background"
             android:elevation="20dp"
             android:padding="10dp"
-            app:layout_constraintStart_toEndOf="@+id/btnDeteksiPenyakit"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
             app:layout_constraintTop_toBottomOf="@+id/txtKSoilDataDetail"
             app:srcCompat="@drawable/baseline_location_on_24" />
 
@@ -258,11 +258,9 @@
             android:layout_height="60dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
             android:background="@drawable/information_background"
             android:elevation="20dp"
             android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnData"
             app:layout_constraintTop_toBottomOf="@+id/txtKSoilDataDetail"
             app:srcCompat="@drawable/baseline_location_on_24" />
@@ -329,6 +327,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView28"
             tools:listitem="@layout/hot_news_layout" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

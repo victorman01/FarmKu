@@ -193,7 +193,7 @@ class DiseaseDetectionActivity : AppCompatActivity() {
         createCustomTempFile(application).also {
             val photoURI: Uri = FileProvider.getUriForFile(
                 this@DiseaseDetectionActivity,
-                "com.farmkuindonesia.farmku.ui.fragment.home.deteksipenyakit",
+                "com.farmkuindonesia.farmku.ui",
                 it
             )
             currentPhotoPath = it.absolutePath

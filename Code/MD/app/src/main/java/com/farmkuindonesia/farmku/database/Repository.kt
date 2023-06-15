@@ -210,6 +210,7 @@ class Repository constructor(
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     _soilData.value = response.body()
+
                 } else {
                     Log.d(TAG, "Error saat ambil data soil. Message = ${response.message()}")
                     _messages.value =
