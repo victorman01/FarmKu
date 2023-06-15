@@ -11,15 +11,29 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.farmkuindonesia.farmku.databinding.ActivitySoilDataCollectionDetailBinding
 import com.farmkuindonesia.farmku.ui.soildatacollection.detail.maps.SoilDataCollectionDetailMapsActivity
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
-class SoilDataCollectionDetailActivity : AppCompatActivity() {
+class SoilDataCollectionDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivitySoilDataCollectionDetailBinding
+
+    private lateinit var mapView: MapView
+    private lateinit var googleMap: GoogleMap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySoilDataCollectionDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Soil Data Detail"
+
+        mapView = binding.mapViewDetail
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
 
         val latitude = intent.getDoubleExtra(LATITUDE, 0.0)
         val longitude = intent.getDoubleExtra(LONGITUDE, 0.0)
@@ -61,6 +75,48 @@ class SoilDataCollectionDetailActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        googleMap = map
+
+        val latitude = intent.getDoubleExtra(LATITUDE, 0.0)
+        val longitude = intent.getDoubleExtra(LONGITUDE, 0.0)
+
+        // Customize the map settings and markers as needed
+        googleMap.uiSettings.isZoomControlsEnabled = true
+
+        val markerOptions = MarkerOptions()
+            .position(LatLng(latitude, longitude))
+            .title("Selected Soil")
+        googleMap.addMarker(markerOptions)
+
+        // Move the camera to the marker position
+        val cameraPosition = CameraPosition.Builder()
+            .target(LatLng(latitude, longitude))
+            .zoom(12.0f)
+            .build()
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
     }
 
     companion object{

@@ -36,6 +36,8 @@ private lateinit var binding: ActivitySoilDataCollectionDetailMapsBinding
         val latitude = intent.getDoubleExtra(SoilDataCollectionDetailActivity.LATITUDE, 0.0)
         val longitude = intent.getDoubleExtra(SoilDataCollectionDetailActivity.LONGITUDE, 0.0)
         val soilDetailLocation = LatLng(latitude, longitude)
+        mMap.uiSettings.isZoomControlsEnabled = true
+        mMap.uiSettings.isCompassEnabled = true
         mMap.addMarker(MarkerOptions().position(soilDetailLocation).title("Selected Soil"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(soilDetailLocation, 15f))
     }
