@@ -24,8 +24,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.lifecycle.ViewModelProvider
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.databinding.ActivityAddSoilDataBinding
+import com.farmkuindonesia.farmku.ui.ViewModelFactory
+import com.farmkuindonesia.farmku.ui.fragment.home.deteksipenyakit.DiseaseDetectionViewModel
 import com.farmkuindonesia.farmku.utils.createCustomTempFile
 import com.farmkuindonesia.farmku.utils.reduceFileImage
 import com.farmkuindonesia.farmku.utils.uriToFile
@@ -40,18 +43,22 @@ class AddSoilDataActivity : AppCompatActivity() {
     private lateinit var locationManager: LocationManager
     private lateinit var locationListener: LocationListener
 
+    private lateinit var addSoilDataViewModel: AddSoilDataViewModel
+    private lateinit var viewModelFac: ViewModelFactory
+
     private var getFile: File? = null
     private val REQUEST_CAMERA_PERMISSION = 100
     private val REQUEST_GALLERY_PERMISSION = 200
     private val REQUEST_LOCATION_PERMISSION = 1001
 
-    private var n: Double? = null
-    private var p: Double? = null
-    private var k: Double? = null
-    private var ph: Double? = null
-    private var desc: String? = null
-    private var long: Double? = null
-    private var lat: Double? = null
+    private var name: String = ""
+    private var n: Double = 0.0
+    private var p: Double = 0.0
+    private var k: Double = 0.0
+    private var ph: Double = 0.0
+    private var desc: String = ""
+    private var long: Double = 0.0
+    private var lat: Double = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +66,19 @@ class AddSoilDataActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Tambahkan data tanah"
+
+        viewModelFac = ViewModelFactory.getInstance(this)
+        addSoilDataViewModel = ViewModelProvider(this, viewModelFac)[AddSoilDataViewModel::class.java]
+
+        addSoilDataViewModel.message.observe(this){ pesan ->
+            if (pesan == "SUCCESS"){
+               Toast.makeText(this, "Sukses tambah data", Toast.LENGTH_SHORT).show()
+               finish()
+            }
+            else if (pesan == "FAILED"){
+                Toast.makeText(this, "Tambah data gagal", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         binding.txtDescriptionAddSoilData.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -82,6 +102,7 @@ class AddSoilDataActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 // Do nothing
             }
+
         })
 
         binding.btnCameraAddSoil.setOnClickListener{
@@ -117,32 +138,29 @@ class AddSoilDataActivity : AppCompatActivity() {
 
         binding.btnAddDataSoil.setOnClickListener{
             if (getFile != null) {
+                if (binding.txtDescriptionAddSoilData.text.isNotEmpty() && binding.txtNAdd.text.isNotEmpty() && binding.txtPAdd.text.isNotEmpty() && binding.txtKAdd.text.isNotEmpty() && binding.txtPHAdd.text.isNotEmpty() && binding.txtDescriptionAddSoilData.text.isNotEmpty()){
+                    binding.apply {
+                        name = txtNamaVarietasAddSoil.text.toString()
+                        n = txtNAdd.text.toString().toDouble()
+                        p = txtPAdd.text.toString().toDouble()
+                        k = txtKAdd.text.toString().toDouble()
+                        ph = txtPHAdd.text.toString().toDouble()
+                        desc = txtDescriptionAddSoilData.text.toString()
+                    }
 
+                    getCurrentLocation()
 
-                binding.apply {
-                    n = txtNAdd.text.toString().toDouble()
-                    p = txtPAdd.text.toString().toDouble()
-                    k = txtKAdd.text.toString().toDouble()
-                    ph = txtPHAdd.text.toString().toDouble()
-                    desc = txtDescriptionAddSoilData.text.toString()
+                    val file = reduceFileImage(getFile as File)
+                    val requestImageFile = file.asRequestBody("image/jpeg".toMediaType())
+                    val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                        "photo",
+                        file.name,
+                        requestImageFile
+                    )
+                    addSoilDataViewModel.send(name, n, p, k, ph, long, lat, imageMultipart, desc)
+                } else{
+                  Toast.makeText(this, "Harap isi seluruh data", Toast.LENGTH_LONG).show()
                 }
-
-                getCurrentLocation()
-
-                val file = reduceFileImage(getFile as File)
-                val requestImageFile = file.asRequestBody("image/jpeg".toMediaType())
-                val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                    "photo",
-                    file.name,
-                    requestImageFile
-                )
-//                diseaseDetectionViewModel.result(imageMultipart)
-//                diseaseDetectionViewModel.preprocess.observe(this) { result ->
-//                    val confidencePercentage: Int = (result.confidence * 100).toInt()
-//                    binding.resultText.text = getString(R.string.result_text, result.result)
-//                    binding.confidenceText.text =
-//                        getString(R.string.confidence_text, confidencePercentage)
-//                }
             } else {
                 Toast.makeText(
                     this@AddSoilDataActivity,

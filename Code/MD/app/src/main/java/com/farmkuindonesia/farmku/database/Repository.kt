@@ -26,6 +26,9 @@ class Repository constructor(
     private val _messages = MutableLiveData<Event<String>>()
     val messages: LiveData<Event<String>> = _messages
 
+    private val _pesan = MutableLiveData<String>()
+    val pesan: LiveData<String> = _pesan
+
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
@@ -219,6 +222,31 @@ class Repository constructor(
             }
 
             override fun onFailure(call: Call<List<SoilDataCollectionResponseItem>>, t: Throwable) {
+                _isLoading.value = false
+                Log.d(TAG, t.message.toString())
+            }
+        })
+    }
+
+    fun addSoilData(name: String, n: Double, p: Double, k: Double, ph: Double, lon: Double, lat: Double, image: MultipartBody.Part, desc: String){
+        _isLoading.value = true
+        val client = apiServiceML2.addSoilDataCollection(image, name, n, p, k, ph, lon, lat, desc)
+        client.enqueue(object : Callback<SoilDataCollectionResponseItem> {
+            override fun onResponse(
+                call: Call<SoilDataCollectionResponseItem>,
+                response: Response<SoilDataCollectionResponseItem>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    _pesan.value = "SUCCESS"
+
+                } else {
+                    Log.d(TAG, "Error saat mengirim data soil. Message = ${response.message()}")
+                    _pesan.value = "FAILED"
+                }
+            }
+
+            override fun onFailure(call: Call<SoilDataCollectionResponseItem>, t: Throwable) {
                 _isLoading.value = false
                 Log.d(TAG, t.message.toString())
             }

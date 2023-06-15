@@ -40,6 +40,21 @@ interface ApiService {
     @GET("data-collection")
     fun getSoilDataCollection(): Call<List<SoilDataCollectionResponseItem>>
 
+    @FormUrlEncoded
+    @Multipart
+    @POST("data-collection")
+    fun addSoilDataCollection(
+        @Part Image:MultipartBody.Part,
+        @Field("nama_varietas") nama_varietas: String,
+        @Field("N") N: Double,
+        @Field("P") P: Double,
+        @Field("K") K: Double,
+        @Field("PH") PH: Double,
+        @Field("Longitude") Longitude: Double,
+        @Field("Latitude") Latitude: Double,
+        @Field("Description") Description: String,
+    ): Call<SoilDataCollectionResponseItem>
+
     @GET("land")
     fun getLandByUserId(
         @Query("user_id") user_id:String

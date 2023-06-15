@@ -37,6 +37,8 @@
             android:ems="10"
             android:hint="@string/hint_double"
             android:inputType="numberDecimal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:textAlignment="center"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/textView21" />
@@ -50,6 +52,8 @@
             android:ems="10"
             android:hint="@string/hint_double"
             android:inputType="numberDecimal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:textAlignment="center"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/textView23" />
@@ -63,6 +67,8 @@
             android:ems="10"
             android:hint="@string/hint_double"
             android:inputType="numberDecimal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/textView22" />
@@ -76,6 +82,8 @@
             android:ems="10"
             android:hint="@string/hint_double"
             android:inputType="numberDecimal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:textAlignment="center"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/textView24" />
@@ -116,21 +124,21 @@
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="@string/nitrogen_n"
             app:layout_constraintEnd_toEndOf="@+id/txtNAdd"
             app:layout_constraintStart_toStartOf="@+id/txtNAdd"
-            app:layout_constraintTop_toBottomOf="@+id/btnGalleryAddSoil" />
+            app:layout_constraintTop_toBottomOf="@+id/txtNamaVarietasAddSoil" />
 
         <TextView
             android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:text="@string/kalium_k"
             app:layout_constraintEnd_toEndOf="@+id/txtKAdd"
             app:layout_constraintStart_toStartOf="@+id/txtKAdd"
-            app:layout_constraintTop_toBottomOf="@+id/btnGalleryAddSoil" />
+            app:layout_constraintTop_toBottomOf="@+id/txtNamaVarietasAddSoil" />
 
         <TextView
             android:id="@+id/textView23"
@@ -192,6 +200,30 @@
             android:text="0/200"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtPHAdd" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/nama_varietas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCameraAddSoil" />
+
+        <EditText
+            android:id="@+id/txtNamaVarietasAddSoil"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

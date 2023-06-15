@@ -13,6 +13,7 @@ import com.farmkuindonesia.farmku.ui.login.LoginViewModel
 import com.farmkuindonesia.farmku.ui.main.MainActivityViewModel
 import com.farmkuindonesia.farmku.ui.register.RegisterViewModel
 import com.farmkuindonesia.farmku.ui.soildatacollection.SoilDataCollectionViewModel
+import com.farmkuindonesia.farmku.ui.soildatacollection.add.AddSoilDataViewModel
 import com.farmkuindonesia.farmku.utils.injection.Injection
 
 class ViewModelFactory(private val rep: Repository) : ViewModelProvider.NewInstanceFactory() {
@@ -53,6 +54,9 @@ class ViewModelFactory(private val rep: Repository) : ViewModelProvider.NewInsta
 
             modelClass.isAssignableFrom(LandViewModel::class.java) -> {
                 LandViewModel(rep) as T
+            }
+            modelClass.isAssignableFrom(AddSoilDataViewModel::class.java) -> {
+                AddSoilDataViewModel(rep) as T
             }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
