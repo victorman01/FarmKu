@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
@@ -37,17 +36,14 @@ class SoilDataCollectionAdapter(private val listData: List<SoilDataCollectionRes
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val tes = listData.toString()
-        val jsonArray = JSONArray(tes)
+        val data = listData[position]
+        val imageList = data.image
+        var imageUrl = ""
 
-        if (jsonArray.length() > 0) {
-            val jsonObject = jsonArray.getJSONObject(0)
-            val imageArray = jsonObject.getJSONArray("Image")
-            if (imageArray.length() > 0) {
-                val imageObject = imageArray.getJSONObject(0)
-                val path = imageObject.getString("path")
-                val imageUrl = "https://farmku-api-hwmomiroxq-uc.a.run.app/data-collection/$path"
-                Log.d("WKWK", imageUrl)
+        if (imageList != null) {
+            if (imageList.isNotEmpty()) {
+                val imageObject = imageList[0]
+                imageUrl = "https://farmku-collection-hwmomiroxq-et.a.run.app/${imageObject?.destination + imageObject?.filename}"
 
                 Glide.with(holder.itemView.context)
                     .asBitmap()
@@ -58,38 +54,41 @@ class SoilDataCollectionAdapter(private val listData: List<SoilDataCollectionRes
                         }
 
                         override fun onLoadCleared(placeholder: Drawable?) {
+                            // Do nothing
                         }
                     })
             }
         }
 
-        val id = listData[position].id
-        val n = listData[position].n
-        val p = listData[position].p
-        val k = listData[position].k
-        val ph = listData[position].pH
-        val long = listData[position].longitude
-        val lat = listData[position].latitude
-        val desc = listData[position].description
+        val id = data.id
+        val name = data.namaVarietas
+        val n = data.n
+        val p = data.p
+        val k = data.k
+        val ph = data.pH
+        val long = data.longitude
+        val lat = data.latitude
+        val desc = data.description
 
+        holder.txtNamaVarietasList.text = name
         holder.txtNList.text = "N = $n"
         holder.txtPList.text = "P = $p"
         holder.txtKList.text = "K = $k"
-
-
+        holder.txtPHList.text = "pH = $ph"
 
         holder.itemView.setOnClickListener {
             val intent =
                 Intent(holder.itemView.context, SoilDataCollectionDetailActivity::class.java)
             intent.apply {
                 putExtra(SoilDataCollectionDetailActivity.ID, id)
+                putExtra(SoilDataCollectionDetailActivity.NAMA_VARIETAS, name)
                 putExtra(SoilDataCollectionDetailActivity.N, n)
                 putExtra(SoilDataCollectionDetailActivity.P, p)
                 putExtra(SoilDataCollectionDetailActivity.K, k)
                 putExtra(SoilDataCollectionDetailActivity.PH, ph)
                 putExtra(SoilDataCollectionDetailActivity.LONGITUDE, long)
                 putExtra(SoilDataCollectionDetailActivity.LATITUDE, lat)
-//                putExtra(SoilDataCollectionDetailActivity.IMAGE, imgUrl)
+                putExtra(SoilDataCollectionDetailActivity.IMAGE, imageUrl)
                 putExtra(SoilDataCollectionDetailActivity.DESCRIPTION, desc)
             }
             holder.itemView.context.startActivity(intent)
@@ -99,8 +98,10 @@ class SoilDataCollectionAdapter(private val listData: List<SoilDataCollectionRes
     inner class ViewHolder(binding: SoilDataCollectionLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val imgSoilDataCollection: ImageView = binding.imgSoilDataCollection
+        val txtNamaVarietasList: TextView = binding.txtNamaVarietasList
         val txtNList: TextView = binding.txtNList
         val txtPList: TextView = binding.txtPList
         val txtKList: TextView = binding.txtKList
+        val txtPHList: TextView = binding.txtPHList
     }
 }

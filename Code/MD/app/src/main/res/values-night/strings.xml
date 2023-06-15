@@ -98,4 +98,6 @@
     <string name="land_name_text">Land Name</string>
     <string name="appbar_land_activity_text">AppBar Land Activity</string>
     <string name="Silahkan_ambil_foto_terlebih_dahulu">Silahkan ambil foto terlebih dahulu</string>
+    <string name="ph_7_8">pH: 7.8</string>
+    <string name="nama_varietas">Nama Varietas</string>
 </resources>

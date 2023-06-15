@@ -117,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Nitrogen (N)"
+            android:text="@string/nitrogen_n"
             app:layout_constraintEnd_toEndOf="@+id/txtNAdd"
             app:layout_constraintStart_toStartOf="@+id/txtNAdd"
             app:layout_constraintTop_toBottomOf="@+id/btnGalleryAddSoil" />
@@ -127,7 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Kalium (K)"
+            android:text="@string/kalium_k"
             app:layout_constraintEnd_toEndOf="@+id/txtKAdd"
             app:layout_constraintStart_toStartOf="@+id/txtKAdd"
             app:layout_constraintTop_toBottomOf="@+id/btnGalleryAddSoil" />
@@ -137,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Fosfor (P)"
+            android:text="@string/fosfor_p"
             app:layout_constraintEnd_toEndOf="@+id/txtPAdd"
             app:layout_constraintStart_toStartOf="@+id/txtPAdd"
             app:layout_constraintTop_toBottomOf="@+id/txtNAdd" />
@@ -147,7 +147,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="pH"
+            android:text="@string/ph"
             app:layout_constraintEnd_toEndOf="@+id/txtPHAdd"
             app:layout_constraintStart_toStartOf="@+id/txtPHAdd"
             app:layout_constraintTop_toBottomOf="@+id/txtKAdd" />

@@ -11,54 +11,57 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
+        android:contentDescription="@string/gambar_dari_data_collection_text"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_banner"
-        android:contentDescription="@string/gambar_dari_data_collection_text" />
+        app:srcCompat="@drawable/home_banner" />
 
     <TextView
         android:id="@+id/txtNList"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="1dp"
         android:maxLines="1"
         android:text="@string/n_dummy_text"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/imgSoilDataCollection"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <TextView
         android:id="@+id/txtPList"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="32dp"
         android:maxLines="1"
         android:text="@string/p_dummy_text"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtKList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgSoilDataCollection"
-        app:layout_constraintTop_toBottomOf="@+id/txtNList" />
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/txtNList"
+        app:layout_constraintTop_toTopOf="@+id/txtNList" />
 
     <TextView
         android:id="@+id/txtKList"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="20dp"
         android:maxLines="1"
         android:text="@string/k_dummy_text"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgSoilDataCollection" />
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/imgSoilDataCollection"
+        app:layout_constraintTop_toBottomOf="@+id/txtNList" />
+
+    <TextView
+        android:id="@+id/txtPHList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="@string/ph_7_8"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/txtPList"
+        app:layout_constraintTop_toTopOf="@+id/txtKList" />
+
     <View
         android:id="@+id/view2"
         android:layout_width="0dp"
@@ -69,4 +72,25 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtNamaVarietasList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/nama_varietas"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgSoilDataCollection" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
