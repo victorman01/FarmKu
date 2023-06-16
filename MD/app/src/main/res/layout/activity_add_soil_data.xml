@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.soildatacollection.add.AddSoilDataActivity">
+
+        <ImageView
+            android:id="@+id/imgAddSoilData"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="32dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/empty_image" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <EditText
+            android:id="@+id/txtNAdd"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="@string/hint_double"
+            android:inputType="numberDecimal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <EditText
+            android:id="@+id/txtPAdd"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="@string/hint_double"
+            android:inputType="numberDecimal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+        <EditText
+            android:id="@+id/txtKAdd"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="@string/hint_double"
+            android:inputType="numberDecimal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+        <EditText
+            android:id="@+id/txtPHAdd"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="@string/hint_double"
+            android:inputType="numberDecimal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+        <EditText
+            android:id="@+id/txtDescriptionAddSoilData"
+            android:layout_width="0dp"
+            android:layout_height="110dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Tambahkan keterangan"
+            android:inputType="textMultiLine"
+            android:maxLength="200"
+            android:maxLines="4"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCharCounterAddSoil" />
+
+        <Button
+            android:id="@+id/btnAddDataSoil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/tambahkan_data_tanah"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescriptionAddSoilData" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/nitrogen_n"
+            app:layout_constraintEnd_toEndOf="@+id/txtNAdd"
+            app:layout_constraintStart_toStartOf="@+id/txtNAdd"
+            app:layout_constraintTop_toBottomOf="@+id/txtNamaVarietasAddSoil" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/kalium_k"
+            app:layout_constraintEnd_toEndOf="@+id/txtKAdd"
+            app:layout_constraintStart_toStartOf="@+id/txtKAdd"
+            app:layout_constraintTop_toBottomOf="@+id/txtNamaVarietasAddSoil" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/fosfor_p"
+            app:layout_constraintEnd_toEndOf="@+id/txtPAdd"
+            app:layout_constraintStart_toStartOf="@+id/txtPAdd"
+            app:layout_constraintTop_toBottomOf="@+id/txtNAdd" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/ph"
+            app:layout_constraintEnd_toEndOf="@+id/txtPHAdd"
+            app:layout_constraintStart_toStartOf="@+id/txtPHAdd"
+            app:layout_constraintTop_toBottomOf="@+id/txtKAdd" />
+
+        <Button
+            android:id="@+id/btnGalleryAddSoil"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="Galeri"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+        <Button
+            android:id="@+id/btnCameraAddSoil"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:text="Kamera"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Ambil Gambar Melalui"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgAddSoilData" />
+
+        <TextView
+            android:id="@+id/txtCharCounterAddSoil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="35dp"
+            android:text="0/200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPHAdd" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/nama_varietas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCameraAddSoil" />
+
+        <EditText
+            android:id="@+id/txtNamaVarietasAddSoil"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
