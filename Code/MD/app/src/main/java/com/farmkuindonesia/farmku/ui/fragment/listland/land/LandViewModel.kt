@@ -8,6 +8,6 @@ class LandViewModel(private val rep:Repository):ViewModel() {
     val weatherData = rep.weatherData
     val measurementData = rep.measurement
     fun getWeatherData(lat: Double?, lon: Double?) = rep.getWeatherData(lat,lon)
-    fun getMeasurement(userId:String) = rep.getMeasurementList(userId)
+    fun getMeasurement(idLand:String) = rep.getMeasurementList(idLand)
     fun getUserId()=rep.getUser()
 }
