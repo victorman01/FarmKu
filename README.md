@@ -1,4 +1,3 @@
-
 # Bangkit Capstone Project C22-PS152 Documentation C23-PS179
 
 This repository contains the documentation for FarmKu Project.
@@ -64,6 +63,37 @@ After the model is ready, we have to test the model to evaluate the result.
 After the model is ready and evaluated correctly, we could save the model into H5 format. It will enable the model to load by  ``` Tensorflow load_model ```  and store it in variable. It will allow us to integrated the model with the API.
 
 ## Mobile Development Documentation
+1. Splash Screen: A captivating screen that welcomes users with an animated logo and a sleek transition into the app.
+2. Onboarding: A visually stunning introduction that guides users through the key features of our app using eye-catching graphics and smooth animations.
+3. Login Page: A stylish login interface with a modern design and intuitive user experience. Users can securely sign in using their credentials or social media accounts.
+4. Register Page: An attractive and user-friendly registration form that allows new users to create an account effortlessly. We've added cool animations to make the process more engaging.
+5. Forgot Password Page: A sleek and user-centric interface where users can reset their forgotten passwords easily. We've implemented a secure verification process for account recovery.
+6. OTP Page: A cutting-edge one-time password verification page with a minimalist design and smooth transitions. Users receive a unique code via email or SMS for secure authentication.
+7. Main Page: The heart of our app, featuring four dynamic fragments:
+
+        a. Home Page: A visually appealing and interactive interface where users can explore personalized content, latest updates, and important announcements.
+        b. News Page: A captivating news feed with stunning images and smooth scrolling. Users can stay up-to-date with the latest industry news and trends.
+        c. List Land Page: A comprehensive list of land properties with detailed information and high-quality images. Users can easily browse and search for their desired properties.
+        d. Profile: A sleek and customizable profile page where users can manage their personal information, profile picture, and app preferences.
+8. Disease Detection Page: An innovative feature that uses advanced algorithms and image recognition to detect diseases in plants. Users can simply upload a photo of the affected plant for instant analysis and recommendations.
+9. Data Soil Land Collection Page: An efficient and user-friendly interface for collecting and analyzing soil data. Users can input relevant parameters and generate detailed reports for land assessment.
+10. Record Page: A convenient page for users to keep track of their activities, such as plant care, fertilization, and watering schedules. We've added a visually pleasing calendar view for better organization.
+11. Measurement Page: A smart and intuitive tool for measuring various aspects of plants, such as height, width, and growth rate. Users can easily record and track their plant's progress.
+
+**Dependencies used during development:**
+1. Retrofit: A powerful networking library for seamless communication with APIs, enabling smooth data exchange between the app and server.
+2. OkHttp3: A reliable and efficient HTTP client that optimizes network requests, ensuring fast and secure data transmission.
+3. LiveData: A lifecycle-aware component from the Android Architecture Components, providing real-time data updates and automatic UI synchronization.
+4. Glide: An impressive image loading and caching library that optimizes image rendering and improves overall app performance.
+5. Navigation Component: A feature-rich navigation framework that simplifies the implementation of app navigation and enhances user flow.
+
+**Tools used in the development process:**
+
+1. Postman: A versatile API testing and documentation tool that helps developers analyze and debug API requests and responses effectively.
+
+2. Android Studio: The official Integrated Development Environment (IDE) for Android app development, providing a comprehensive set of tools, emulators, and debugging features to streamline the development process.
+
+With these enhancements, our Android Application delivers an even more captivating user experience, combining stunning visuals, smooth animations, and cutting-edge features.
 
 ## Cloud Computing Documentation
 
