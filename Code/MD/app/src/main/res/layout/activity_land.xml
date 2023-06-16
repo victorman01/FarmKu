@@ -59,7 +59,7 @@
 
                     <TextView
                         android:id="@+id/txtCurrentWeather"
-                        android:layout_width="96dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="18dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="28dp"
@@ -75,9 +75,7 @@
                         android:layout_height="44dp"
                         android:layout_marginTop="16dp"
                         android:src="@drawable/clear_sky"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.458"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txtCurrentWeather"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
@@ -121,11 +119,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="68dp"
-                        android:layout_marginTop="52dp"
+                        android:layout_marginTop="20dp"
                         android:text="Jarak Pandang"
                         android:textColor="@color/black"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
                     <TextView
                         android:id="@+id/txtPointOfView"
