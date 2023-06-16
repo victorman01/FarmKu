@@ -19,7 +19,6 @@ import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -28,6 +27,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import com.farmkuindonesia.farmku.R
+import com.farmkuindonesia.farmku.database.responses.ImageItem
+import com.farmkuindonesia.farmku.database.responses.SoilDataCollectionResponseItem
 import com.farmkuindonesia.farmku.databinding.ActivityAddSoilDataBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
 import com.farmkuindonesia.farmku.utils.createCustomTempFile
@@ -70,6 +71,8 @@ class AddSoilDataActivity : AppCompatActivity() {
 
         viewModelFac = ViewModelFactory.getInstance(this)
         addSoilDataViewModel = ViewModelProvider(this, viewModelFac)[AddSoilDataViewModel::class.java]
+
+        getCurrentLocation()
 
         addSoilDataViewModel.message.observe(this) { event ->
             event.getContentIfNotHandled()?.let { text ->
@@ -145,16 +148,17 @@ class AddSoilDataActivity : AppCompatActivity() {
                         desc = txtDescriptionAddSoilData.text.toString()
                     }
 
-                    getCurrentLocation()
-
                     val file = reduceFileImage(getFile as File)
                     val requestImageFile = file.asRequestBody("image/jpeg".toMediaType())
                     val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                        "photo",
+                        "Image",
                         file.name,
                         requestImageFile
                     )
-                    addSoilDataViewModel.send(name, n, p, k, ph, long, lat, imageMultipart, desc)
+                    addSoilDataViewModel.send(namaVarietas = name, n = n, p = p, k = k, pH = ph, longitude = long, latitude = lat, image = imageMultipart, description = desc)
+
+                    finish()
+
                 } else{
                   Toast.makeText(this, "Harap isi seluruh data", Toast.LENGTH_LONG).show()
                 }
@@ -232,7 +236,6 @@ class AddSoilDataActivity : AppCompatActivity() {
             override fun onLocationChanged(location: Location) {
                 long = location.longitude
                 lat = location.latitude
-                Log.d(TAG, "Longitude: $long, Latitude: $lat")
             }
 
             override fun onProviderEnabled(provider: String) {}

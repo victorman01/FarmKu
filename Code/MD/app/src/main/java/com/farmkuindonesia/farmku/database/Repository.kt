@@ -11,7 +11,9 @@ import com.farmkuindonesia.farmku.database.model.Address
 import com.farmkuindonesia.farmku.database.model.User
 import com.farmkuindonesia.farmku.database.responses.*
 import com.farmkuindonesia.farmku.utils.event.Event
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -233,22 +235,32 @@ class Repository constructor(
     }
 
     fun addSoilData(
-        name: String,
+        namaVarietas: String,
         n: Double,
         p: Double,
         k: Double,
-        ph: Double,
-        lon: Double,
-        lat: Double,
+        pH: Double,
+        longitude: Double,
+        latitude: Double,
         image: MultipartBody.Part,
-        desc: String
+        description: String
     ) {
         _isLoading.value = true
-        val client = apiServiceML2.addSoilDataCollection(image, name, n, p, k, ph, lon, lat, desc)
-        client.enqueue(object : Callback<SoilDataCollectionResponseItem> {
+
+        val pNamaVarietas = namaVarietas.toRequestBody("text/plain".toMediaType())
+        val pN = n.toString().toRequestBody("text/plain".toMediaType())
+        val pP = p.toString().toRequestBody("text/plain".toMediaType())
+        val pK = k.toString().toRequestBody("text/plain".toMediaType())
+        val pPH = pH.toString().toRequestBody("text/plain".toMediaType())
+        val pLongitude = longitude.toString().toRequestBody("text/plain".toMediaType())
+        val pLatitude = latitude.toString().toRequestBody("text/plain".toMediaType())
+        val pDescription = description.toRequestBody("text/plain".toMediaType())
+
+        val client = apiServiceML2.addSoilDataCollection3(pNamaVarietas, pN, pP, pK, pPH, pLongitude, pLatitude, image, pDescription)
+        client.enqueue(object : Callback<AddSoilDataCollectionResponseItem> {
             override fun onResponse(
-                call: Call<SoilDataCollectionResponseItem>,
-                response: Response<SoilDataCollectionResponseItem>
+                call: Call<AddSoilDataCollectionResponseItem>,
+                response: Response<AddSoilDataCollectionResponseItem>
             ) {
                 _isLoading.value = false
                 if (response.isSuccessful) {
@@ -259,7 +271,7 @@ class Repository constructor(
                 }
             }
 
-            override fun onFailure(call: Call<SoilDataCollectionResponseItem>, t: Throwable) {
+            override fun onFailure(call: Call<AddSoilDataCollectionResponseItem>, t: Throwable) {
                 _isLoading.value = false
                 Log.d(TAG, t.message.toString())
             }

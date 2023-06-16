@@ -2,6 +2,7 @@ package com.farmkuindonesia.farmku.database.config
 
 import com.farmkuindonesia.farmku.database.responses.*
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -38,20 +39,19 @@ interface ApiService {
     @GET("data-collection")
     fun getSoilDataCollection(): Call<List<SoilDataCollectionResponseItem>>
 
-    @FormUrlEncoded
     @Multipart
     @POST("data-collection")
-    fun addSoilDataCollection(
-        @Part Image: MultipartBody.Part,
-        @Field("nama_varietas") nama_varietas: String,
-        @Field("N") N: Double,
-        @Field("P") P: Double,
-        @Field("K") K: Double,
-        @Field("PH") PH: Double,
-        @Field("Longitude") Longitude: Double,
-        @Field("Latitude") Latitude: Double,
-        @Field("Description") Description: String,
-    ): Call<SoilDataCollectionResponseItem>
+    fun addSoilDataCollection3(
+        @Part("nama_varietas") nama_varietas: RequestBody,
+        @Part("N") N: RequestBody,
+        @Part("P") P: RequestBody,
+        @Part("K") K: RequestBody,
+        @Part("PH") PH: RequestBody,
+        @Part("Longitude") Longitude: RequestBody,
+        @Part("Latitude") Latitude: RequestBody,
+        @Part image: MultipartBody.Part,
+        @Part("Description") Description: RequestBody
+    ): Call<AddSoilDataCollectionResponseItem>
 
     @GET("land")
     fun getLandByUserId(
