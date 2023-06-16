@@ -1,6 +1,9 @@
+
 # Bangkit Capstone Project C22-PS152 Documentation C23-PS179
 
 This repository contains the documentation for FarmKu Project.
+</br>
+<img src="https://github.com/victorman01/FarmKu/blob/main/images/farmku.png" alt="" data-canonical-src="[https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png](https://github.com/victorman01/FarmKu/blob/main/images/farmku.png)" width="100" height="100"/>
 
 
 **_FarmKu - A platform that focuses on the collection, management, and utilization of farmer activity data as a recommendation for parameters of farming activities from upstream to downstream_**
@@ -11,8 +14,7 @@ This repository contains the documentation for FarmKu Project.
     - Machine Learning Documentation
     - Mobile Development Documentation
     - Cloud Computing Documentation
-3. Resource
-4. Team Member of C23-PS179
+3. Team Member of C23-PS179
 
 ## 1. Overview
     FarmKu is a project to address challenges faced by farmers in Indonesia regarding soil conditions and plant diseases. The project offers plant disease detection and fertilization recommendations through a mobile application. The plant disease detection feature allows farmers to take photos of leaves that indicate certain diseases. The application uses machine learning models created with TensorFlow to predict the type of disease and provide appropriate treatment options. The models have high accuracy rates, exceeding 90% for most plants. The fertilizer recommendation feature collects soil nutrients data periodically using an IoT device and predicts the soil condition in the near future. If the soil is predicted to be suboptimal, farmers receive immediate notifications to apply fertilizers, helping optimize crop growth. But FarmKu is temporarily pivoting this feature into data collection due to a lack of data.
@@ -96,9 +98,44 @@ After the model is ready and evaluated correctly, we could save the model into H
 With these enhancements, our Android Application delivers an even more captivating user experience, combining stunning visuals, smooth animations, and cutting-edge features.
 
 ## Cloud Computing Documentation
+![plot](./images/cloud.png)
+#### 1. Creating Flask App to load model from Machine Learning
+  - Create simple flask api with the name `preprocess.py`
+  - save model and dataset for Machine learning in same directory as `preprocess.py`
+  - Load the model in `preprocess.py`
+  - create endpoint and test model by running flask using `python preprocess.py` to run it locally and getting predicted data using local ip.
+#### 2. Creating Login and Register with Authentication in NodeJs
+  - Creating simple Login and Register using MySQL
+  - create Json Web Token(JWT) to authenticate login and register
+  - create JWT requirement to request prediction
+  - change dummy database to cloud sql database
+  - Test database to user login and register
+  - Test authentication JWT using POSTMAN
+#### 3. Google Cloud Deployment
+  - create Dockerfile and requirement.txt to store depedency and place it in root directory
+  - clone api repository in cloud shell
+  - run this command to deploy
+      ```
+    gcloud run deploy farmku-backend \
+    --image gcr.io/$GOOGLE_CLOUD_PROJECT/farmku-backend \
+    --platform managed \
+    --region asia-southeast2 \
+    --allow-unauthenticated
+    ```
+  - Enable Cloud Run
+  - select farmku-backend image container and deploy to cloud run 
+#### 4. ci/cd pipeline with Cloud Build
+  - Enable Cloud Build
+  - create cloudbuild.yaml and write command to build new docker container,push it to container registry and run it everytime it trigger
+  - open CloudBuild and select repository and cloudbuild.yaml as config
+  - select trigger to everytime push happen in main branch
+  - build cloudbuild trigger
+  - add permission to cloudbuild service acccount and run the trigger to automate deployment
+ 
+#### 5. Create Documentation using Postman
 
-## 3. Resource
-## 4. Team Member of C23-PS179
+
+## 3. Team Member of C23-PS179
 | ID | Name | University | Learning Path |
 | ------ | ------ | ------ | ------ |
 | C340DKX3998 | Rayhan Emillul Fata | Universitas Negeri Sebelas Maret | Cloud Computing 
@@ -107,3 +144,8 @@ With these enhancements, our Android Application delivers an even more captivati
 | M351DKX4183 | Alvin Fernando S. | Universitas Surabaya | Machine Learning | 
 | A351DKX4108 | Victor Manuel S. | Universitas Surabaya | Mobile Development |
 | A351DKX4106 | Michael Andreas | Universitas Surabaya | Mobile Development |
+
+## License
+
+MIT
+
