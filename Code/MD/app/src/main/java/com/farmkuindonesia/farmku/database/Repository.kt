@@ -304,14 +304,9 @@ class Repository constructor(
     }
 
     fun addNewLand(
-        name: String,
-        userId: String,
-        varietyId: String,
-        area: Int,
-        addressId: String,
-        location: LocationAddLand
+        request:AddLandResponse
     ) {
-        val client = apiService.addNewLand(name, userId, varietyId, area, addressId, location)
+        val client = apiService.addNewLand(request)
         client.enqueue(object : Callback<AddLandResponse> {
             override fun onResponse(
                 call: Call<AddLandResponse>,

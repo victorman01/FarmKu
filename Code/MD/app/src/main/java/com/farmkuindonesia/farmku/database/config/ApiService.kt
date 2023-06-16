@@ -60,14 +60,10 @@ interface ApiService {
 
     @GET("variety")
     fun getVariety(): Call<VaerityResponse>
-    @FormUrlEncoded
+
+
     @POST("land")
     fun addNewLand(
-        @Field("name") name: String,
-        @Field("user_id") userId: String,
-        @Field("variety_id") varietyId: String,
-        @Field("area") area: Int,
-        @Field("address_id") addressId: String,
-        @Field("location") location: LocationAddLand,
+        @Body request: AddLandResponse
     ): Call<AddLandResponse>
 }

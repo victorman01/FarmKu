@@ -1,6 +1,6 @@
 package com.farmkuindonesia.farmku.ui.fragment.listland.addland
 
-import androidx.appcompat.app.AppCompatActivity
+import android.R.attr
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.database.responses.AddLandResponse
@@ -18,6 +19,7 @@ import com.farmkuindonesia.farmku.ui.ViewModelFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
+
 
 class AddLandActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -245,11 +247,12 @@ class AddLandActivity : AppCompatActivity(), OnMapReadyCallback {
                 val areaString = txtArea.text.toString()
                 val area = areaString.toInt()
                 val address = selectedIdv
+                val location = LocationAddLand(lat, lng)
+
+                val request = AddLandResponse(area,varietySelected,userId,name,address,location)
+
                 if (userId != null) {
-                    addLandViewModel.addNewLand(
-                        name, userId, varietySelected, area, address,
-                        LocationAddLand(lng, lat)
-                    )
+                    addLandViewModel.addNewLand(request)
                 }
             }
         }
