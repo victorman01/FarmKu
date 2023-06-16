@@ -76,6 +76,6 @@ interface ApiService {
 
     @GET("measurement")
     fun getMeasurement(
-        @Query("user_id") userId:String
+        @Query("land_id") userId:String
     ):Call<MeasurementResponse>
 }

@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.farmkuindonesia.farmku.databinding.ActivityRegisterBinding
 import com.farmkuindonesia.farmku.ui.otp.OTPActivity
 
@@ -22,11 +23,15 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.btnRegisterRegister.setOnClickListener {
-            val phoneNumber = binding.txtNumberRegister.text.toString()
-            val intent = Intent(this@RegisterActivity, OTPActivity::class.java)
-            intent.putExtra(OTPActivity.FROMWHERE , "RegisterActivity")
-            intent.putExtra(PHONENUMBERREGISTER, phoneNumber)
-            startActivity(intent)
+            if(binding.txtNumberRegister.text.isNullOrEmpty()){
+                Toast.makeText(this,"Tolong, inputkan nomor anda",Toast.LENGTH_SHORT).show()
+            }else{
+                val phoneNumber = binding.txtNumberRegister.text.toString()
+                val intent = Intent(this@RegisterActivity, OTPActivity::class.java)
+                intent.putExtra(OTPActivity.FROMWHERE , "RegisterActivity")
+                intent.putExtra(PHONENUMBERREGISTER, phoneNumber)
+                startActivity(intent)
+            }
         }
     }
 

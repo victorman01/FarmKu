@@ -30,7 +30,7 @@ class LandActivity : AppCompatActivity() {
             ViewModelProvider(this, viewModelFac)[LandViewModel::class.java]
 
         val userId = landActivityViewModel.getUserId().id.toString()
-        val idLand = intent.getStringExtra(IDLAND)
+        val idLand = intent.getStringExtra(IDLAND).toString()
         val nameLand = intent.getStringExtra(NAMELAND)
         val latString = intent.getStringExtra(LATLAND)
         val longString = intent.getStringExtra(LONLAND)
@@ -43,7 +43,7 @@ class LandActivity : AppCompatActivity() {
         measurementList = listOf()
 
         landActivityViewModel.getWeatherData(lat, long)
-        landActivityViewModel.getMeasurement(userId)
+        landActivityViewModel.getMeasurement(idLand)
 
         landActivityViewModel.measurementData.observe(this) {
             if (it != null) {

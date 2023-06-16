@@ -375,8 +375,8 @@ class Repository constructor(
             }
         })
     }
-    fun getMeasurementList(userId:String){
-        val client = apiService.getMeasurement(userId)
+    fun getMeasurementList(idLand:String){
+        val client = apiService.getMeasurement(idLand)
         client.enqueue(object : Callback<MeasurementResponse> {
             override fun onResponse(
                 call: Call<MeasurementResponse>,
