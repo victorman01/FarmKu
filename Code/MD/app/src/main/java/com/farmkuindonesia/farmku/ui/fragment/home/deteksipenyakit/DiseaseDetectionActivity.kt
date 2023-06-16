@@ -95,14 +95,6 @@ class DiseaseDetectionActivity : AppCompatActivity() {
             }
         }
 
-//        addStoryBinding.checkBoxLocation.setOnCheckedChangeListener { buttonView, isChecked ->
-//            if (isChecked) {
-//                getCurrentLocation()
-//            } else {
-//                locationManager.removeUpdates(locationListener)
-//            }
-//        }
-
         binding.buttonDetect.setOnClickListener {
             if (getFile != null) {
                 val file = reduceFileImage(getFile as File)
@@ -114,11 +106,16 @@ class DiseaseDetectionActivity : AppCompatActivity() {
                 )
                 diseaseDetectionViewModel.result(imageMultipart)
                 diseaseDetectionViewModel.preprocess.observe(this) { result ->
-                    val confidencePercentage: Int = (result.confidence * 100).toInt()
-                    binding.resultText.text = getString(R.string.result_text, result.result)
-                    binding.confidenceText.text =
-                        getString(R.string.confidence_text, confidencePercentage)
+                    if(result.result != "failed"){
+                        val confidencePercentage: Int = (result.confidence.toFloat() * 100).toInt()
+                        binding.resultText.text = getString(R.string.result_text, result.result)
+                        binding.confidenceText.text = getString(R.string.confidence_text, confidencePercentage)
+                    }
+                    else{
+                        Toast.makeText(this, "Gambar tidak terdeteksi sebagai daun.", Toast.LENGTH_SHORT).show()
+                    }
                 }
+
             } else {
                 Toast.makeText(
                     this@DiseaseDetectionActivity,
@@ -126,6 +123,8 @@ class DiseaseDetectionActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+
+
             diseaseDetectionViewModel.message.observe(this) { event ->
                 event.getContentIfNotHandled()?.let { text ->
                     showMessage(text)
@@ -209,39 +208,6 @@ class DiseaseDetectionActivity : AppCompatActivity() {
 
         val chooser = Intent.createChooser(intent, "Choose a Picture")
         launcherIntentGallery.launch(chooser)
-    }
-
-    private fun getCurrentLocation() {
-        locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
-        locationListener = object : LocationListener {
-            override fun onLocationChanged(location: Location) {
-                long = location.longitude
-                lat = location.latitude
-                Log.d("DiseaseDetectionActivity", "Longitude: $long, Latitude: $lat")
-            }
-
-            override fun onProviderEnabled(provider: String) {}
-            override fun onProviderDisabled(provider: String) {}
-            override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {}
-        }
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                REQUEST_LOCATION_PERMISSION
-            )
-            return
-        }
-        locationManager.requestLocationUpdates(
-            LocationManager.GPS_PROVIDER,
-            0,
-            0f,
-            locationListener
-        )
     }
 
     private fun showLoading(isLoading: Boolean) {

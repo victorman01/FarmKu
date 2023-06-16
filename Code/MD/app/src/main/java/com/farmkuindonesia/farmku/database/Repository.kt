@@ -207,11 +207,10 @@ class Repository constructor(
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     _preprocess.value = response.body()
-                    _messages.value = Event(context.getString(R.string.deteksi_berhasil_text))
+
                 } else {
                     Log.d(TAG, context.getString(R.string.terdapat_error_saat_deteksi_text))
-                    _messages.value =
-                        Event(context.getString(R.string.deteksi_gagal_text))
+                    _messages.value = Event(context.getString(R.string.deteksi_gagal_text))
                 }
             }
 

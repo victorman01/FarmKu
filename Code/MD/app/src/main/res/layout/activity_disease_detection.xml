@@ -54,36 +54,33 @@
         android:id="@+id/button_detect"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="32dp"
         android:background="#000000"
         android:text="@string/detect_text"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/group_box"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/group_box"
-        app:layout_constraintTop_toBottomOf="@+id/group_box" />
+        app:layout_constraintTop_toBottomOf="@+id/button_add_camera" />
 
     <Button
         android:id="@+id/button_add_camera"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
-        android:text="@string/melalui_kamera_text"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/kamera"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/group_box" />
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
     <Button
         android:id="@+id/button_add_gallery"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/melalui_galeri_text"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        android:text="@string/galeri"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/group_box" />
+        app:layout_constraintTop_toTopOf="@+id/button_add_camera" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -102,5 +99,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/ambil_gambar_melalui"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/group_box" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
