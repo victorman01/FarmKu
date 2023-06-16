@@ -2,7 +2,7 @@
 # Bangkit Capstone Project C22-PS152 Documentation C23-PS179
 
 This repository contains the documentation for FarmKu Project.
-<img src="https://camo.githubusercontent.com/331400aee821efda2e36ee9b3bc8bce93b975109/68747470733a2f2f6779617a6f2e636f6d2f65623563353734316236613961313663363932313730613431613439633835382e706e67" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="200" height="400" />
+<img src="https://github.com/victorman01/FarmKu/blob/main/images/farmku.png" alt="" data-canonical-src="[https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png](https://github.com/victorman01/FarmKu/blob/main/images/farmku.png)" width="100" height="100" />
 
 
 **_FarmKu - A platform that focuses on the collection, management, and utilization of farmer activity data as a recommendation for parameters of farming activities from upstream to downstream_**
