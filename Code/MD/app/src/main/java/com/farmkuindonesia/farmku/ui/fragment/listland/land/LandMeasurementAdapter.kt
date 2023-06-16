@@ -17,9 +17,9 @@ class LandMeasurementAdapter(private val listMeasurement: List<ItemData?>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val date = listMeasurement[position]?.createdAt
+        val date = listMeasurement[position]?.updatedAt
         holder.binding.txtDateMeasurement.text = date
-        holder.binding.txtNameMeasurement.text = "Measurement #${position}"
+        holder.binding.txtNameMeasurement.text = "Measurement #${position+1}"
     }
 
     override fun getItemCount(): Int = listMeasurement.size

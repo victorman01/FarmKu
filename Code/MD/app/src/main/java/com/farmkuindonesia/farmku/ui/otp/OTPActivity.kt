@@ -32,7 +32,6 @@ class OTPActivity : AppCompatActivity() {
         if(fromWhere == "ForgotPasswordActivity"){
             if(isEmail){
                 binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_email_text)
-
             }
             else {
                 binding.textViewSubtitleOTP.text = getString(R.string.masukan_otp_num_text)
@@ -65,14 +64,19 @@ class OTPActivity : AppCompatActivity() {
             }
 
             btnLanjut.setOnClickListener{
-                if(fromWhere == "ForgotPasswordActivity"){
-                    val intent = Intent(this@OTPActivity,ResetPasswordActivity::class.java)
-                    startActivity(intent)
+                if(editTextOtp1.text.isNullOrEmpty()&&editTextOtp2.text.isNullOrEmpty()&&editTextOtp3.text.isNullOrEmpty()&&editTextOtp4.text.isNullOrEmpty()){
+                    Toast.makeText(this@OTPActivity,"Tolong, inputkan kode OTP",Toast.LENGTH_SHORT).show()
                 }else{
-                    val intent = Intent(this@OTPActivity,RegisterFillDataActivity::class.java)
-                    intent.putExtra(RegisterActivity.PHONENUMBERREGISTER, phoneNumber)
-                    startActivity(intent)
+                    if(fromWhere == "ForgotPasswordActivity"){
+                        val intent = Intent(this@OTPActivity,ResetPasswordActivity::class.java)
+                        startActivity(intent)
+                    }else{
+                        val intent = Intent(this@OTPActivity,RegisterFillDataActivity::class.java)
+                        intent.putExtra(RegisterActivity.PHONENUMBERREGISTER, phoneNumber)
+                        startActivity(intent)
+                    }
                 }
+
             }
         }
 
