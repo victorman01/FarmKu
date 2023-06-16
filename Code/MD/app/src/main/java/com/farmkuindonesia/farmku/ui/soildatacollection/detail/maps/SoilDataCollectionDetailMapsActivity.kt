@@ -17,12 +17,12 @@ import com.google.android.gms.maps.model.MarkerOptions
 class SoilDataCollectionDetailMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-private lateinit var binding: ActivitySoilDataCollectionDetailMapsBinding
+    private lateinit var binding: ActivitySoilDataCollectionDetailMapsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-         binding = ActivitySoilDataCollectionDetailMapsBinding.inflate(layoutInflater)
-         setContentView(binding.root)
+        binding = ActivitySoilDataCollectionDetailMapsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Soil Data Detail"
 

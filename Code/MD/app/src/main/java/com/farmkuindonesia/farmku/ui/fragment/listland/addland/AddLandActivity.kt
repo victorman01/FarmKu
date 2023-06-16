@@ -19,9 +19,13 @@ import com.farmkuindonesia.farmku.databinding.ActivityAddLandBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
 import com.farmkuindonesia.farmku.ui.fragment.listland.ListLandFragment
 import com.farmkuindonesia.farmku.ui.main.MainActivity
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 
 class AddLandActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -60,13 +64,13 @@ class AddLandActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         binding = ActivityAddLandBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
         viewModelFac = ViewModelFactory.getInstance(this)
         addLandViewModel = ViewModelProvider(this, viewModelFac)[AddLandViewModel::class.java]
 
         mapView = binding.mapViewLand
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
-        supportActionBar?.hide()
 
         binding.apply {
             spinnerRegency.isEnabled = false
@@ -278,7 +282,21 @@ class AddLandActivity : AppCompatActivity(), OnMapReadyCallback {
         googleMap.setOnMapClickListener { latLng ->
             lat = latLng.latitude
             lng = latLng.longitude
+
+            googleMap.clear()
+            val markerOptions = MarkerOptions()
+                .position(LatLng(lat, lng))
+                .title("Lokasi Lahan")
+            googleMap.addMarker(markerOptions)
         }
+
+        googleMap.uiSettings.isZoomControlsEnabled = true
+
+        val cameraPosition = CameraPosition.Builder()
+            .target(LatLng(-7.482490248090801, 110.92670750944686))
+            .zoom(5.0f)
+            .build()
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
     }
 
     private fun showMessage(msg: String) {
@@ -379,5 +397,25 @@ class AddLandActivity : AppCompatActivity(), OnMapReadyCallback {
         )
         dadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = dadapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
     }
 }
