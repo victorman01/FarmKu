@@ -357,7 +357,7 @@ class Repository constructor(
     }
 
     fun getWeatherData(lat: Double?, lon: Double?) {
-        val client = apiServiceWeather.getWeatherData(lat, lon, BuildConfig.KEY_WEATHER)
+        val client = apiServiceWeather.getWeatherData(lat, lon, BuildConfig.KEY_WEATHER,"metric")
         client.enqueue(object : Callback<WeatherResponse> {
             override fun onResponse(
                 call: Call<WeatherResponse>,
