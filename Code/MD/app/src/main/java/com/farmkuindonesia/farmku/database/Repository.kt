@@ -5,6 +5,7 @@ import android.os.Build
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.farmkuindonesia.farmku.BuildConfig
 import com.farmkuindonesia.farmku.R
 import com.farmkuindonesia.farmku.database.config.ApiService
 import com.farmkuindonesia.farmku.database.model.Address
@@ -25,7 +26,8 @@ class Repository constructor(
     private val apiService: ApiService,
     private val pref: Preferences,
     private val apiServiceML: ApiService,
-    private val apiServiceML2: ApiService
+    private val apiServiceML2: ApiService,
+    private val apiServiceWeather: ApiService
 ) {
     private val _messages = MutableLiveData<Event<String>>()
     val messages: LiveData<Event<String>> = _messages
@@ -47,6 +49,15 @@ class Repository constructor(
 
     private val _varietyList = MutableLiveData<List<DataItemVariety>?>()
     val varietyList: LiveData<List<DataItemVariety>?> = _varietyList
+
+    private val _weatherData = MutableLiveData<WeatherResponse>()
+    val weatherData: LiveData<WeatherResponse> = _weatherData
+
+    private val _measurement = MutableLiveData<List<ItemData?>?>()
+    val measurement: LiveData<List<ItemData?>?> = _measurement
+
+    private val _success = MutableLiveData<Boolean>()
+    val success: LiveData<Boolean> = _success
 
     //Login
     fun signIn(email: String, password: String): LiveData<SignInResponse> {
@@ -316,8 +327,8 @@ class Repository constructor(
     }
 
     fun addNewLand(
-        request:AddLandResponse
-    ) {
+        request: AddLandResponse
+    ) :AddLandResponse{
         val client = apiService.addNewLand(request)
         client.enqueue(object : Callback<AddLandResponse> {
             override fun onResponse(
@@ -327,7 +338,9 @@ class Repository constructor(
                 _isLoading.value = false
                 if (response.isSuccessful) {
                     Event(context.getString(R.string.add_new_land_success_text))
+                    _success.value = true
                 } else {
+                    _success.value = false
                     Event(context.getString(R.string.add_new_land_failed_text))
                 }
             }
@@ -337,7 +350,55 @@ class Repository constructor(
                 Log.d(TAG, t.message.toString())
             }
         })
+        return request
     }
+
+    fun getWeatherData(lat: Double?, lon: Double?) {
+        val client = apiServiceWeather.getWeatherData(lat, lon, BuildConfig.KEY_WEATHER)
+        client.enqueue(object : Callback<WeatherResponse> {
+            override fun onResponse(
+                call: Call<WeatherResponse>,
+                response: Response<WeatherResponse>
+            ) {
+                _isLoading.value = false
+                if(response.isSuccessful) {
+                    _weatherData.value = response.body()
+                }else
+                {
+                    _messages.value = Event("Error dalam pengambilan data Weather")
+                }
+            }
+
+            override fun onFailure(call: Call<WeatherResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.d(TAG, t.message.toString())
+            }
+        })
+    }
+    fun getMeasurementList(userId:String){
+        val client = apiService.getMeasurement(userId)
+        client.enqueue(object : Callback<MeasurementResponse> {
+            override fun onResponse(
+                call: Call<MeasurementResponse>,
+                response: Response<MeasurementResponse>
+            ) {
+                _isLoading.value = false
+                if(response.isSuccessful) {
+                    _measurement.value = response.body()?.data
+                }else
+                {
+                    _messages.value = Event("Error dalam pengambilan data Measurement")
+                }
+            }
+
+            override fun onFailure(call: Call<MeasurementResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.d(TAG, t.message.toString())
+            }
+        })
+    }
+
+
 
     companion object {
         private const val TAG = "Repository"
@@ -348,10 +409,11 @@ class Repository constructor(
             pref: Preferences,
             apiService: ApiService,
             apiServiceML: ApiService,
-            apiServiceML2: ApiService
+            apiServiceML2: ApiService,
+            apiServiceWeather:ApiService
         ): Repository =
             instance ?: synchronized(this) {
-                instance ?: Repository(context, apiService, pref, apiServiceML, apiServiceML2)
+                instance ?: Repository(context, apiService, pref, apiServiceML, apiServiceML2,apiServiceWeather)
             }.also { instance = it }
     }
 }

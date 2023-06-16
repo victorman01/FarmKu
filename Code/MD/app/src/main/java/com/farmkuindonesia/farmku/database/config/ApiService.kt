@@ -66,4 +66,16 @@ interface ApiService {
     fun addNewLand(
         @Body request: AddLandResponse
     ): Call<AddLandResponse>
+
+    @GET("weather")
+    fun getWeatherData(
+        @Query("lat") lat: Double?,
+        @Query("lon") lon: Double?,
+        @Query("appid") key:String,
+    ):Call<WeatherResponse>
+
+    @GET("measurement")
+    fun getMeasurement(
+        @Query("user_id") userId:String
+    ):Call<MeasurementResponse>
 }

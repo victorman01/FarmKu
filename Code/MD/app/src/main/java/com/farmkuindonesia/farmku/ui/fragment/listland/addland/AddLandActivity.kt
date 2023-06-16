@@ -1,6 +1,7 @@
 package com.farmkuindonesia.farmku.ui.fragment.listland.addland
 
 import android.R.attr
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -16,6 +17,8 @@ import com.farmkuindonesia.farmku.database.responses.AddLandResponse
 import com.farmkuindonesia.farmku.database.responses.LocationAddLand
 import com.farmkuindonesia.farmku.databinding.ActivityAddLandBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
+import com.farmkuindonesia.farmku.ui.fragment.listland.ListLandFragment
+import com.farmkuindonesia.farmku.ui.main.MainActivity
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -240,7 +243,6 @@ class AddLandActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding.apply {
             btnAddLand.setOnClickListener {
-
                 val name = txtNameLand.text.toString()
                 val userId = addLandViewModel.getIdUser().id
                 val varietySelected = selectedIdVariety
@@ -253,6 +255,14 @@ class AddLandActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 if (userId != null) {
                     addLandViewModel.addNewLand(request)
+                    addLandViewModel.successCheck.observe(this@AddLandActivity){
+                        if(it == true){
+                            val intent = Intent(this@AddLandActivity, ListLandFragment::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK and Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
                 }
             }
         }

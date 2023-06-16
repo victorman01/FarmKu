@@ -11,7 +11,7 @@ data class ListLandResponse(
 	val count: Int? = null
 )
 
-data class Location(
+data class LocationLand(
 
 	@field:SerializedName("lon")
 	val lon: Any? = null,
@@ -44,7 +44,7 @@ data class LandItem(
 	val createdAt: String? = null,
 
 	@field:SerializedName("location")
-	val location: Location? = null,
+	val location: LocationLand? = null,
 
 	@field:SerializedName("id")
 	val id: String? = null,

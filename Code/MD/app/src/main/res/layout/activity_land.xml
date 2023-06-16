@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contrainslayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -16,6 +17,7 @@
             android:layout_height="168dp"
             android:contentDescription="@string/appbar_land_activity_text"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/circled_dark_green_appbar" />
@@ -51,22 +53,21 @@
                 android:ems="10">
 
                 <TextView
-                    android:id="@+id/txtDay"
-                    android:layout_width="56dp"
-                    android:layout_height="31dp"
+                    android:id="@+id/txtCurrentWeather"
+                    android:layout_width="96dp"
+                    android:layout_height="18dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Senin"
+                    android:layout_marginTop="28dp"
+                    android:text="Current Weather"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imgWeather"
-                    android:layout_width="54dp"
-                    android:layout_height="35dp"
+                    android:layout_width="70dp"
+                    android:layout_height="44dp"
                     android:layout_marginTop="16dp"
                     android:src="@drawable/clear_sky"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -76,9 +77,9 @@
 
                 <TextView
                     android:id="@+id/txtTemperature"
-                    android:layout_width="47dp"
-                    android:layout_height="31dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_width="97dp"
+                    android:layout_height="27dp"
+                    android:layout_marginTop="20dp"
                     android:text="26 \u2103"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -93,74 +94,63 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="15dp"
                     android:text="Angin"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtDay" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
 
                 <TextView
                     android:id="@+id/textView36"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="15dp"
                     android:text="Kelembaban"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toEndOf="@+id/txtWindSpeed"
-                    app:layout_constraintTop_toBottomOf="@+id/txtDay" />
-
-                <TextView
-                    android:id="@+id/textView38"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="UV"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toEndOf="@+id/txtPointOfView"
-                    app:layout_constraintTop_toBottomOf="@+id/textView36" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
 
                 <TextView
                     android:id="@+id/textView35"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="68dp"
+                    android:layout_marginTop="52dp"
                     android:text="Jarak Pandang"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtDay" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
+
+                <TextView
+                    android:id="@+id/txtPointOfView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
+                    android:text="25 km"
+                    app:layout_constraintStart_toEndOf="@+id/textView35"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWindSpeed" />
 
                 <TextView
                     android:id="@+id/txtWindSpeed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="68dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="15dp"
                     android:text="12 m/h"
                     app:layout_constraintStart_toEndOf="@+id/textView33"
-                    app:layout_constraintTop_toBottomOf="@+id/txtDay" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
 
                 <TextView
                     android:id="@+id/txtKelembaban"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
                     android:text="55%"
                     app:layout_constraintStart_toEndOf="@+id/textView36"
                     app:layout_constraintTop_toBottomOf="@+id/txtTemperature" />
-
-                <TextView
-                    android:id="@+id/txtUv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="96dp"
-                    android:layout_marginTop="8dp"
-                    android:text="1"
-                    app:layout_constraintStart_toEndOf="@+id/textView38"
-                    app:layout_constraintTop_toBottomOf="@+id/txtKelembaban" />
 
                 <TextView
                     android:id="@+id/txtWindSpeed4"
@@ -172,27 +162,6 @@
                     app:layout_constraintStart_toEndOf="@+id/textView36"
                     app:layout_constraintTop_toBottomOf="@+id/txtTemperature" />
 
-                <TextView
-                    android:id="@+id/txtPointOfView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="25 km"
-                    app:layout_constraintStart_toEndOf="@+id/textView35"
-                    app:layout_constraintTop_toBottomOf="@+id/txtWindSpeed" />
-
-                <TextView
-                    android:id="@+id/txtLihatDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="Lihat Detail"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
@@ -263,6 +232,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMeasurement"
             android:layout_width="0dp"
             android:layout_height="397dp"
             android:layout_marginTop="10dp"
@@ -270,7 +240,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView41"
-            tools:listitem="@layout/list_measurement_layout"/>
+            tools:listitem="@layout/list_measurement_layout" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddMesurement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            app:layout_anchor="@id/contrainslayout"
+            android:clickable="true"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/add_icon"
+            android:focusable="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

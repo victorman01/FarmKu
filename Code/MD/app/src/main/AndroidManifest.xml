@@ -38,6 +38,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.fragment.listland.addmeasurement.AddMeasurementActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.fragment.listland.addland.AddLandActivity"
             android:exported="false" />
         <activity

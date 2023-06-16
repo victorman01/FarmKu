@@ -1,15 +1,19 @@
 package com.farmkuindonesia.farmku.ui.fragment.listland.land
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
-import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.farmkuindonesia.farmku.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.farmkuindonesia.farmku.BuildConfig
+import com.farmkuindonesia.farmku.database.responses.ItemData
 import com.farmkuindonesia.farmku.databinding.ActivityLandBinding
 import com.farmkuindonesia.farmku.ui.ViewModelFactory
+import com.farmkuindonesia.farmku.ui.fragment.listland.addmeasurement.AddMeasurementActivity
 
 class LandActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLandBinding
@@ -25,10 +29,55 @@ class LandActivity : AppCompatActivity() {
         landActivityViewModel =
             ViewModelProvider(this, viewModelFac)[LandViewModel::class.java]
 
+        val userId = landActivityViewModel.getUserId().id.toString()
+        val idLand = intent.getStringExtra(IDLAND)
         val nameLand = intent.getStringExtra(NAMELAND)
-        binding.txtLandName.text = nameLand
+        val latString = intent.getStringExtra(LATLAND)
+        val longString = intent.getStringExtra(LONLAND)
+        val lat = latString?.toDouble()
+        val long = longString?.toDouble()
 
-        val tableLayout = findViewById<TableLayout>(R.id.tableLayout)
+        var measurementList: List<ItemData?>
+
+        binding.txtLandName.text = nameLand
+        measurementList = listOf()
+
+        landActivityViewModel.getWeatherData(lat, long)
+        landActivityViewModel.getMeasurement(userId)
+
+        landActivityViewModel.measurementData.observe(this) {
+            if (it != null) {
+                measurementList = it
+            }
+        }
+
+        landActivityViewModel.weatherData.observe(this) {
+            binding.apply {
+
+                val adapter = LandMeasurementAdapter(measurementList)
+                rvMeasurement.layoutManager = LinearLayoutManager(this@LandActivity)
+                rvMeasurement.adapter = adapter
+                val windSpeed = it.wind?.speed?.toString() + " m/s"
+                val temp = it.main?.temp?.toString() + " \u2103"
+                val humidity = it.main?.humidity?.toString() + "%"
+                val visibility = it.visibility?.toString() + " m"
+                val weatherIcon = BuildConfig.URL_ICON_WEATHER + it.weather?.get(0)?.icon + ".png"
+
+                txtWindSpeed.text = windSpeed
+                txtTemperature.text = temp
+                txtKelembaban.text = humidity
+                txtPointOfView.text = visibility
+                Glide.with(this@LandActivity).load(weatherIcon).into(imgWeather)
+                fabAddMesurement.setOnClickListener {
+                    val intent = Intent(this@LandActivity, AddMeasurementActivity::class.java)
+                    intent.putExtra(AddMeasurementActivity.IDLAND, idLand)
+                    intent.putExtra(AddMeasurementActivity.NAMELAND, nameLand)
+                    intent.putExtra(AddMeasurementActivity.LATLAND, lat)
+                    intent.putExtra(AddMeasurementActivity.LONLAND, long)
+                    startActivity(intent)
+                }
+            }
+        }
 
         val data = listOf(
             arrayOf("08:00", "Tempat A", "10", "15", "123"),
@@ -69,12 +118,14 @@ class LandActivity : AppCompatActivity() {
             textView5.gravity = Gravity.CENTER
             tableRow.addView(textView5)
 
-            tableLayout.addView(tableRow)
+            binding.tableLayout.addView(tableRow)
         }
     }
 
     companion object {
         const val IDLAND = "IDLAND"
         const val NAMELAND = "NAMELAND"
+        const val LATLAND = "LATLAND"
+        const val LONLAND = "LONLAND"
     }
 }
