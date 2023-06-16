@@ -218,20 +218,20 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/information_background"
             android:elevation="20dp"
             android:padding="10dp"
             app:layout_constraintEnd_toStartOf="@+id/btnDeteksiPenyakit"
             app:layout_constraintTop_toBottomOf="@+id/txtKSoilDataDetail"
-            app:srcCompat="@drawable/baseline_location_on_24" />
+            app:srcCompat="@drawable/landscape_icon" />
 
         <ImageView
             android:id="@+id/btnDeteksiPenyakit"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="15dp"
             android:background="@drawable/information_background"
             android:elevation="20dp"
             android:padding="10dp"
@@ -243,27 +243,27 @@
             android:id="@+id/btnData"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/information_background"
             android:elevation="20dp"
             android:padding="10dp"
             app:layout_constraintStart_toStartOf="@+id/guideline4"
             app:layout_constraintTop_toBottomOf="@+id/txtKSoilDataDetail"
-            app:srcCompat="@drawable/baseline_location_on_24" />
+            app:srcCompat="@drawable/data_icon" />
 
         <ImageView
             android:id="@+id/button7"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/information_background"
             android:elevation="20dp"
             android:padding="10dp"
             app:layout_constraintStart_toEndOf="@+id/btnData"
             app:layout_constraintTop_toBottomOf="@+id/txtKSoilDataDetail"
-            app:srcCompat="@drawable/baseline_location_on_24" />
+            app:srcCompat="@drawable/question_icon" />
 
         <TextView
             android:id="@+id/txtPHSoilDataDetail"
@@ -309,7 +309,7 @@
             android:layout_width="68dp"
             android:layout_height="33dp"
             android:layout_marginTop="8dp"
-            android:text="@string/lahan_saya_text"
+            android:text="Coming Soon"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textStyle="bold"
