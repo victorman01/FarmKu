@@ -28,7 +28,6 @@ class LandActivity : AppCompatActivity() {
         val nameLand = intent.getStringExtra(NAMELAND)
         binding.txtLandName.text = nameLand
 
-
         val tableLayout = findViewById<TableLayout>(R.id.tableLayout)
 
         val data = listOf(

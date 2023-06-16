@@ -4,4 +4,5 @@ import androidx.lifecycle.ViewModel
 import com.farmkuindonesia.farmku.database.Repository
 
 class LandViewModel(rep:Repository):ViewModel() {
+    val messages = rep.messages
 }
