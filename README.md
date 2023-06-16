@@ -146,7 +146,4 @@ With these enhancements, our Android Application delivers an even more captivati
 | A351DKX4108 | Victor Manuel S. | Universitas Surabaya | Mobile Development |
 | A351DKX4106 | Michael Andreas | Universitas Surabaya | Mobile Development |
 
-## License
-
-MIT
 
