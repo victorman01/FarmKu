@@ -2,9 +2,13 @@ package com.farmkuindonesia.farmku.ui.fragment.listland.addmeasurement
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import com.farmkuindonesia.farmku.R
+import com.farmkuindonesia.farmku.databinding.ActivityAddLandBinding
 import com.farmkuindonesia.farmku.databinding.ActivityAddMeasurementBinding
 import com.farmkuindonesia.farmku.databinding.ActivitySoilDataCollectionDetailBinding
+import com.farmkuindonesia.farmku.ui.ViewModelFactory
+import com.farmkuindonesia.farmku.ui.fragment.listland.addland.AddLandViewModel
 import com.farmkuindonesia.farmku.ui.fragment.listland.land.LandActivity
 import com.farmkuindonesia.farmku.ui.soildatacollection.detail.SoilDataCollectionDetailActivity
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -17,23 +21,40 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class AddMeasurementActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityAddMeasurementBinding
+    private lateinit var viewModelFac: ViewModelFactory
+    private lateinit var addMeasurementViewModel: AddMeasurementViewModel
+
+
+
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
 
     private var idLand = ""
+    private var userId = ""
     private var nameLand = ""
-    private var latitude = 0.0
-    private var longitude = 0.0
+    private var latitudeString = ""
+    private var longitudeString = ""
+    var latitude = 0.0
+    var longitude = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddMeasurementBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+        viewModelFac = ViewModelFactory.getInstance(this)
+        addMeasurementViewModel = ViewModelProvider(this, viewModelFac)[AddMeasurementViewModel::class.java]
+
+        userId = addMeasurementViewModel.getUserId().id.toString()
         idLand = intent.getStringExtra(IDLAND).toString()
         nameLand = intent.getStringExtra(NAMELAND).toString()
-        latitude = intent.getStringExtra(LATLAND)?.toDouble() ?: 0.0
-        longitude = intent.getStringExtra(LONLAND)?.toDouble()?: 0.0
+        latitudeString = intent.getStringExtra(LATLAND).toString()
+        longitudeString = intent.getStringExtra(LONLAND).toString()
+
+        latitude = latitudeString.toDouble()
+        longitude = longitudeString.toDouble()
+        addMeasurementViewModel.addMeasurement(idLand,userId)
 
         mapView = binding.mapViewDetail
         mapView.onCreate(savedInstanceState)

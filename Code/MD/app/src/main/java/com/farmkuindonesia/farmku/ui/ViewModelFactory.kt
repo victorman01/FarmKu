@@ -8,6 +8,7 @@ import com.farmkuindonesia.farmku.ui.fragment.home.HomeFragmentViewModel
 import com.farmkuindonesia.farmku.ui.fragment.home.deteksipenyakit.DiseaseDetectionViewModel
 import com.farmkuindonesia.farmku.ui.fragment.listland.ListLandViewModel
 import com.farmkuindonesia.farmku.ui.fragment.listland.addland.AddLandViewModel
+import com.farmkuindonesia.farmku.ui.fragment.listland.addmeasurement.AddMeasurementViewModel
 import com.farmkuindonesia.farmku.ui.fragment.listland.land.LandViewModel
 import com.farmkuindonesia.farmku.ui.fragment.profile.ProfileViewModel
 import com.farmkuindonesia.farmku.ui.login.LoginViewModel
@@ -61,6 +62,9 @@ class ViewModelFactory(private val rep: Repository) : ViewModelProvider.NewInsta
             }
             modelClass.isAssignableFrom(AddSoilDataViewModel::class.java) -> {
                 AddSoilDataViewModel(rep) as T
+            }
+            modelClass.isAssignableFrom(AddMeasurementViewModel::class.java) -> {
+                AddMeasurementViewModel(rep) as T
             }
 
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)

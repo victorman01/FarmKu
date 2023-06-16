@@ -397,6 +397,29 @@ class Repository constructor(
             }
         })
     }
+    fun addMeasurement(idLand:String, idUser:String){
+        val client = apiService.addMeasurement(idLand,idUser)
+        client.enqueue(object : Callback<MeasurementResponse> {
+            override fun onResponse(
+                call: Call<MeasurementResponse>,
+                response: Response<MeasurementResponse>
+            ) {
+                _isLoading.value = false
+                if(response.isSuccessful) {
+                    _measurement.value = response.body()?.data
+                }else
+                {
+                    _messages.value = Event("Error dalam menambahkan data Measurement")
+                }
+            }
+
+            override fun onFailure(call: Call<MeasurementResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.d(TAG, t.message.toString())
+            }
+        })
+    }
+
 
 
 
