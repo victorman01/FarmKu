@@ -72,6 +72,7 @@ interface ApiService {
         @Query("lat") lat: Double?,
         @Query("lon") lon: Double?,
         @Query("appid") key:String,
+        @Query("units") units:String
     ):Call<WeatherResponse>
 
     @GET("measurement")
