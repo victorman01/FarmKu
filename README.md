@@ -34,6 +34,7 @@ This API has been deployed using google cloud using cloud run and compute engine
 	Data Collection API = ```https://farmku-api-hwmomiroxq-uc.a.run.app/```
 
 ## Machine Learning Documentation
+![plot](./images/acuracy.jpeg)
 If you want to run it locally, u need to do these kind of things:
 1. Clone this repository, use ML Folder
 2. Open terminal and create flask virtual environment using ``` python -m venv <name of environment>```
