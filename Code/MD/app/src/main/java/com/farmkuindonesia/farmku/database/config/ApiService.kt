@@ -79,9 +79,10 @@ interface ApiService {
         @Query("land_id") userId:String
     ):Call<MeasurementResponse>
 
+    @FormUrlEncoded
     @POST("measurement")
     fun addMeasurement(
-        @Part("land_id") landId:String,
-        @Part("user_id") userId:String
+        @Field("land_id") landId:String,
+        @Field("user_id") userId:String
     ):Call<MeasurementResponse>
 }

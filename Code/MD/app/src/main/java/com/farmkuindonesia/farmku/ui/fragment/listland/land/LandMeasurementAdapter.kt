@@ -20,6 +20,7 @@ class LandMeasurementAdapter(private val listMeasurement: List<ItemData?>) :
         val date = listMeasurement[position]?.updatedAt
         holder.binding.txtDateMeasurement.text = date
         holder.binding.txtNameMeasurement.text = "Measurement #${position+1}"
+
     }
 
     override fun getItemCount(): Int = listMeasurement.size

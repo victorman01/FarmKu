@@ -32,8 +32,6 @@ class AddMeasurementActivity : AppCompatActivity(), OnMapReadyCallback {
     private var idLand = ""
     private var userId = ""
     private var nameLand = ""
-    private var latitudeString = ""
-    private var longitudeString = ""
     var latitude = 0.0
     var longitude = 0.0
 
@@ -49,11 +47,8 @@ class AddMeasurementActivity : AppCompatActivity(), OnMapReadyCallback {
         userId = addMeasurementViewModel.getUserId().id.toString()
         idLand = intent.getStringExtra(IDLAND).toString()
         nameLand = intent.getStringExtra(NAMELAND).toString()
-        latitudeString = intent.getStringExtra(LATLAND).toString()
-        longitudeString = intent.getStringExtra(LONLAND).toString()
-
-        latitude = latitudeString.toDouble()
-        longitude = longitudeString.toDouble()
+        latitude = intent.getDoubleExtra("LATLAND", 0.0);
+        longitude = intent.getDoubleExtra("LONLAND", 0.0);
         addMeasurementViewModel.addMeasurement(idLand,userId)
 
         mapView = binding.mapViewDetail
