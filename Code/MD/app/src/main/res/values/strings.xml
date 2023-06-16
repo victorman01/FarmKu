@@ -146,4 +146,7 @@
     <string name="tambahkan_data_tanah_text">Tambahkan data tanah</string>
     <string name="maksimum_karakter_tercapai_text">Maksimum karakter tercapai</string>
     <string name="ups_anda_belum_mendaftarkan_lahan_anda_text">Ups, Anda belum mendaftarkan lahan anda</string>
+    <string name="galeri">Galeri</string>
+    <string name="kamera">Kamera</string>
+    <string name="ambil_gambar_melalui">Ambil Gambar Melalui</string>
 </resources>
