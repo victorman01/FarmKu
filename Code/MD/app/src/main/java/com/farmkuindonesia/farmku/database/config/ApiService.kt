@@ -85,4 +85,9 @@ interface ApiService {
         @Field("land_id") landId:String,
         @Field("user_id") userId:String
     ):Call<MeasurementResponse>
+
+    @GET("record")
+    fun getRecord(
+        @Query("measurementId") measurementId:String
+    ):Call<RecordResponse>
 }

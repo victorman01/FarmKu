@@ -78,6 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecords"
         android:layout_width="0dp"
         android:layout_height="351dp"
         android:layout_marginStart="20dp"
@@ -87,5 +88,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView42"
-        tools:listitem="@layout/list_measurement_layout"/>
+        tools:listitem="@layout/list_measurement_layout" />
+
+    <TextView
+        android:id="@+id/txtNullData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tidak Ada Record yang Tersimpan"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rvRecords" />
 </androidx.constraintlayout.widget.ConstraintLayout>

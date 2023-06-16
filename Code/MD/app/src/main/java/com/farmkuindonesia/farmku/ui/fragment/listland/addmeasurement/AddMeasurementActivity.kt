@@ -24,8 +24,6 @@ class AddMeasurementActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var viewModelFac: ViewModelFactory
     private lateinit var addMeasurementViewModel: AddMeasurementViewModel
 
-
-
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
 

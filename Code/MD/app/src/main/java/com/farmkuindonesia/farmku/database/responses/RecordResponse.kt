@@ -13,20 +13,11 @@ data class RecordResponse(
 
 data class Condition(
 
-	@field:SerializedName("potassium")
-	val potassium: String? = null,
-
-	@field:SerializedName("nitrogen")
-	val nitrogen: String? = null,
-
-	@field:SerializedName("ph")
-	val ph: String? = null,
-
-	@field:SerializedName("phosphorus")
-	val phosphorus: String? = null,
-
 	@field:SerializedName("rainfall")
 	val rainfall: String? = null,
+
+	@field:SerializedName("potassium")
+	val potassium: String? = null,
 
 	@field:SerializedName("soil_temperature")
 	val soilTemperature: String? = null,
@@ -34,8 +25,17 @@ data class Condition(
 	@field:SerializedName("light")
 	val light: String? = null,
 
+	@field:SerializedName("nitrogen")
+	val nitrogen: String? = null,
+
+	@field:SerializedName("ph")
+	val ph: String? = null,
+
 	@field:SerializedName("soil_moisture")
-	val soilMoisture: String? = null
+	val soilMoisture: String? = null,
+
+	@field:SerializedName("phosphorus")
+	val phosphorus: String? = null
 )
 
 data class RecordsItem(
@@ -50,7 +50,7 @@ data class RecordsItem(
 	val v: Int? = null,
 
 	@field:SerializedName("location")
-	val location: LocationRecord? = null,
+	val location: Location? = null,
 
 	@field:SerializedName("_id")
 	val id: String? = null,
@@ -62,17 +62,17 @@ data class RecordsItem(
 	val updatedAt: String? = null
 )
 
-data class LocationRecord(
-
-	@field:SerializedName("lon")
-	val lon: Any? = null,
-
-	@field:SerializedName("lat")
-	val lat: Any? = null,
+data class Location(
 
 	@field:SerializedName("coordinates")
 	val coordinates: List<String?>? = null,
 
 	@field:SerializedName("type")
-	val type: String? = null
+	val type: String? = null,
+
+	@field:SerializedName("lon")
+	val lon: Any? = null,
+
+	@field:SerializedName("lat")
+	val lat: Any? = null
 )

@@ -56,6 +56,9 @@ class Repository constructor(
     private val _measurement = MutableLiveData<List<ItemData?>?>()
     val measurement: LiveData<List<ItemData?>?> = _measurement
 
+    private val _record = MutableLiveData<List<RecordsItem?>?>()
+    val record: LiveData<List<RecordsItem?>?> = _record
+
     private val _success = MutableLiveData<Boolean>()
     val success: LiveData<Boolean> = _success
 
@@ -414,6 +417,29 @@ class Repository constructor(
             }
 
             override fun onFailure(call: Call<MeasurementResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.d(TAG, t.message.toString())
+            }
+        })
+    }
+
+    fun getRecord(measurementId:String){
+        val client = apiService.getRecord(measurementId)
+        client.enqueue(object : Callback<RecordResponse> {
+            override fun onResponse(
+                call: Call<RecordResponse>,
+                response: Response<RecordResponse>
+            ) {
+                _isLoading.value = false
+                if(response.isSuccessful) {
+                    _record.value = response.body()?.records
+                }else
+                {
+                    _messages.value = Event("Error dalam menambahkan data Measurement")
+                }
+            }
+
+            override fun onFailure(call: Call<RecordResponse>, t: Throwable) {
                 _isLoading.value = false
                 Log.d(TAG, t.message.toString())
             }
