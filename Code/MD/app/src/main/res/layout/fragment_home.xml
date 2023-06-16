@@ -108,7 +108,7 @@
                 <TextView
                     android:id="@+id/textView18"
                     android:layout_width="63dp"
-                    android:layout_height="21dp"
+                    android:layout_height="wrap_content"
                     android:text="@string/penyakit_terdeteksi_text"
                     android:textAlignment="center"
                     android:textSize="9sp"
@@ -118,7 +118,7 @@
                 <TextView
                     android:id="@+id/txtPSoilDataDetail"
                     android:layout_width="63dp"
-                    android:layout_height="21dp"
+                    android:layout_height="wrap_content"
                     android:text="@string/lahan_terdaftar_text"
                     android:textAlignment="center"
                     android:textSize="9sp"
@@ -268,7 +268,7 @@
         <TextView
             android:id="@+id/txtPHSoilDataDetail"
             android:layout_width="68dp"
-            android:layout_height="33dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/lahan_saya_text"
             android:textAlignment="center"
@@ -281,7 +281,7 @@
         <TextView
             android:id="@+id/textView25"
             android:layout_width="68dp"
-            android:layout_height="33dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/deteksi_penyakit_text"
             android:textAlignment="center"
@@ -294,7 +294,7 @@
         <TextView
             android:id="@+id/textView26"
             android:layout_width="68dp"
-            android:layout_height="33dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Data Tanah"
             android:textAlignment="center"
@@ -307,7 +307,7 @@
         <TextView
             android:id="@+id/textView27"
             android:layout_width="68dp"
-            android:layout_height="33dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Coming Soon"
             android:textAlignment="center"

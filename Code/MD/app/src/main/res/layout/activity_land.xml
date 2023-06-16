@@ -1,261 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/contrainslayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/appBarFillData"
-            android:layout_width="412dp"
-            android:layout_height="168dp"
-            android:contentDescription="@string/appbar_land_activity_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/circled_dark_green_appbar" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contrainslayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/txt_land_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="@string/land_name_text"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/appBarFillData"
+                android:layout_width="412dp"
+                android:layout_height="168dp"
+                android:contentDescription="@string/appbar_land_activity_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/circled_dark_green_appbar" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout5"
-            android:layout_width="319dp"
-            android:layout_height="133dp"
-            android:layout_marginTop="95dp"
-            android:background="@drawable/information_background"
-            android:elevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:elevation="100dp"
-                android:ems="10">
-
-                <TextView
-                    android:id="@+id/txtCurrentWeather"
-                    android:layout_width="96dp"
-                    android:layout_height="18dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="28dp"
-                    android:text="Current Weather"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imgWeather"
-                    android:layout_width="70dp"
-                    android:layout_height="44dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/clear_sky"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.458"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/txtTemperature"
-                    android:layout_width="97dp"
-                    android:layout_height="27dp"
-                    android:layout_marginTop="20dp"
-                    android:text="26 \u2103"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.831"
-                    app:layout_constraintStart_toEndOf="@+id/imgWeather"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView33"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Angin"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
-
-                <TextView
-                    android:id="@+id/textView36"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Kelembaban"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toEndOf="@+id/txtWindSpeed"
-                    app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
-
-                <TextView
-                    android:id="@+id/textView35"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="68dp"
-                    android:layout_marginTop="52dp"
-                    android:text="Jarak Pandang"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
-
-                <TextView
-                    android:id="@+id/txtPointOfView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="20dp"
-                    android:text="25 km"
-                    app:layout_constraintStart_toEndOf="@+id/textView35"
-                    app:layout_constraintTop_toBottomOf="@+id/txtWindSpeed" />
-
-                <TextView
-                    android:id="@+id/txtWindSpeed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="15dp"
-                    android:text="12 m/h"
-                    app:layout_constraintStart_toEndOf="@+id/textView33"
-                    app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
-
-                <TextView
-                    android:id="@+id/txtKelembaban"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="15dp"
-                    android:text="55%"
-                    app:layout_constraintStart_toEndOf="@+id/textView36"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTemperature" />
-
-                <TextView
-                    android:id="@+id/txtWindSpeed4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="196dp"
-                    android:layout_marginTop="36dp"
-                    android:text="55%"
-                    app:layout_constraintStart_toEndOf="@+id/textView36"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTemperature" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-
-        <TableLayout
-            android:id="@+id/tableLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:stretchColumns="*"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
-
-            <TableRow
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txt_land_name"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/gray"
-                android:gravity="center">
+                android:layout_marginTop="28dp"
+                android:text="@string/land_name_text"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textViewHeader1"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Waktu"
-                    android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="319dp"
+                android:layout_height="133dp"
+                android:layout_marginTop="95dp"
+                android:background="@drawable/information_background"
+                android:elevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/textViewHeader2"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="Tempat"
-                    android:textStyle="bold" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="100dp"
+                    android:ems="10">
 
-                <TextView
-                    android:id="@+id/textViewHeader3"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="N"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/txtCurrentWeather"
+                        android:layout_width="96dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="28dp"
+                        android:text="Current Weather"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textViewHeader4"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="P"
-                    android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/imgWeather"
+                        android:layout_width="70dp"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/clear_sky"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.458"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textViewHeader5"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="K"
-                    android:textStyle="bold" />
-            </TableRow>
+                    <TextView
+                        android:id="@+id/txtTemperature"
+                        android:layout_width="97dp"
+                        android:layout_height="27dp"
+                        android:layout_marginTop="20dp"
+                        android:text="26 \u2103"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.831"
+                        app:layout_constraintStart_toEndOf="@+id/imgWeather"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-        </TableLayout>
+                    <TextView
+                        android:id="@+id/textView33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Angin"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
 
-        <TextView
-            android:id="@+id/textView41"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:text="Daftar Pengukuran"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+                    <TextView
+                        android:id="@+id/textView36"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="50dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Kelembaban"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@+id/txtWindSpeed"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMeasurement"
-            android:layout_width="0dp"
-            android:layout_height="397dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView41"
-            tools:listitem="@layout/list_measurement_layout" />
+                    <TextView
+                        android:id="@+id/textView35"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="68dp"
+                        android:layout_marginTop="52dp"
+                        android:text="Jarak Pandang"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddMesurement"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="24dp"
-            app:layout_anchor="@id/contrainslayout"
-            android:clickable="true"
-            android:scrollbars="none"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/add_icon"
-            android:focusable="true" />
+                    <TextView
+                        android:id="@+id/txtPointOfView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="20dp"
+                        android:text="25 km"
+                        app:layout_constraintStart_toEndOf="@+id/textView35"
+                        app:layout_constraintTop_toBottomOf="@+id/txtWindSpeed" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/txtWindSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="15dp"
+                        android:text="12 m/h"
+                        app:layout_constraintStart_toEndOf="@+id/textView33"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCurrentWeather" />
 
-</ScrollView>
+                    <TextView
+                        android:id="@+id/txtKelembaban"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="15dp"
+                        android:text="55%"
+                        app:layout_constraintStart_toEndOf="@+id/textView36"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTemperature" />
+
+                    <TextView
+                        android:id="@+id/txtWindSpeed4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="196dp"
+                        android:layout_marginTop="36dp"
+                        android:text="55%"
+                        app:layout_constraintStart_toEndOf="@+id/textView36"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTemperature" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:stretchColumns="*"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textViewHeader1"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:text="Waktu"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewHeader2"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:text="Tempat"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewHeader3"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:text="N"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewHeader4"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:text="P"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewHeader5"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:text="K"
+                        android:textStyle="bold" />
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Daftar Pengukuran"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMeasurement"
+                android:layout_width="0dp"
+                android:layout_height="397dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView41"
+                tools:listitem="@layout/list_measurement_layout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddMesurement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/add_icon" />
+</androidx.constraintlayout.widget.ConstraintLayout>
