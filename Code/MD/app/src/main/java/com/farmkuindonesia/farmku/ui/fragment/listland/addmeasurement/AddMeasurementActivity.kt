@@ -15,15 +15,25 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class AddMeasurementActivity : AppCompatActivity() , OnMapReadyCallback {
+class AddMeasurementActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityAddMeasurementBinding
     private lateinit var mapView: MapView
     private lateinit var googleMap: GoogleMap
+
+    private var idLand = ""
+    private var nameLand = ""
+    private var latitude = 0.0
+    private var longitude = 0.0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddMeasurementBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        idLand = intent.getStringExtra(IDLAND).toString()
+        nameLand = intent.getStringExtra(NAMELAND).toString()
+        latitude = intent.getStringExtra(LATLAND)?.toDouble() ?: 0.0
+        longitude = intent.getStringExtra(LONLAND)?.toDouble()?: 0.0
 
         mapView = binding.mapViewDetail
         mapView.onCreate(savedInstanceState)
@@ -33,19 +43,13 @@ class AddMeasurementActivity : AppCompatActivity() , OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
 
-        val idLand = intent.getStringExtra(IDLAND)
-        val nameLand = intent.getStringExtra(NAMELAND)
-        val latitude = intent.getStringExtra(LATLAND)?.toDouble()
-        val longitude = intent.getStringExtra(LONLAND)?.toDouble()
-
         googleMap.uiSettings.isZoomControlsEnabled = true
 
         val markerOptions = MarkerOptions()
-            .position(LatLng(latitude!!, longitude!!))
+            .position(LatLng(latitude, longitude))
             .title("Selected Soil")
         googleMap.addMarker(markerOptions)
 
-        // Move the camera to the marker position
         val cameraPosition = CameraPosition.Builder()
             .target(LatLng(latitude, longitude))
             .zoom(12.0f)
@@ -53,7 +57,7 @@ class AddMeasurementActivity : AppCompatActivity() , OnMapReadyCallback {
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
     }
 
-    companion object{
+    companion object {
         const val IDLAND = "IDLAND"
         const val NAMELAND = "NAMELAND"
         const val LATLAND = "LATLAND"

@@ -261,7 +261,7 @@ class AddLandActivity : AppCompatActivity(), OnMapReadyCallback {
                     addLandViewModel.addNewLand(request)
                     addLandViewModel.successCheck.observe(this@AddLandActivity){
                         if(it == true){
-                            val intent = Intent(this@AddLandActivity, ListLandFragment::class.java)
+                            val intent = Intent(this@AddLandActivity, MainActivity::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK and Intent.FLAG_ACTIVITY_CLEAR_TOP)
                             startActivity(intent)
                             finish()
