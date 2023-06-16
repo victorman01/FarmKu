@@ -93,6 +93,10 @@ class ProfileFragment : Fragment(), ListProfileItemAdapter.MainActivityCallback 
         return profileItemList
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
     override fun finishMainActivity() {
         activity?.finish()
     }

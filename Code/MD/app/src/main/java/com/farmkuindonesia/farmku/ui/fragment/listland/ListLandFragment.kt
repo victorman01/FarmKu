@@ -29,6 +29,7 @@ class ListLandFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModelFac = ViewModelFactory.getInstance(this.requireContext())
         listLandViewModel = ViewModelProvider(this, viewModelFac)[ListLandViewModel::class.java]
+
         val id = listLandViewModel.getUserId().id.toString()
         var listLand: List<LandItem?>?
         listLandViewModel.getListLand(id)
@@ -43,8 +44,12 @@ class ListLandFragment : Fragment() {
                 }
             } else {
                 val adapter = listLand?.let { land -> ListLandAdapter(land) }
-                binding.rvLands.layoutManager = LinearLayoutManager(requireContext())
-                binding.rvLands.adapter = adapter
+                binding.apply {
+                    rvLands.layoutManager = LinearLayoutManager(requireContext())
+                    rvLands.adapter = adapter
+                    txtEmptyListLand.visibility = View.GONE
+                    imgNullData.visibility = View.GONE
+                }
             }
         }
         binding.fabAddLand.setOnClickListener {
@@ -61,8 +66,8 @@ class ListLandFragment : Fragment() {
         return binding.root
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = ListLandFragment().apply {}
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

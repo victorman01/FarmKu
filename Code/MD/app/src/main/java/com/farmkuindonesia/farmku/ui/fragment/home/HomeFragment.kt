@@ -2,11 +2,12 @@ package com.farmkuindonesia.farmku.ui.fragment.home
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.farmkuindonesia.farmku.database.responses.LandItem
 import com.farmkuindonesia.farmku.databinding.FragmentHomeBinding
@@ -15,46 +16,42 @@ import com.farmkuindonesia.farmku.ui.fragment.home.deteksipenyakit.DiseaseDetect
 import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.ListHotNewsAdapter
 import com.farmkuindonesia.farmku.ui.fragment.home.hotnews.HotNews
 import com.farmkuindonesia.farmku.ui.soildatacollection.SoilDataCollectionActivity
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var homeFragmentViewModel: HomeFragmentViewModel
-    private lateinit var viewModelFac: ViewModelFactory
+    private lateinit var viewModelFactory: ViewModelFactory
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModelFac = ViewModelFactory.getInstance(this.requireContext())
-        homeFragmentViewModel =
-            ViewModelProvider(this, viewModelFac)[HomeFragmentViewModel::class.java]
+        viewModelFactory = ViewModelFactory.getInstance(requireContext())
+        homeFragmentViewModel = ViewModelProvider(this, viewModelFactory)[HomeFragmentViewModel::class.java]
 
-        val user = homeFragmentViewModel.getUser()
         val adapter = ListHotNewsAdapter(HotNews().getDummyNewsList())
-        homeFragmentViewModel.getCountLand(user.id)
-        var listLand: List<LandItem?>? = null
+        val user = homeFragmentViewModel.getUser()
 
-        homeFragmentViewModel.landCount.observe(this.viewLifecycleOwner) {
-            listLand = it
-        }
-        binding.apply {
-            txtHiName.text = "Hi, ${user.name}"
-            if(listLand.isNullOrEmpty()){
-                txtJumlahLahan.text = "0"
-            }else{
-                txtJumlahLahan.text = listLand?.size.toString()
-            }
-            rvNews.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            rvNews.adapter = adapter
+        homeFragmentViewModel.getCountLand(user.id.toString())
+        homeFragmentViewModel.landCount.observe(viewLifecycleOwner) { landCount ->
+            val listLand: List<LandItem?> = landCount ?: emptyList()
 
-            btnDeteksiPenyakit.setOnClickListener {
-                val intent = Intent(requireContext(), DiseaseDetectionActivity::class.java)
-                startActivity(intent)
-            }
-            btnData.setOnClickListener {
-                val intent = Intent(requireContext(), SoilDataCollectionActivity::class.java)
-                startActivity(intent)
+            binding.apply {
+                txtHiName.text = "Hi, ${user.name}"
+                txtJumlahLahan.text = listLand.size.toString()
+                rvNews.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                rvNews.adapter = adapter
+
+                btnDeteksiPenyakit.setOnClickListener {
+                    val intent = Intent(requireContext(), DiseaseDetectionActivity::class.java)
+                    startActivity(intent)
+                }
+
+                btnData.setOnClickListener {
+                    val intent = Intent(requireContext(), SoilDataCollectionActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
     }
